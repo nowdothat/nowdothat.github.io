@@ -17,14 +17,14 @@
 
 <meta name="description" content="后台管理系统 准备工作，  安装nrm npm install nrm -g  下载webpack工具npm install webpack@3.11.0 -g  下载webpack服务npm install  webpack-dev-server@2.9.7 webpack@3.11.0 -D  全局服务npm i webpack-dev-server@2.9.7 -g  下载脚手架工具npm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome back">
+<meta property="og:title" content="后台管理系统">
 <meta property="og:url" content="http://yoursite.com/2018/08/15/后台Vue搭建介绍/index.html">
 <meta property="og:site_name" content="Welcome back">
 <meta property="og:description" content="后台管理系统 准备工作，  安装nrm npm install nrm -g  下载webpack工具npm install webpack@3.11.0 -g  下载webpack服务npm install  webpack-dev-server@2.9.7 webpack@3.11.0 -D  全局服务npm i webpack-dev-server@2.9.7 -g  下载脚手架工具npm">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-13T00:14:46.922Z">
+<meta property="og:updated_time" content="2018-08-15T03:57:35.010Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome back">
+<meta name="twitter:title" content="后台管理系统">
 <meta name="twitter:description" content="后台管理系统 准备工作，  安装nrm npm install nrm -g  下载webpack工具npm install webpack@3.11.0 -g  下载webpack服务npm install  webpack-dev-server@2.9.7 webpack@3.11.0 -D  全局服务npm i webpack-dev-server@2.9.7 -g  下载脚手架工具npm">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Welcome back</title>
+<title>后台管理系统 | Welcome back</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -272,6 +272,24 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      后台管理系统
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
@@ -374,9 +392,9 @@
 <h4 id="编辑操作–使用动态绑定先渲染数据"><a href="#编辑操作–使用动态绑定先渲染数据" class="headerlink" title="编辑操作–使用动态绑定先渲染数据"></a>编辑操作–使用动态绑定先渲染数据</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">showGrantUserBox (row) &#123;</span><br><span class="line">     <span class="keyword">this</span>.grantform.username = row.username</span><br><span class="line">     <span class="keyword">this</span>.grantform.id = row.id</span><br><span class="line">     getRoleList()</span><br><span class="line">       .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">         <span class="keyword">if</span> (res.meta.status === <span class="number">200</span>) &#123;</span><br><span class="line">           <span class="keyword">this</span>.roleList = res.data</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">     <span class="keyword">this</span>.grantDialogFormVisible = <span class="literal">true</span></span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
 <p>渲染完后再进行获取动态绑定数据进行提交</p>
 <h4 id="删除操作-使用-confirm"><a href="#删除操作-使用-confirm" class="headerlink" title="删除操作,使用$confirm"></a>删除操作,使用$confirm</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示删除对话框</span></span><br><span class="line">   showDeleteBox (id) &#123;</span><br><span class="line">     <span class="keyword">this</span>.$confirm(<span class="string">'此操作将永久删除该记录, 是否继续?'</span>, <span class="string">'提示'</span>, &#123;</span><br><span class="line">       confirmButtonText: <span class="string">'确定'</span>,</span><br><span class="line">       cancelButtonText: <span class="string">'取消'</span>,</span><br><span class="line">       type: <span class="string">'warning'</span></span><br><span class="line">     &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">       deleteUser(id).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">         <span class="keyword">this</span>.$message(&#123;</span><br><span class="line">           type: <span class="string">'success'</span>,</span><br><span class="line">           message: <span class="string">'删除成功!'</span></span><br><span class="line">         &#125;)</span><br><span class="line">         <span class="keyword">this</span>.getList()</span><br><span class="line">       &#125;)</span><br><span class="line">     &#125;).catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">this</span>.$message(&#123;</span><br><span class="line">         type: <span class="string">'info'</span>,</span><br><span class="line">         message: <span class="string">'已取消删除'</span></span><br><span class="line">       &#125;)</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
-</li>
+<h4 id="授权操作"><a href="#授权操作" class="headerlink" title="授权操作"></a>授权操作</h4></li>
 </ol>
-<h4 id="授权操作"><a href="#授权操作" class="headerlink" title="授权操作"></a>授权操作</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> &lt;el-select v-model=<span class="string">"checkValue"</span> placeholder=<span class="string">"请选择"</span>&gt;</span><br><span class="line">   				<span class="comment">//使用动态绑定绑定,因为是value再定向,这里可以拿取到id值</span></span><br><span class="line">     &lt;el-option</span><br><span class="line">       v-<span class="keyword">for</span>=<span class="string">"(item, key) in grantOptions"</span></span><br><span class="line">       :key=<span class="string">"key"</span></span><br><span class="line">       :label=<span class="string">"item.roleName"</span> <span class="comment">//label展示具体的字符串</span></span><br><span class="line">       :value=<span class="string">"item.id"</span>&gt; <span class="comment">//就是因为这个value绑定id值，我们就可以获取到具体字符串背后的id值</span></span><br><span class="line">      &lt;<span class="regexp">/el-option&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>el-select&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> &lt;el-select v-model=<span class="string">"checkValue"</span> placeholder=<span class="string">"请选择"</span>&gt;</span><br><span class="line">   				<span class="comment">//使用动态绑定绑定,因为是value再定向,这里可以拿取到id值</span></span><br><span class="line">     &lt;el-option</span><br><span class="line">       v-<span class="keyword">for</span>=<span class="string">"(item, key) in grantOptions"</span></span><br><span class="line">       :key=<span class="string">"key"</span></span><br><span class="line">       :label=<span class="string">"item.roleName"</span> <span class="comment">//label展示具体的字符串</span></span><br><span class="line">       :value=<span class="string">"item.id"</span>&gt; <span class="comment">//就是因为这个value绑定id值，我们就可以获取到具体字符串背后的id值</span></span><br><span class="line">      &lt;<span class="regexp">/el-option&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>el-select&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="分页组件"><a href="#分页组件" class="headerlink" title="分页组件"></a>分页组件</h4><ol>
 <li><p>复制代码片段,并明白其作用</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-pagination</span><br><span class="line">  @size-change=<span class="string">"handleSizeChange"</span> <span class="comment">//默认传了一个每页显示多少条的数值,可用于赋值,并刷新组件-与下面的			数组对应:page-sizes</span></span><br><span class="line">  @current-change=<span class="string">"handleCurrentChange"</span><span class="comment">//默认传了当前页数的数值,可用于赋值,并刷新组件--跳转</span></span><br><span class="line">  :current-page=<span class="string">"1"</span> <span class="comment">//当前页,默认为1,也可以通过一个变量进行渲染</span></span><br><span class="line">  :page-sizes=<span class="string">"[5, 10, 15, 20]"</span> <span class="comment">//与size-change里面的值进行对应</span></span><br><span class="line">  :page-size=<span class="string">"pagesize"</span> <span class="comment">//发送请求的数据</span></span><br><span class="line">  layout=<span class="string">"total, sizes, prev, pager, next, jumper"</span><span class="comment">//控件需要显示的方法</span></span><br><span class="line">  :total=<span class="string">"total"</span>&gt; <span class="comment">//总条数,在我们获取数据的时候,需要进行动态改变</span></span><br><span class="line">&lt;<span class="regexp">/el-pagination&gt;</span></span><br></pre></td></tr></table></figure>
@@ -426,12 +444,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/15/后台Vue搭建介绍/"></a></p>
+        <p><span>本文标题:</span><a href="/2018/08/15/后台Vue搭建介绍/">后台管理系统</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
         <p><span>发布时间:</span>2018-08-15, 11:26:15</p>
-        <p><span>最后更新:</span>2018-08-13, 08:14:46</p>
+        <p><span>最后更新:</span>2018-08-15, 11:57:35</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/15/后台Vue搭建介绍/" title="">http://yoursite.com/2018/08/15/后台Vue搭建介绍/</a>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/15/后台Vue搭建介绍/" title="后台管理系统">http://yoursite.com/2018/08/15/后台Vue搭建介绍/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/15/后台Vue搭建介绍/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -501,7 +519,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"后台管理系统　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -557,7 +575,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/test/">test</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/后台Vue搭建介绍/">后台Vue搭建介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/second-Page/">second Page</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/test/">test</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/后台Vue搭建介绍/">后台管理系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/second-Page/">second Page</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/hello-world/">Hello World</a></li></ul>
 
 
 
