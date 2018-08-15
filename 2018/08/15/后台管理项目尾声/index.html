@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="遇见预见tab栏和步骤条的同步操作容易出现的问题 步骤条需要number值 tab栏是一个字符串 最简单的解决方案-0  隐式转换  tab栏中嵌套表单12345678910 &amp;lt;template&amp;gt;         &amp;lt;el-form ref=&quot;AddForm&quot; :model=&quot;AddForm&quot; label-width=&quot;80px&quot; style=&apos;height:600px&apos;&amp;gt;">
+<meta name="description" content="tab栏和步骤条的同步操作容易出现的问题 步骤条需要number值 tab栏是一个字符串 最简单的解决方案-0  隐式转换  tab栏中嵌套表单12345678910 &amp;lt;template&amp;gt;         &amp;lt;el-form ref=&quot;AddForm&quot; :model=&quot;AddForm&quot; label-width=&quot;80px&quot; style=&apos;height:600px&apos;&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome back">
+<meta property="og:title" content="遇见预见">
 <meta property="og:url" content="http://yoursite.com/2018/08/15/后台管理项目尾声/index.html">
 <meta property="og:site_name" content="Welcome back">
-<meta property="og:description" content="遇见预见tab栏和步骤条的同步操作容易出现的问题 步骤条需要number值 tab栏是一个字符串 最简单的解决方案-0  隐式转换  tab栏中嵌套表单12345678910 &amp;lt;template&amp;gt;         &amp;lt;el-form ref=&quot;AddForm&quot; :model=&quot;AddForm&quot; label-width=&quot;80px&quot; style=&apos;height:600px&apos;&amp;gt;">
+<meta property="og:description" content="tab栏和步骤条的同步操作容易出现的问题 步骤条需要number值 tab栏是一个字符串 最简单的解决方案-0  隐式转换  tab栏中嵌套表单12345678910 &amp;lt;template&amp;gt;         &amp;lt;el-form ref=&quot;AddForm&quot; :model=&quot;AddForm&quot; label-width=&quot;80px&quot; style=&apos;height:600px&apos;&amp;gt;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-15T14:55:28.760Z">
+<meta property="og:updated_time" content="2018-08-15T15:06:07.294Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome back">
-<meta name="twitter:description" content="遇见预见tab栏和步骤条的同步操作容易出现的问题 步骤条需要number值 tab栏是一个字符串 最简单的解决方案-0  隐式转换  tab栏中嵌套表单12345678910 &amp;lt;template&amp;gt;         &amp;lt;el-form ref=&quot;AddForm&quot; :model=&quot;AddForm&quot; label-width=&quot;80px&quot; style=&apos;height:600px&apos;&amp;gt;">
+<meta name="twitter:title" content="遇见预见">
+<meta name="twitter:description" content="tab栏和步骤条的同步操作容易出现的问题 步骤条需要number值 tab栏是一个字符串 最简单的解决方案-0  隐式转换  tab栏中嵌套表单12345678910 &amp;lt;template&amp;gt;         &amp;lt;el-form ref=&quot;AddForm&quot; :model=&quot;AddForm&quot; label-width=&quot;80px&quot; style=&apos;height:600px&apos;&amp;gt;">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Welcome back</title>
+<title>遇见预见 | Welcome back</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -272,11 +272,28 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      遇见预见
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <hr>
-<h2 id="遇见预见"><a href="#遇见预见" class="headerlink" title="遇见预见"></a>遇见预见</h2><h1 id="tab栏和步骤条的同步操作"><a href="#tab栏和步骤条的同步操作" class="headerlink" title="tab栏和步骤条的同步操作"></a>tab栏和步骤条的同步操作</h1><h5 id="容易出现的问题"><a href="#容易出现的问题" class="headerlink" title="容易出现的问题"></a>容易出现的问题</h5><ol>
+        <h1 id="tab栏和步骤条的同步操作"><a href="#tab栏和步骤条的同步操作" class="headerlink" title="tab栏和步骤条的同步操作"></a>tab栏和步骤条的同步操作</h1><h5 id="容易出现的问题"><a href="#容易出现的问题" class="headerlink" title="容易出现的问题"></a>容易出现的问题</h5><ol>
 <li>步骤条需要number值</li>
 <li>tab栏是一个字符串</li>
 <li>最简单的解决方案-0  隐式转换</li>
@@ -294,9 +311,7 @@
 </ol>
 </li>
 <li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;amap-wrapper&quot;&gt;</span><br><span class="line">&lt;el-amap class=&quot;amap-box&quot; :vid=&quot;&apos;amap-vue&apos;&quot;&gt;&lt;/el-amap&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注意是否要加样式, 有时宽高为0</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang="scss" scoped&gt;</span><br><span class="line"><span class="selector-class">.amap-wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">500px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 注意是否要加样式, 有时宽高为0</span><br><span class="line"></span><br><span class="line">   ```css</span><br><span class="line">   &lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">   .amap-wrapper &#123;</span><br><span class="line">     width: 500px;</span><br><span class="line">     height: 500px;</span><br><span class="line">   &#125;</span><br><span class="line">   &lt;/style&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h1 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h1><p> <code>vue-quill-editor</code></p>
@@ -330,12 +345,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/15/后台管理项目尾声/"></a></p>
+        <p><span>本文标题:</span><a href="/2018/08/15/后台管理项目尾声/">遇见预见</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
         <p><span>发布时间:</span>2018-08-15, 23:00:31</p>
-        <p><span>最后更新:</span>2018-08-15, 22:55:28</p>
+        <p><span>最后更新:</span>2018-08-15, 23:06:07</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/15/后台管理项目尾声/" title="">http://yoursite.com/2018/08/15/后台管理项目尾声/</a>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/15/后台管理项目尾声/" title="遇见预见">http://yoursite.com/2018/08/15/后台管理项目尾声/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/15/后台管理项目尾声/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -363,7 +378,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#遇见预见"><span class="toc-number">1.</span> <span class="toc-text">遇见预见</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tab栏和步骤条的同步操作"><span class="toc-number"></span> <span class="toc-text">tab栏和步骤条的同步操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#容易出现的问题"><span class="toc-number">0.0.0.1.</span> <span class="toc-text">容易出现的问题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tab栏中嵌套表单"><span class="toc-number"></span> <span class="toc-text">tab栏中嵌套表单</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异步对象设置请求头"><span class="toc-number"></span> <span class="toc-text">异步对象设置请求头</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除上传图片操作"><span class="toc-number"></span> <span class="toc-text">删除上传图片操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue地图"><span class="toc-number"></span> <span class="toc-text">Vue地图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#富文本编辑器"><span class="toc-number"></span> <span class="toc-text">富文本编辑器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vue-echarts"><span class="toc-number"></span> <span class="toc-text">vue-echarts</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后讲性能优化问题"><span class="toc-number"></span> <span class="toc-text">最后讲性能优化问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#包的去重和位置需要注意"><span class="toc-number">0.0.0.1.</span> <span class="toc-text">包的去重和位置需要注意</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用cdn加速服务"><span class="toc-number">0.0.0.2.</span> <span class="toc-text">使用cdn加速服务</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#在config设置"><span class="toc-number">0.0.0.2.1.</span> <span class="toc-text">在config设置</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用compression模块压缩"><span class="toc-number">0.0.0.3.</span> <span class="toc-text">使用compression模块压缩</span></a></li></ol></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tab栏和步骤条的同步操作"><span class="toc-number">1.</span> <span class="toc-text">tab栏和步骤条的同步操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#容易出现的问题"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">容易出现的问题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tab栏中嵌套表单"><span class="toc-number">2.</span> <span class="toc-text">tab栏中嵌套表单</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异步对象设置请求头"><span class="toc-number">3.</span> <span class="toc-text">异步对象设置请求头</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除上传图片操作"><span class="toc-number">4.</span> <span class="toc-text">删除上传图片操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue地图"><span class="toc-number">5.</span> <span class="toc-text">Vue地图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#富文本编辑器"><span class="toc-number">6.</span> <span class="toc-text">富文本编辑器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vue-echarts"><span class="toc-number">7.</span> <span class="toc-text">vue-echarts</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后讲性能优化问题"><span class="toc-number">8.</span> <span class="toc-text">最后讲性能优化问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#包的去重和位置需要注意"><span class="toc-number">8.0.0.0.1.</span> <span class="toc-text">包的去重和位置需要注意</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用cdn加速服务"><span class="toc-number">8.0.0.0.2.</span> <span class="toc-text">使用cdn加速服务</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#在config设置"><span class="toc-number">8.0.0.0.2.1.</span> <span class="toc-text">在config设置</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用compression模块压缩"><span class="toc-number">8.0.0.0.3.</span> <span class="toc-text">使用compression模块压缩</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -399,7 +414,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"遇见预见　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -453,7 +468,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/后台管理项目尾声/">后台管理项目尾声</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/后台Vue搭建介绍/">后台管理系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/后台管理项目尾声/">遇见预见</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/后台Vue搭建介绍/">后台管理系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/01/hello-world/">Hello World</a></li></ul>
 
 
 

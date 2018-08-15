@@ -275,11 +275,21 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/15/后台管理项目尾声/">遇见预见</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <hr>
-<h2 id="遇见预见"><a href="#遇见预见" class="headerlink" title="遇见预见"></a>遇见预见</h2><h1 id="tab栏和步骤条的同步操作"><a href="#tab栏和步骤条的同步操作" class="headerlink" title="tab栏和步骤条的同步操作"></a>tab栏和步骤条的同步操作</h1><h5 id="容易出现的问题"><a href="#容易出现的问题" class="headerlink" title="容易出现的问题"></a>容易出现的问题</h5><ol>
+        <h1 id="tab栏和步骤条的同步操作"><a href="#tab栏和步骤条的同步操作" class="headerlink" title="tab栏和步骤条的同步操作"></a>tab栏和步骤条的同步操作</h1><h5 id="容易出现的问题"><a href="#容易出现的问题" class="headerlink" title="容易出现的问题"></a>容易出现的问题</h5><ol>
 <li>步骤条需要number值</li>
 <li>tab栏是一个字符串</li>
 <li>最简单的解决方案-0  隐式转换</li>
@@ -297,9 +307,7 @@
 </ol>
 </li>
 <li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;amap-wrapper&quot;&gt;</span><br><span class="line">&lt;el-amap class=&quot;amap-box&quot; :vid=&quot;&apos;amap-vue&apos;&quot;&gt;&lt;/el-amap&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注意是否要加样式, 有时宽高为0</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang="scss" scoped&gt;</span><br><span class="line"><span class="selector-class">.amap-wrapper</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">500px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 注意是否要加样式, 有时宽高为0</span><br><span class="line"></span><br><span class="line">   ```css</span><br><span class="line">   &lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">   .amap-wrapper &#123;</span><br><span class="line">     width: 500px;</span><br><span class="line">     height: 500px;</span><br><span class="line">   &#125;</span><br><span class="line">   &lt;/style&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h1 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h1><p> <code>vue-quill-editor</code></p>
