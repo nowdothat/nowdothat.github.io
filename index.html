@@ -260,6 +260,369 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-操作日志" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/23/操作日志/" class="article-date">
+      <time datetime="2018-11-23T14:03:10.343Z" itemprop="datePublished">2018-11-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/操作日志/">vue操作日志</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#webpack有4个重点内容：</p>
+<ul>
+<li>入口(entry)</li>
+<li>输出(output)</li>
+<li>加载器(loader)</li>
+<li>插件(plugins)</li>
+</ul>
+<p>我们的vue项目都是从根目录下的index.html文件开始执行的，因为我们在dev.conf.js文件的plugin配置中设置了起始位置是index.html</p>
+<p>在base.conf.js文件的module.exports中，我们配置了入口文件是main.js，所以我们在main.js文件中，配置了vue实例，router对象，  在new一个实例化对象时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  el: &apos;#first&apos;,  这里的对象就是index.html里面的id选择器</span><br><span class="line">  router,     必须配置router才可以进行单页渲染</span><br><span class="line">  components: &#123; Page &#125;,        组件引入</span><br><span class="line">  template: &apos;&lt;Page/&gt;&apos;    组件模块， 有另外一种写法，使用render函数  render: h =&gt; h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>watch用于异步操作，而computed同步</p>
+<p>这二个里面尽量不要去修改，只能去显示，否则会造成无限循环的情况 –&gt;  因为如果是修改的话，就又触发了监听事件。  </p>
+<p>监听事件，可以监听对象的属性，写法是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">   &apos;firstName.a&apos;: &#123;   使用字符串的形式</span><br><span class="line">     handler (newName, oldName) &#123;</span><br><span class="line">       this.fullName = newName + &apos;12&apos;</span><br><span class="line">     &#125;,  监听会先触发handler函数,  可以利用这点实现三层互动，一个区域实现二层互动，不干扰的情况</span><br><span class="line">     immediate: true</span><br><span class="line">     // deep: true     不用字符串监听属性的话，就必须使用deep，---耗性能</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+<p>props组件件传值可以通过type进行控制传值类型</p>
+<h1 id="子组件向父组件传递参数"><a href="#子组件向父组件传递参数" class="headerlink" title="子组件向父组件传递参数"></a>子组件向父组件传递参数</h1><p>子组件也需要设定参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;div class=&quot;son&quot;&gt;</span><br><span class="line">    Hi,Every Bady</span><br><span class="line">    &lt;p&gt;&lt;input type=&quot;text&quot; @input=&quot;handleInput&quot;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;son&apos;,</span><br><span class="line">  props: [&apos;value&apos;],   子组件设定传值信息</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleInput (e) &#123;</span><br><span class="line">      this.$emit(&apos;input&apos;, e.target.value) emit函数--一个事件名称，一个要传递的值</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">还可以这样写</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;son&apos;,</span><br><span class="line">  model: &#123;</span><br><span class="line">    prop: &apos;value1&apos;,</span><br><span class="line">    envent: &apos;input&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleInput (e) &#123;</span><br><span class="line">      this.$emit(&apos;input&apos;, e.target.value) emit函数--一个事件名称，一个要传递的值</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>父组件也需要在data里面，设置，并在子组件里书写  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;son  v-model=&quot;value&quot;&gt;&lt;/son&gt;  二者等同</span><br><span class="line">&lt;son :value=&quot;value&quot; @input = &quot;value = arguments[0]&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="ssh操作"><a href="#ssh操作" class="headerlink" title="ssh操作"></a>ssh操作</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ssh-key</span><br><span class="line">ssh-keygen.exe -t rsa -C &quot;账号地址&quot;</span><br><span class="line"></span><br><span class="line">生成的秘钥在用户的.ssh文件夹里</span><br><span class="line"></span><br><span class="line">创建分支</span><br><span class="line">PS D:\work\test&gt; git checkout -b feature</span><br><span class="line">Switched to a new branch &apos;feature&apos;</span><br><span class="line">PS D:\work\test&gt; git pull origin feature</span><br><span class="line"></span><br><span class="line">git pull origin feature</span><br><span class="line"></span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m &apos;xxx&apos;</span><br><span class="line"></span><br><span class="line">git push origin feature</span><br><span class="line"></span><br><span class="line">git checkout -b product   切换product分支</span><br><span class="line"></span><br><span class="line">修改本地数据库后需要执行 	php .\artisan config:clear</span><br></pre></td></tr></table></figure>
+<p>计算属性</p>
+<pre><code>computed:{
+  usrInfo(){
+    var usrInfo = this.$store.state.usrInfo;
+    return usrInfo;
+  }
+}
+
+computed: mapState([
+  // 映射 this.count 为 store.state.count
+  &apos;count&apos;
+])
+
+store.state.stateA   拿取state
+store.dispatch    触发action里的函数
+通过 commit  触发 mutations 里的函数
+</code></pre><h3 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function test(a,b,c) &#123; &#125;</span><br><span class="line">var args = [0,1,2];</span><br><span class="line">test(...args)</span><br></pre></td></tr></table></figure>
+<h3 id="vue的条件判断"><a href="#vue的条件判断" class="headerlink" title="vue的条件判断"></a>vue的条件判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;app-wrapper&quot; :class=&quot;&#123;hideSidebar:!sidebar.opened&#125;&quot;&gt;</span><br><span class="line">			 :class=&quot;&#123;hideSidebar: false&#125;&quot;   如果值为false  hideSidebar类不会出现，如果为true,则在class添加  hideSidebar类</span><br><span class="line"></span><br><span class="line">如果a.b本身不存在， 你在methods更新的时候，需要使用 this.$set(a,b,val)</span><br></pre></td></tr></table></figure>
+<h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Duplicate keys detected: &apos;App&apos;. This may cause an update error.</span><br><span class="line">出现2个相同的key值会报此种错误</span><br></pre></td></tr></table></figure>
+<h3 id="判断上传文件类型的写法"><a href="#判断上传文件类型的写法" class="headerlink" title="判断上传文件类型的写法"></a>判断上传文件类型的写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot;&gt;  可以上传所有文件</span><br><span class="line">或者指定  accept=&quot;image/jpg,image/png&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="多段判断分析"><a href="#多段判断分析" class="headerlink" title="多段判断分析"></a>多段判断分析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i==3? &apos;so&apos; : b==5 ?  &apos;66&apos; : &apos;88&apos;</span><br><span class="line">如果i==3 那么肯定输出3</span><br><span class="line">如果 i!=3  那么判断b是否等于5，如果等于5，输出66,否则输出88</span><br></pre></td></tr></table></figure>
+<h3 id="路由守卫使用vuex"><a href="#路由守卫使用vuex" class="headerlink" title="路由守卫使用vuex"></a>路由守卫使用vuex</h3><p>路由守卫，当触发路由时，会先执行这个函数，to-到哪里去，from-从哪里来,next，第三个参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteEnter(to, from, next) &#123;</span><br><span class="line">	这里的record是暴露出去的一个对象,里面 有个get函数</span><br><span class="line">		export const record = &#123;</span><br><span class="line">                   get(data) &#123;</span><br><span class="line">                      return new Ajax(&#123;</span><br><span class="line">                      url: &apos;/admin/record/getRecordList&apos;,</span><br><span class="line">                      method: &apos;get&apos;,</span><br><span class="line">                       params: data</span><br><span class="line">                         &#125;)</span><br><span class="line">                    &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">          </span><br><span class="line">          </span><br><span class="line">  record.get(to.query).then(data =&gt; &#123;</span><br><span class="line">        console.log(data)</span><br><span class="line">        next(vm =&gt; &#123;</span><br><span class="line">	这里的vm就是当前的实例化对象,this</span><br><span class="line">          vm.tableData = data.items;</span><br><span class="line">          vm.total = parseInt(data.total);</span><br><span class="line">          vm.query.page = data.page;</span><br><span class="line">          vm.query.pageSize = data.pageSize;</span><br><span class="line">          vm.totalAmount = data.extra.sum;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    beforeRouteUpdate(to,from,next)&#123;</span><br><span class="line">    console.log(&apos;beforeRouteUpdate&apos;)</span><br><span class="line">    next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​     </p>
+<h3 id="beforeRouteUpdate-to-from-next"><a href="#beforeRouteUpdate-to-from-next" class="headerlink" title="beforeRouteUpdate(to,from,next)"></a>beforeRouteUpdate(to,from,next)</h3><pre><code>About组件是有二级导航的，在切换二级导航的时候，对应的内容是在变化的；但是about组件是复用的，只会生成一次，切换二级导航的时，如何知道导航在更新呢？
+
+一个组件有二级导航的时候，点击二级导航的时候导航路径更新了，会触发路由钩子函数beforeRouteUpdate。
+</code></pre><p>还有一个beforeRouteLeave(to,from,next)</p>
+<p>### </p>
+<h3 id="Vue中动态类名的实现"><a href="#Vue中动态类名的实现" class="headerlink" title="Vue中动态类名的实现"></a>Vue中动态类名的实现</h3><ol>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 第一种方式:对象的形式 --&gt;</span><br><span class="line">       &lt;!-- 第一个参数 类名， 第二个参数：boolean值 --&gt;   true就显示  :</span><br><span class="line">2. 第二种方式:三元表达式 注意点：放在数组中，类名要用引号</span><br><span class="line">       &lt;p :class=&quot;[ 1 &lt; 2 ? &apos;p1&apos; : &apos;p&apos; ]&quot; &gt;三元表示式(文字的颜色)&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">在dom元素上添加ref=&apos;cc&apos;    后面我们可以通过this.$refs.cc拿到该dom元素</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="打印报表的实现"><a href="#打印报表的实现" class="headerlink" title="打印报表的实现"></a>打印报表的实现</h3><p>引入import { parseTime } from ‘@/utils’<br>     2.tHeader 是props信息 list是数据源<br>     handleDownload() {<br>        import(‘@/vendor/Export2Excel’).then(excel =&gt; {<br>          const tHeader = [‘data’, ‘name’, ‘address’, ‘name’]<br>          const filterVal = [‘date’, ‘name’, ‘address’, ‘name’]<br>          const list = this.tableData<br>          const data = this.formatJson(filterVal, list)<br>          const date = new Date();<br>          const filename = date.toLocaleString().split(‘ ‘)[0]+’_’+date.getTime()+’’<br>          excel.export_json_to_excel(tHeader, data, filename)<br>        })<br>      },<br>      formatJson(filterVal, jsonData) {<br>        return jsonData.map(v =&gt; filterVal.map(j =&gt; {<br>          if(j === ‘timestamp’) {<br>            return parseTime(v[j])<br>          }else {<br>            return v[j]<br>          }<br>        }))<br>      },</p>
+<h3 id="echarts转换base64的方法"><a href="#echarts转换base64的方法" class="headerlink" title="echarts转换base64的方法"></a>echarts转换base64的方法</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cgImgBase64 = myChart.getDataURL();</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">  let baseImg = myChart.getDataURL()</span><br><span class="line">  this.printSrc = baseImg;</span><br><span class="line">&#125;, 2000)</span><br></pre></td></tr></table></figure>
+<h5 id="form表单的提交有个浏览器的默认刷新行为，把form标签改成div就没事了"><a href="#form表单的提交有个浏览器的默认刷新行为，把form标签改成div就没事了" class="headerlink" title="form表单的提交有个浏览器的默认刷新行为，把form标签改成div就没事了"></a>form表单的提交有个浏览器的默认刷新行为，把form标签改成div就没事了</h5><h3 id="一个vue页面使用2个style标签！"><a href="#一个vue页面使用2个style标签！" class="headerlink" title="一个vue页面使用2个style标签！"></a>一个vue页面使用2个style标签！</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">### </span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">html&#123;font-size: 16px;&#125;</span><br><span class="line">.singleListAd&#123;height: 6rem;&#125;</span><br><span class="line">.listMain&#123;height: 24rem;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">我使用了2个style标签，一个使用了scoped属性，使其单一页面完成父元素的font-size值赋值，而不修改其他页面的父元素的size值</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 一个dom对象赋予2个事件绑定</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@keyup.enter=&quot;searchList&quot; @blur=&quot;searchList&quot;</span><br></pre></td></tr></table></figure>
+<p>function random(len, start, end) {<br>　　var arr = [];<br>　　function _inner(start, end) {<br>　　　　var span = end - start;<br>　　　　return parseInt(Math.random() * span + start)<br>　　}<br>　　while (arr.length &lt; len) {<br>　　　　var num = _inner(start, end);<br>　　　　　　if (arr.indexOf(num) == -1) {<br>　　　　　　　　arr.push(num);<br>　　　　　　}<br>　　　　}<br>　　　　return arr;<br>　　}</p>
+<p>var cc = [[1,2],[3,4]]</p>
+<h3 id="将多维数组降级到一维数组的方法"><a href="#将多维数组降级到一维数组的方法" class="headerlink" title="将多维数组降级到一维数组的方法"></a>将多维数组降级到一维数组的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d2 = Array.prototype.concat.apply([], cc)</span><br></pre></td></tr></table></figure>
+<h3 id="组件封装的注意点"><a href="#组件封装的注意点" class="headerlink" title="组件封装的注意点"></a>组件封装的注意点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 父组件传递给子组件的时候，父组件的data要定义属性，比如&apos;&apos;   []  :子组件props = &quot;父组件data&quot;   注意，一定要加双引号</span><br><span class="line">2. 分页数字，在父组件定义要写成nuber形式， 而子组件props里必须要&apos;&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="vue组件设置样式的方法"><a href="#vue组件设置样式的方法" class="headerlink" title="vue组件设置样式的方法"></a>vue组件设置样式的方法</h3><p>​    updataList() {<br>​      let currentEle = this.$refs.singleList[0].clientHeight;<br>​      this.$refs.mainHeight.style.height = currentEle * 4.4 + ‘px’;<br>​    },</p>
+<pre><code>this.$nextTick(() =&gt; {
+  this.updataList();
+});
+当dom元素渲染完成之后会触发这个方法
+</code></pre><h3 id="判断用户平台"><a href="#判断用户平台" class="headerlink" title="判断用户平台"></a>判断用户平台</h3><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+var ua = navigator.userAgent.toLowerCase();
+var isWeixin = ua.indexOf(&apos;micromessenger&apos;) != -1;
+var isAndroid = ua.indexOf(&apos;android&apos;) != -1;
+var isIos = (ua.indexOf(&apos;iphone&apos;) != -1) || (ua.indexOf(&apos;ipad&apos;) != -1);
+if (!isWeixin) {
+    document.head.innerHTML = &apos;
+    &lt;title&gt;抱歉，出错了&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=0&quot;&gt;
+            &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css&quot;&gt;&apos;;
+    document.body.innerHTML = &apos;
+                &lt;div class=&quot;weui_msg&quot;&gt;
+                    &lt;div class=&quot;weui_icon_area&quot;&gt;
+                        &lt;i class=&quot;weui_icon_info weui_icon_msg&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;weui_text_area&quot;&gt;
+                        &lt;h4 class=&quot;weui_msg_title&quot;&gt;请在微信客户端打开链接&lt;/h4&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;&apos;;
+}
+
+            &lt;/script&gt;
+</code></pre><h2 id="封装的echarts组件"><a href="#封装的echarts组件" class="headerlink" title="封装的echarts组件"></a>封装的echarts组件</h2><p>​<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    &lt;template&gt;</span><br><span class="line">      &lt;div class=&quot;allCountShow&quot; v-show=&quot;nowAll&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;showInfo&quot;&gt;</span><br><span class="line">      &lt;span name=&quot;sToday&quot; v-for=&quot;(item, key) in showSlot&quot; :key=&quot;key&quot;&gt;</span><br><span class="line">        &#123;&#123;item.explain&#125;&#125; : &#123;&#123;item.today&#125;&#125;</span><br><span class="line">      &lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;  </span><br><span class="line">    &lt;div class=&quot;switch&quot;&gt;</span><br><span class="line">      &lt;span @click=&quot;showDataCount&quot;&gt;数据统计&lt;/span&gt;</span><br><span class="line">      &lt;span @click=&quot;testFunction&quot; :class=&quot;[showActive  ? &apos;active&apos; : &apos;&apos;]&quot;&gt;图表统计&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;!-- 表格所有 --&gt;</span><br><span class="line">    &lt;div class=&quot;tableBox&quot; ref=&apos;c2&apos; v-show=&quot;showData&quot;&gt;</span><br><span class="line">      &lt;template&gt;</span><br><span class="line">        &lt;el-table</span><br><span class="line">          :data=&quot;tableData&quot;</span><br><span class="line">          border        </span><br><span class="line">          style=&quot;width: 98%;text-align:&apos;center&apos;;&quot;</span><br><span class="line">          :header-cell-style=&apos;styleObj&apos;&gt;</span><br><span class="line">          &lt;el-table-column v-for = &quot;(item ,index) in tablePropList&quot; :key = &quot;index&quot;</span><br><span class="line">            :prop=&quot;item.prop&quot;</span><br><span class="line">            :label=&quot;item.label&quot;</span><br><span class="line">            align=&quot;center&quot;&gt;</span><br><span class="line">          &lt;/el-table-column&gt;</span><br><span class="line">               </span><br><span class="line">        &lt;/el-table&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">      &lt;div class=&quot;report&quot; style=&quot;margin-top:12px;&quot;&gt;</span><br><span class="line">        &lt;el-button class=&quot;no-print&quot; type=&quot;success&quot; size=&quot;medium&quot;  @click=&quot;handleDownload&quot;&gt;导出excel报表&lt;/el-button&gt;</span><br><span class="line">        &lt;el-button class=&quot;no-print&quot; type=&quot;success&quot; @click=&apos;pringCharts&apos; size=&quot;medium&quot; &gt;打印报表&lt;/el-button&gt;</span><br><span class="line">        &lt;el-button v-show=&quot;freeUpdataTime&quot; type=&quot;default&quot; class=&quot;updataTimeS&quot; size=&quot;medium&quot; &gt;&lt;div&gt;数据统计更新时间: &lt;span&gt;&#123;&#123;updataTime&#125;&#125;&lt;/span&gt;&lt;/div&gt;&lt;/el-button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">       </span><br><span class="line">    &lt;!-- 分页 --&gt;</span><br><span class="line">      &lt;template&gt;</span><br><span class="line">        &lt;div class=&quot;block pageNub no-print&quot;&gt;</span><br><span class="line">          &lt;el-pagination</span><br><span class="line">            @size-change=&quot;handleSizeChange&quot;</span><br><span class="line">            @current-change=&quot;handleCurrentChange&quot;</span><br><span class="line">            :current-page=&quot;currentPage4&quot;</span><br><span class="line">            :page-sizes=&quot;[10, 20, 30, 40, 50, 100, 1000]&quot;</span><br><span class="line">            :page-size=&quot;queryObj.pageSize&quot;</span><br><span class="line">            layout=&quot;total, sizes, prev, pager, next, jumper&quot;</span><br><span class="line">            :total=&quot;allPageSize&quot;&gt;</span><br><span class="line">          &lt;/el-pagination&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;!-- 表格结束 --&gt;</span><br><span class="line">    &lt;!-- charts开始 --&gt;</span><br><span class="line">    &lt;div class=&quot;chartsBox&quot; v-show=&quot;!showData&quot;&gt;</span><br><span class="line">      &lt;div id=&quot;main&quot;  ref=&apos;cc&apos;&gt;</span><br><span class="line">          </span><br><span class="line">      &lt;/div&gt;   </span><br><span class="line">      &lt;el-button v-show=&quot;printSrc != &apos;&apos;&quot; @click=&quot;pringChartsTwo&quot; type=&quot;success&quot;  size=&quot;medium&quot; &gt;打印图表&lt;/el-button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; parseTime &#125; from &apos;@/utils&apos;;</span><br><span class="line">import Print from &apos;@/api/print&apos;;</span><br><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line">Vue.use(Print);</span><br><span class="line">var echarts = require(&apos;echarts&apos;);</span><br><span class="line">export default &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    kenTitle: &apos;&apos;,</span><br><span class="line">    kenData: &apos;&apos;,</span><br><span class="line">    kenParams: &apos;&apos;,</span><br><span class="line">    tableData: &apos;&apos;,</span><br><span class="line">    allPageSize: &apos;&apos;,</span><br><span class="line">    queryObj: &#123;&#125;,</span><br><span class="line">    showSlot: &apos;&apos;,</span><br><span class="line">    tablePropList: &apos;&apos;,</span><br><span class="line">    updataTime: &apos;&apos;,</span><br><span class="line">    freeUpdataTime: &apos;&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      printSrc: &apos;&apos;,</span><br><span class="line">      test: 1,</span><br><span class="line">      showData: true,</span><br><span class="line">      showActive: 0,</span><br><span class="line">      styleObj: &#123;</span><br><span class="line">        background: &apos;#bcbcbc&apos;</span><br><span class="line">      &#125;,</span><br><span class="line">      currentPage4: 1,</span><br><span class="line">      nowToday: false,</span><br><span class="line">      nowAll: true</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleSizeChange(val) &#123;</span><br><span class="line">      this.$emit(&apos;pageNubShow1&apos;, val)</span><br><span class="line">    &#125;,</span><br><span class="line">    handleCurrentChange(val) &#123;</span><br><span class="line">      this.currentPage4 = val</span><br><span class="line">      this.$emit(&apos;currentPageSize&apos;, val)</span><br><span class="line">    &#125;,</span><br><span class="line">    handleDownload() &#123;</span><br><span class="line">      var tHeaderArrShow = []</span><br><span class="line">      var filterValArrShow = []</span><br><span class="line">      let loopArrayDown = this.tablePropList</span><br><span class="line">      for(let i = 0; i&lt;loopArrayDown.length; i++) &#123;</span><br><span class="line">        if(typeof loopArrayDown[i] == &apos;object&apos;) &#123;</span><br><span class="line">          tHeaderArrShow.push(loopArrayDown[i].prop)</span><br><span class="line">          filterValArrShow.push(loopArrayDown[i].label)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      import(&apos;@/vendor/Export2Excel&apos;).then(excel =&gt; &#123;</span><br><span class="line">        const tHeader = tHeaderArrShow;</span><br><span class="line">        const filterVal = tHeaderArrShow;</span><br><span class="line">        const list = this.tableData;</span><br><span class="line">        const data = this.formatJson(filterVal, list);</span><br><span class="line">        const date = new Date();</span><br><span class="line">        const filename =</span><br><span class="line">          date.toLocaleString().split(&apos; &apos;)[0] + &apos;_&apos; + date.getTime() + &apos;&apos;;</span><br><span class="line">        excel.export_json_to_excel(tHeader, data, filename);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    formatJson(filterVal, jsonData) &#123;</span><br><span class="line">      return jsonData.map(v =&gt;</span><br><span class="line">        filterVal.map(j =&gt; &#123;</span><br><span class="line">          if(j === &apos;timestamp&apos;) &#123;</span><br><span class="line">            return parseTime(v[j]);</span><br><span class="line">          &#125;else &#123;</span><br><span class="line">            return v[j];</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      );</span><br><span class="line">    &#125;,</span><br><span class="line">    showDataCount() &#123;</span><br><span class="line">      this.showActive = 0;</span><br><span class="line">      this.showData = true;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 打印报表功能实现</span><br><span class="line">    pringCharts() &#123;</span><br><span class="line">      this.$print(this.$refs.c2);</span><br><span class="line">    &#125;,</span><br><span class="line">    pringChartsTwo() &#123;</span><br><span class="line">      let imgSrcChange = this.printSrc</span><br><span class="line">      var imgDom = &apos;&lt;img src=\&apos;&apos;+imgSrcChange+&apos;\&apos;&gt;&apos;;</span><br><span class="line">      document.body.innerHTML = imgDom;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        window.print()</span><br><span class="line">      &#125;, 1000)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 修改內容</span><br><span class="line">    testFunction() &#123;</span><br><span class="line">      console.log(this.kenTitle)</span><br><span class="line">      let _this = this</span><br><span class="line">      let worldMapContainer = document.getElementById(&apos;main&apos;)</span><br><span class="line">      this.showActive = 1; // 点击图标按钮</span><br><span class="line">      this.showData = false; // 展示数据模块</span><br><span class="line">      var myChart = echarts.init(this.$refs.cc);</span><br><span class="line">      var resizeWorldMapContainer = function() &#123;</span><br><span class="line">        worldMapContainer.style.width = window.innerWidth -400 + &apos;px&apos;;</span><br><span class="line">        // worldMapContainer.style.height = window.innerHeight + &apos;px&apos;;</span><br><span class="line">        worldMapContainer.style.height = 500 + &apos;px&apos;;</span><br><span class="line">      &#125;</span><br><span class="line">      resizeWorldMapContainer()</span><br><span class="line">      // 指定图表的配置项和数据</span><br><span class="line">      let seriesData = [] // series的数据集合</span><br><span class="line">      let loopData = _this.kenData// 数据集合，数组对象</span><br><span class="line">      for(let i= 0; i&lt; loopData.length; i++) &#123;</span><br><span class="line">        let a = &#123;&#125;</span><br><span class="line">        a.name = _this.kenParams.one[i]</span><br><span class="line">        a.type = &apos;bar&apos;</span><br><span class="line">        a.data = loopData[i]</span><br><span class="line">        a.itemStyle = &#123;</span><br><span class="line">          normal: &#123;</span><br><span class="line">            color: _this.kenParams.color[i] || &apos;&apos;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        seriesData.push(a)</span><br><span class="line">      &#125;</span><br><span class="line">      let echartsOption = &#123;</span><br><span class="line">        tooltip: &#123;</span><br><span class="line">          trigger: &apos;axis&apos;,</span><br><span class="line">          axisPointer: &#123;</span><br><span class="line">            type: &apos;shadow&apos;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        xAxis: [</span><br><span class="line">          &#123;</span><br><span class="line">            type: &apos;category&apos;,</span><br><span class="line">            data: _this.kenTitle,</span><br><span class="line">            axisPointer: &#123;</span><br><span class="line">              type: &apos;shadow&apos;</span><br><span class="line">            &#125;,</span><br><span class="line">            axisLabel: &#123;</span><br><span class="line">              interval: 0</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">    </span><br><span class="line">        ],</span><br><span class="line">        legend: &#123;</span><br><span class="line">          data: _this.kenParams.one,</span><br><span class="line">          bottom: &apos;0%&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        yAxis: [</span><br><span class="line">          &#123;</span><br><span class="line">            type: &apos;value&apos;,</span><br><span class="line">            name: &apos;数量&apos;,</span><br><span class="line">            min: 0,</span><br><span class="line">            max: _this.kenParams.interval[0],</span><br><span class="line">            interval: _this.kenParams.interval[1]</span><br><span class="line">          &#125;</span><br><span class="line">        ],</span><br><span class="line">        series: seriesData</span><br><span class="line">      &#125;</span><br><span class="line">      myChart.setOption(echartsOption)</span><br><span class="line">      myChart.resize();</span><br><span class="line">      window.onresize = function() &#123;</span><br><span class="line">        // 重置容器高宽</span><br><span class="line">        resizeWorldMapContainer();</span><br><span class="line">        myChart.resize();</span><br><span class="line">      &#125;;</span><br><span class="line">      setTimeout(() =&gt; &#123;</span><br><span class="line">        let baseImg = myChart.getDataURL()</span><br><span class="line">        this.printSrc = baseImg;</span><br><span class="line">      &#125;, 2000)</span><br><span class="line">    &#125;,</span><br><span class="line">    changeLoop() &#123;</span><br><span class="line">      this.showActive = 0;</span><br><span class="line">      this.showData = true;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    // this.showTable = this.tableData</span><br><span class="line">    // this.showSlot = this.slotList</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.showInfo&#123;display:flex;&#125;</span><br><span class="line">.showInfo span&#123;width: 14%;&#125;</span><br><span class="line">.el-input__prefix&#123;right:5px&#125;</span><br><span class="line">.el-input__icon&#123;float:right&#125;</span><br><span class="line">.showInfo&#123;display: flex;padding-left:4%;line-height: 100px;border-bottom: 1px solid #ccc&#125;</span><br><span class="line">.showInfo span&#123;margin-right:24px;&#125;</span><br><span class="line">.showInfo span&#123;font-size: 18px;padding-left:12px;&#125;</span><br><span class="line">.switch&#123;padding:0 16px;text-align: center;margin:0 auto;margin-top:10px;width:100%;display: inline-block;margin:20px 0;&#125;</span><br><span class="line">.switch span&#123;display: inline-block;width: 80px;text-align: left;cursor: pointer;&#125;</span><br><span class="line">.switch span:last-child&#123;text-align: center;padding-bottom:12px;&#125;</span><br><span class="line">.tableBox&#123;margin-left:2%;&#125;</span><br><span class="line">.pageNub&#123;text-align: center;margin-top:30px;&#125;</span><br><span class="line">.active&#123;border-bottom: 1px solid #0094ff;&#125;</span><br><span class="line">.chartsBox&#123;padding-left:4%;&#125;</span><br><span class="line">main&#123;width: 600px;height:400px;&#125;</span><br><span class="line">.updataTimeS&#123;cursor: default !important;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">.el-date-editor.el-input, .el-date-editor.el-input__inner&#123;width: 156px;&#125;</span><br><span class="line">.el-input__inner&#123;height: 32px;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 高德poi的使用</span><br><span class="line"></span><br><span class="line">&apos; &apos; &apos;</span><br><span class="line">html</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, user-scalable=no, width=device-width&quot;&gt;</span><br><span class="line">    &lt;title&gt;输入提示&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css&quot; /&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        html,</span><br><span class="line">        body,</span><br><span class="line">        #container &#123;</span><br><span class="line">          width: 100%;</span><br><span class="line">          height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;info&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;input-item&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;input-item-prepend&quot;&gt;</span><br><span class="line">        &lt;span class=&quot;input-item-text&quot; style=&quot;width:8rem;&quot;&gt;请输入关键字&lt;/span&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;input id=&apos;tipinput&apos; type=&quot;text&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;https://webapi.amap.com/maps?v=1.4.10&amp;key=0e290c2877e27fab87d0f6a3be962b0e&amp;plugin=AMap.Autocomplete&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;https://cache.amap.com/lbs/static/addToolbar.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var map = new AMap.Map(&apos;container&apos;);</span><br><span class="line">   AMap.plugin(&apos;AMap.Autocomplete&apos;, function()&#123;</span><br><span class="line">  // 实例化Autocomplete</span><br><span class="line">  var autoOptions = &#123;</span><br><span class="line">    //city 限定城市，默认全国</span><br><span class="line">    city: &apos;全国&apos;</span><br><span class="line">  &#125;</span><br><span class="line">  let input = document.querySelector(&apos;#tipinput&apos;)</span><br><span class="line">  let container1 = document.querySelector(&apos;#container&apos;)</span><br><span class="line">  container1.style.opacity = &apos;0&apos;;</span><br><span class="line">  input.onkeyup = function(e)&#123;</span><br><span class="line">    let keyword = input.value</span><br><span class="line">    var autoComplete= new AMap.Autocomplete(autoOptions);</span><br><span class="line">    autoComplete.search(keyword, function(status, result) &#123;</span><br><span class="line">      // 搜索成功时，result即是对应的匹配数据</span><br><span class="line">      console.log(result)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">   &#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">注意点： 要使用webjsapi  的key值   而不是web服务的key值</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-移动端常用代码" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/23/移动端常用代码/" class="article-date">
+      <time datetime="2018-11-23T14:02:48.429Z" itemprop="datePublished">2018-11-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/移动端常用代码/">移动端常见代码</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>转换base64</p>
+<pre><code>mui(&quot;.uploadBtn&quot;)[0].onchange =function(){
+            var reader = new FileReader();
+            reader.onload = function(e) {    
+</code></pre><p>//                    mui(‘.positive’)[0].src = reader.result<br>                    console.log(reader.result)<br>                }</p>
+<p>//                console.log(this.files[0])<br>                reader.readAsDataURL(this.files[0]);<br>            }</p>
+<pre><code>let transReDetail = JSON.parse($(e.target).attr(&apos;data-transRep&apos;))
+</code></pre><p>验证模块<br>function dingxiangjiaoyi(){<br>        let shuliang = $(‘.dingxiangNub’).val()<br>        let adder = $(‘.dingxiangAdder’).val()<br>        let dingxiangPwd = $(‘.dingxiangPwd’).val()<br>        if(shuliang == “”){<br>            mui.toast(‘数量不能为空’)<br>            return<br>        }<br>        if(adder == “”){<br>            mui.toast(‘地址不能为空’)<br>            return<br>        }<br>        if(dingxiangPwd == “”){<br>            mui.toast(‘密码不能为空’)<br>            return<br>        }<br>        $.ajax({<br>            url: apqurl +’’,<br>            type: “post”,<br>            success: function(dat){<br>                console.log(dat)<br>            }<br>        })<br>    }</p>
+<p>基础模块<br>$(function(){<br>    let token = get(‘mytoKen’)<br>    init()<br>    function init(){<br>        getList()<br>    }<br>    function getList(){<br>        $.ajax({<br>            url: apqurl +’api/user/GetUserInfo?token=’+token,<br>            type: “get”,<br>            success: function(dat){<br>                console.log(dat)<br>            }<br>        })<br>    }<br>})</p>
+<script src="./js/template-web.js"></script>
+<script src="./js/require.js"></script>
+<script src="./js/jquery-2.1.0.js"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/transaction.js"></script>
+
+
+<p>返回按键<br>    mui(“body”).on(“tap”, “.back”, function() {<br>                backFn(window);<br>            });<br>    function backFn(w) {<br>                var ws = null;<br>                if(w.plus) {<br>                    console.log(1)<br>                    ws || (ws = plus.webview.currentWebview());<br>                    ws.close(‘auto’);<br>                    plus.webview.getWebviewById(‘currencyExchange’).reload();</p>
+<pre><code>    } else if(history.length &gt; 1) {
+        console.log(3)
+        history.back();
+    } else {
+        w.close();
+    }
+}
+</code></pre><p>转换时间块</p>
+<pre><code>Date.prototype.Format = function(fmt) {
+                       var o = {   
+                           &quot;M+&quot; : this.getMonth()+1,                 //月份   
+                           &quot;d+&quot; : this.getDate(),                    //日   
+                           &quot;h+&quot; : this.getHours(),                   //小时   
+                           &quot;m+&quot; : this.getMinutes(),                 //分   
+                           &quot;s+&quot; : this.getSeconds(),                 //秒   
+                           &quot;q+&quot; : Math.floor((this.getMonth()+3)/3), //季度   
+                           &quot;S&quot;  : this.getMilliseconds()             //毫秒   
+                       };   
+                       if(/(y+)/.test(fmt))   
+                           fmt=fmt.replace(RegExp.$1, (this.getFullYear()+&quot;&quot;).substr(4 - RegExp.$1.length));   
+                       for(var k in o)   
+                           if(new RegExp(&quot;(&quot;+ k +&quot;)&quot;).test(fmt))   
+                       fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : ((&quot;00&quot;+ o[k]).substr((&quot;&quot;+ o[k]).length)));   
+                       return fmt;   
+                   } 
+</code></pre><p>let dingxiangHtml = template(‘dingxiangTmp’,{‘ken’:dat.data})<br>                    $(‘#dingxiangTab’).html(dingxiangHtml)</p>
+<p>let testArr =dat.data.TeamRewardList<br>                let testArrAll = []<br>                        for(let i = 0;i&lt;testArr.length;i++){<br>                            if(testArr[i].AddTime){<br>                                testArrAll.push(testArr[i].AddTime)<br>                            }<br>                        }<br>                        for(let k=0;k&lt;testArrAll.length;k++){<br>                            testArrAll[k] = new Date(testArrAll[k]).Format(‘MM-dd hh:mm’)<br>                        }<br>                        for(let j = 0;j&lt;testArrAll.length;j++){<br>                            $(‘.timeArr’).html(testArrAll[j])<br>                        }</p>
+<p>实现跳转功能<br>    for(let i =0;i&lt;aBtnAll.length;i++){<br>                                        aBtnAll[i].addEventListener(‘tap’, function() {<br>                                            mui.openWindow({<br>                                                url: ‘machineDetail.html’,<br>//                                                id: ‘MyrecordCenter’<br>                                            });<br>                                        });<br>                                    }</p>
+<p>.center {</p>
+<p>  left: 50%;</p>
+<p>  top: 50%;</p>
+<p>  transform: translate(-50%, -50%);</p>
+<p>}</p>
+<p>jq Tab<br> $(function(){<br>       $(“.clickBtn div”).on(“click”,function(){<br>         var index = $(this).index();<br>         $(this).parents(“#box”).find(“.tabValueAll div”).eq(index).show().siblings().hide();<br>       })<br>    })</p>
+<p>返回按钮功能实现<br>        mui.init();<br>            mui(“body”).on(“tap”, “.back”, function() {<br>                backFn(window);<br>            });</p>
+<p>function backFn(w) {<br>                var ws = null;<br>                if(w.plus) {<br>                    console.log(1)<br>                    ws || (ws = plus.webview.currentWebview());<br>                    ws.close(‘auto’);<br>                    plus.webview.getWebviewById(‘BankCar’).reload();</p>
+<pre><code>    } else if(history.length &gt; 1) {
+        console.log(3)
+        history.back();
+    } else {
+        w.close();
+    }
+}
+</code></pre><p>验证码JS块<br>    var countdown = 60;</p>
+<pre><code>function VerificationCodef() {
+    var obj = $(&apos;.refresh&apos;);
+    if(countdown == 60) {
+        //                    
+        mui.ajax({
+            type: &quot;get&quot;,
+            url: apqurl + &quot;/api/VerificationCode/&quot;+phone,
+            data: {
+
+            },
+            async: true,
+            success: function(dat) {
+                if(dat.success) {
+</code></pre><p>//                                mui(“.collect”)[0].value = dat.data<br>                                mui.toast(dat.message);<br>                            } else {<br>                                mui.toast(dat.message);<br>                            }<br>                        }<br>                    });</p>
+<pre><code>        obj.attr(&quot;disabled&quot;, true);
+        if(true) {
+            countdown--;
+        } else {
+            obj.attr(&quot;disabled&quot;, false);
+            obj.value = &quot;获取验证码&quot;;
+            countdown = 60;
+            return;
+        }
+    }
+
+    if(countdown == 0) {
+        obj.attr(&quot;disabled&quot;, false);
+        obj.innerHTML = &quot;重新获取&quot;;
+        countdown = 60;
+        return;
+    } else {
+        obj.attr(&quot;disabled&quot;, true);
+        countdown--;
+        obj.text(&quot;重新发送&quot; + countdown + &quot;s&quot;);
+    }
+    setTimeout(function() {
+        VerificationCodef()
+    }, 1000)
+}
+
+$(&apos;.refresh&apos;).on(&apos;click&apos;, function() {
+    VerificationCodef();
+})
+</code></pre><p>mui跳转页面的js块<br>    $(“.adjunction”).click(function() {<br>                mui.openWindow({<br>                    url: ‘addBank.html?type=0’,<br>                    id: ‘addBank’<br>                });<br>            });</p>
+<p>获取用户信息<br>通过mui()的方式进行修改   不仅仅是innerText还有text    $(“.exhibition_i”).text(val+”%”);<br>    userInfo();</p>
+<pre><code>function userInfo() {
+    mui.ajax({
+        type: &quot;get&quot;,
+        url: apqurl + &quot;/api/Mining/PersonalData?AccessToken=&quot; + token,
+        async: true,
+        success: function(dat) {
+            console.log(dat);
+            if(dat.code == 200) {
+                mui(&quot;.Tradable&quot;)[0].innerText = dat.data.DC_CanTradeCurrency;
+                mui(&quot;.TFradable&quot;)[0].innerText = dat.data.CBDC_CanTradeCurrency;
+            } else {
+
+            }
+        }
+    });
+}
+</code></pre><p>mui框架的隐藏项<br>    mui(“.projectile”)[0].classList.add(“mui-hidden”);</p>
+<p>一般请求的方法<br>    function issue(password) {<br>                var Multiple = $(‘.currentPrice’).val();</p>
+<pre><code>    var purchase = $(&apos;.sale&apos;).val();
+    var purchaseNum = $(&apos;.saleNum&apos;).val();
+
+    ResetFunc();
+    mui.ajax({
+        type: &quot;post&quot;,
+        url: apqurl + &apos;/api/Transaction/WhetherTheTransactionMatched&apos;,
+        data: {
+            AccessToken: token,
+            &apos;quantity&apos;: purchase,
+            &apos;price&apos;: purchaseNum,
+            &apos;type&apos;: 1,
+            TransactionType: 3,
+            AccessToken: token,
+            password:password
+        },
+        async: true,
+        success: function(dat) {
+            if(dat.code == 200) {
+                mui.toast(dat.message);
+                JumpLi();
+            } else {
+                mui.toast(dat.message);
+            }
+        }
+    })
+
+};
+</code></pre><p>复制粘贴<br>                if(dat.success){<br>                    $(‘.walletAdder’).text(dat.data.WalletAddres)<br>                    $(‘#copty’).attr(‘data-clipboard-text’,dat.data.WalletAddres)</p>
+<pre><code>     let btn = document.getElementById(&apos;copty&apos;);
+var clipboard = new Clipboard(btn);
+
+clipboard.on(&apos;success&apos;, function (e) {
+  console.log(e);
+});
+
+clipboard.on(&apos;error&apos;, function (e) {
+  console.log(e);
+});    
+    }
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Vue封装组件 " class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -572,7 +935,7 @@
 <li>tab栏是一个字符串</li>
 <li>最简单的解决方案-0  隐式转换</li>
 </ol>
-<h1 id="tab栏中嵌套表单"><a href="#tab栏中嵌套表单" class="headerlink" title="tab栏中嵌套表单"></a>tab栏中嵌套表单</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> &lt;template&gt;</span><br><span class="line">         &lt;el-form ref=<span class="string">"AddForm"</span> :model=<span class="string">"AddForm"</span> label-width=<span class="string">"80px"</span> style=<span class="string">'height:600px'</span>&gt;</span><br><span class="line">                &lt;el-tabs v-model=<span class="string">"activeName"</span> tab-position=<span class="string">'left'</span> style=<span class="string">'margin-top:30px'</span> @tab-click=<span class="string">"handleClick"</span>&gt;</span><br><span class="line">                    &lt;el-tab-pane label=<span class="string">"基本信息"</span> name=<span class="string">"0"</span>&gt;</span><br><span class="line">                        &lt;el-form-item label=<span class="string">"商品名称"</span> prop=<span class="string">"goods_name"</span>&gt;</span><br><span class="line">                            &lt;el-input v-model=<span class="string">"AddForm.goods_name"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span></span><br><span class="line"><span class="xml">                     <span class="tag">&lt;/<span class="name">el-tab-pane</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">el-form</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="tab栏中嵌套表单"><a href="#tab栏中嵌套表单" class="headerlink" title="tab栏中嵌套表单"></a>tab栏中嵌套表单</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> &lt;template&gt;</span><br><span class="line">         &lt;el-form ref=<span class="string">"AddForm"</span> :model=<span class="string">"AddForm"</span> label-width=<span class="string">"80px"</span> style=<span class="string">'height:600px'</span>&gt;</span><br><span class="line">                &lt;el-tabs v-model=<span class="string">"activeName"</span> tab-position=<span class="string">'left'</span> style=<span class="string">'margin-top:30px'</span> @tab-click=<span class="string">"handleClick"</span>&gt;</span><br><span class="line">                    &lt;el-tab-pane label=<span class="string">"基本信息"</span> name=<span class="string">"0"</span>&gt;</span><br><span class="line">                        &lt;el-form-item label=<span class="string">"商品名称"</span> prop=<span class="string">"goods_name"</span>&gt;</span><br><span class="line">                            &lt;el-input v-model=<span class="string">"AddForm.goods_name"</span>&gt;&lt;/el-input&gt;</span><br><span class="line">                        &lt;/el-form-item&gt;</span><br><span class="line">                     &lt;/el-tab-pane&gt;</span><br><span class="line">        &lt;/el-form&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
 <p>利用表单的ref属性快速拿取数据并验证</p>
 <h1 id="异步对象设置请求头"><a href="#异步对象设置请求头" class="headerlink" title="异步对象设置请求头"></a>异步对象设置请求头</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-upload</span><br><span class="line"><span class="class"><span class="keyword">class</span></span>=<span class="string">"upload-demo"</span></span><br><span class="line">action=<span class="string">"http://localhost:8888/api/private/v1/upload"</span></span><br><span class="line">:headers=<span class="string">"getToken()"</span></span><br><span class="line">&lt;<span class="regexp">/el-upload&gt;</span></span><br><span class="line"><span class="regexp"> getToken()&#123;</span></span><br><span class="line"><span class="regexp">      var token = localStorage.getItem('mytoken')</span></span><br><span class="line"><span class="regexp">      return &#123; Authorization: token &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br></pre></td></tr></table></figure>
 <h1 id="删除上传图片操作"><a href="#删除上传图片操作" class="headerlink" title="删除上传图片操作"></a>删除上传图片操作</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">handleRemove(file,filelist)&#123;</span><br><span class="line">  <span class="comment">//在模块中默认传了2个形参</span></span><br><span class="line">    <span class="comment">// console.log(file,filelist)</span></span><br><span class="line">    <span class="keyword">if</span> (!file.response) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">      <span class="comment">//这里的判断是上传文件大小如果不符合,也会运行这个函数,所以我们就要判断响应的信息有没有成功,失败就返回</span></span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">var</span> filepath = file.response.data.tmp_path</span><br><span class="line">    <span class="comment">//   findIndex:可以查找指定数据的所在索引位置：它有一个回调函数，回调函数有一个参数，就是遍历数组时每次遍历到的成员，每次使用一个成员的数据进行函数的业务逻辑的计算，如果满足条件，则返回当前索引</span></span><br><span class="line">    <span class="keyword">var</span> index = <span class="keyword">this</span>.AddForm.pics.findIndex(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> item.pic === filepath</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//判断选定的值进行数组遍历去除</span></span><br><span class="line">    <span class="keyword">this</span>.AddForm.pics.splice(index, <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
