@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="转换base64 mui(&amp;quot;.uploadBtn&amp;quot;)[0].onchange =function(){             var reader = new FileReader();             reader.onload = function(e) {     //                    mui(‘.positive’)[0].src = r">
+<meta name="description" content="#1. 下载依赖包 123456&quot;dependencies&quot;: &amp;#123;  &quot;@babel/core&quot;: &quot;^7.2.2&quot;,  &quot;babel-core&quot;: &quot;^6.26.3&quot;,  &quot;babel-loader&quot;: &quot;^8.0.5&quot;,  &quot;@babel/preset-env&quot;: &quot;^7.3.4&quot;&amp;#125;, 需要注意的是， Babel默认只转换新的javascript语法，而不转换新的API，比">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动端常见代码">
-<meta property="og:url" content="http://yoursite.com/2018/11/23/移动端常用代码/index.html">
+<meta property="og:title" content="babel编译">
+<meta property="og:url" content="http://yoursite.com/2019/03/07/babel编译es6的操作/index.html">
 <meta property="og:site_name" content="Welcome back">
-<meta property="og:description" content="转换base64 mui(&amp;quot;.uploadBtn&amp;quot;)[0].onchange =function(){             var reader = new FileReader();             reader.onload = function(e) {     //                    mui(‘.positive’)[0].src = r">
+<meta property="og:description" content="#1. 下载依赖包 123456&quot;dependencies&quot;: &amp;#123;  &quot;@babel/core&quot;: &quot;^7.2.2&quot;,  &quot;babel-core&quot;: &quot;^6.26.3&quot;,  &quot;babel-loader&quot;: &quot;^8.0.5&quot;,  &quot;@babel/preset-env&quot;: &quot;^7.3.4&quot;&amp;#125;, 需要注意的是， Babel默认只转换新的javascript语法，而不转换新的API，比">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-23T14:01:34.447Z">
+<meta property="og:updated_time" content="2019-03-07T15:30:05.738Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动端常见代码">
-<meta name="twitter:description" content="转换base64 mui(&amp;quot;.uploadBtn&amp;quot;)[0].onchange =function(){             var reader = new FileReader();             reader.onload = function(e) {     //                    mui(‘.positive’)[0].src = r">
+<meta name="twitter:title" content="babel编译">
+<meta name="twitter:description" content="#1. 下载依赖包 123456&quot;dependencies&quot;: &amp;#123;  &quot;@babel/core&quot;: &quot;^7.2.2&quot;,  &quot;babel-core&quot;: &quot;^6.26.3&quot;,  &quot;babel-loader&quot;: &quot;^8.0.5&quot;,  &quot;@babel/preset-env&quot;: &quot;^7.3.4&quot;&amp;#125;, 需要注意的是， Babel默认只转换新的javascript语法，而不转换新的API，比">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>移动端常见代码 | Welcome back</title>
+<title>babel编译 | Welcome back</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -257,11 +257,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-移动端常用代码" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-babel编译es6的操作" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/23/移动端常用代码/" class="article-date">
-      <time datetime="2018-11-23T14:02:48.429Z" itemprop="datePublished">2018-11-23</time>
+      <a href="/2019/03/07/babel编译es6的操作/" class="article-date">
+      <time datetime="2019-03-07T14:35:07.721Z" itemprop="datePublished">2019-03-07</time>
 </a>
 
 
@@ -276,7 +276,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      移动端常见代码
+      babel编译
     </h1>
   
 
@@ -293,171 +293,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>转换base64</p>
-<pre><code>mui(&quot;.uploadBtn&quot;)[0].onchange =function(){
-            var reader = new FileReader();
-            reader.onload = function(e) {    
-</code></pre><p>//                    mui(‘.positive’)[0].src = reader.result<br>                    console.log(reader.result)<br>                }</p>
-<p>//                console.log(this.files[0])<br>                reader.readAsDataURL(this.files[0]);<br>            }</p>
-<pre><code>let transReDetail = JSON.parse($(e.target).attr(&apos;data-transRep&apos;))
-</code></pre><p>验证模块<br>function dingxiangjiaoyi(){<br>        let shuliang = $(‘.dingxiangNub’).val()<br>        let adder = $(‘.dingxiangAdder’).val()<br>        let dingxiangPwd = $(‘.dingxiangPwd’).val()<br>        if(shuliang == “”){<br>            mui.toast(‘数量不能为空’)<br>            return<br>        }<br>        if(adder == “”){<br>            mui.toast(‘地址不能为空’)<br>            return<br>        }<br>        if(dingxiangPwd == “”){<br>            mui.toast(‘密码不能为空’)<br>            return<br>        }<br>        $.ajax({<br>            url: apqurl +’’,<br>            type: “post”,<br>            success: function(dat){<br>                console.log(dat)<br>            }<br>        })<br>    }</p>
-<p>基础模块<br>$(function(){<br>    let token = get(‘mytoKen’)<br>    init()<br>    function init(){<br>        getList()<br>    }<br>    function getList(){<br>        $.ajax({<br>            url: apqurl +’api/user/GetUserInfo?token=’+token,<br>            type: “get”,<br>            success: function(dat){<br>                console.log(dat)<br>            }<br>        })<br>    }<br>})</p>
-<script src="./js/template-web.js"></script>
-<script src="./js/require.js"></script>
-<script src="./js/jquery-2.1.0.js"></script>
-<script src="./js/mui.min.js"></script>
-<script src="./js/transaction.js"></script>
+        <p>#1. 下载依赖包</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "@babel/core": "^7.2.2",</span><br><span class="line">  "babel-core": "^6.26.3",</span><br><span class="line">  "babel-loader": "^8.0.5",</span><br><span class="line">  "@babel/preset-env": "^7.3.4"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>需要注意的是， Babel默认只转换新的javascript语法，而不转换新的API，比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">babel不会对 :</span><br><span class="line">    Generator</span><br><span class="line">    Set</span><br><span class="line">    Map</span><br><span class="line">    Array.from</span><br><span class="line">    Array.prototype.includes</span><br><span class="line">进行转义，如果需要，要安装全局或者局部垫片进行处理</span><br><span class="line">局部垫片 babel-plugin-transform-runtime babel-runtime -save-dev</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">全局垫片 babel-polyfill   -使用方案</span><br><span class="line">在入口文件直接 import &apos;babel-polyfill&apos;即可，如果打包文件没有进行配置的话，在全局创建.babelrc文件进行配置（在Babel执行编译的过程中，会从项目的根目录下的 .babelrc文件中读取配置。.babelrc是一个json格式的文件。）</span><br><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot; : [</span><br><span class="line">    [&quot;@babel/preset-env&quot;, &#123;</span><br><span class="line">      &quot;targets&quot;: &#123;</span><br><span class="line">        &quot;browsers&quot;: [&quot;last 2 versions&quot;]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">  ],</span><br><span class="line">  &quot;plugins&quot;: [&quot;transform-runtime&quot;] // 如果使用局部垫片改变api的话进行配置</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">如果出现this.setDynamic is not a function ，检查@babel/core/babel-loader和runtime 和transform的版本是否对应</span><br></pre></td></tr></table></figure>
+<h1 id="2-配置输出"><a href="#2-配置输出" class="headerlink" title="2.配置输出"></a>2.配置输出</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry : &#123;</span><br><span class="line">    appTest: <span class="string">'./app.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output : &#123;</span><br><span class="line">    <span class="comment">// filename: '[name].[hash:5].js'</span></span><br><span class="line">    filename: <span class="string">'[name].js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        use:&#123;</span><br><span class="line">          loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            presets: [</span><br><span class="line">              [<span class="string">'@babel/preset-env'</span>, &#123;</span><br><span class="line">                targets: &#123;</span><br><span class="line">                  browsers: [<span class="string">'&gt;1%'</span>, <span class="string">'last 2 versions'</span>]</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;]</span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        exclude: <span class="string">'/node_modules/'</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考链接<a href="https://www.cnblogs.com/tugenhua0707/p/9452471.html" target="_blank" rel="noopener">https://www.cnblogs.com/tugenhua0707/p/9452471.html</a></p>
 
-
-<p>返回按键<br>    mui(“body”).on(“tap”, “.back”, function() {<br>                backFn(window);<br>            });<br>    function backFn(w) {<br>                var ws = null;<br>                if(w.plus) {<br>                    console.log(1)<br>                    ws || (ws = plus.webview.currentWebview());<br>                    ws.close(‘auto’);<br>                    plus.webview.getWebviewById(‘currencyExchange’).reload();</p>
-<pre><code>    } else if(history.length &gt; 1) {
-        console.log(3)
-        history.back();
-    } else {
-        w.close();
-    }
-}
-</code></pre><p>转换时间块</p>
-<pre><code>Date.prototype.Format = function(fmt) {
-                       var o = {   
-                           &quot;M+&quot; : this.getMonth()+1,                 //月份   
-                           &quot;d+&quot; : this.getDate(),                    //日   
-                           &quot;h+&quot; : this.getHours(),                   //小时   
-                           &quot;m+&quot; : this.getMinutes(),                 //分   
-                           &quot;s+&quot; : this.getSeconds(),                 //秒   
-                           &quot;q+&quot; : Math.floor((this.getMonth()+3)/3), //季度   
-                           &quot;S&quot;  : this.getMilliseconds()             //毫秒   
-                       };   
-                       if(/(y+)/.test(fmt))   
-                           fmt=fmt.replace(RegExp.$1, (this.getFullYear()+&quot;&quot;).substr(4 - RegExp.$1.length));   
-                       for(var k in o)   
-                           if(new RegExp(&quot;(&quot;+ k +&quot;)&quot;).test(fmt))   
-                       fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : ((&quot;00&quot;+ o[k]).substr((&quot;&quot;+ o[k]).length)));   
-                       return fmt;   
-                   } 
-</code></pre><p>let dingxiangHtml = template(‘dingxiangTmp’,{‘ken’:dat.data})<br>                    $(‘#dingxiangTab’).html(dingxiangHtml)</p>
-<p>let testArr =dat.data.TeamRewardList<br>                let testArrAll = []<br>                        for(let i = 0;i&lt;testArr.length;i++){<br>                            if(testArr[i].AddTime){<br>                                testArrAll.push(testArr[i].AddTime)<br>                            }<br>                        }<br>                        for(let k=0;k&lt;testArrAll.length;k++){<br>                            testArrAll[k] = new Date(testArrAll[k]).Format(‘MM-dd hh:mm’)<br>                        }<br>                        for(let j = 0;j&lt;testArrAll.length;j++){<br>                            $(‘.timeArr’).html(testArrAll[j])<br>                        }</p>
-<p>实现跳转功能<br>    for(let i =0;i&lt;aBtnAll.length;i++){<br>                                        aBtnAll[i].addEventListener(‘tap’, function() {<br>                                            mui.openWindow({<br>                                                url: ‘machineDetail.html’,<br>//                                                id: ‘MyrecordCenter’<br>                                            });<br>                                        });<br>                                    }</p>
-<p>.center {</p>
-<p>  left: 50%;</p>
-<p>  top: 50%;</p>
-<p>  transform: translate(-50%, -50%);</p>
-<p>}</p>
-<p>jq Tab<br> $(function(){<br>       $(“.clickBtn div”).on(“click”,function(){<br>         var index = $(this).index();<br>         $(this).parents(“#box”).find(“.tabValueAll div”).eq(index).show().siblings().hide();<br>       })<br>    })</p>
-<p>返回按钮功能实现<br>        mui.init();<br>            mui(“body”).on(“tap”, “.back”, function() {<br>                backFn(window);<br>            });</p>
-<p>function backFn(w) {<br>                var ws = null;<br>                if(w.plus) {<br>                    console.log(1)<br>                    ws || (ws = plus.webview.currentWebview());<br>                    ws.close(‘auto’);<br>                    plus.webview.getWebviewById(‘BankCar’).reload();</p>
-<pre><code>    } else if(history.length &gt; 1) {
-        console.log(3)
-        history.back();
-    } else {
-        w.close();
-    }
-}
-</code></pre><p>验证码JS块<br>    var countdown = 60;</p>
-<pre><code>function VerificationCodef() {
-    var obj = $(&apos;.refresh&apos;);
-    if(countdown == 60) {
-        //                    
-        mui.ajax({
-            type: &quot;get&quot;,
-            url: apqurl + &quot;/api/VerificationCode/&quot;+phone,
-            data: {
-
-            },
-            async: true,
-            success: function(dat) {
-                if(dat.success) {
-</code></pre><p>//                                mui(“.collect”)[0].value = dat.data<br>                                mui.toast(dat.message);<br>                            } else {<br>                                mui.toast(dat.message);<br>                            }<br>                        }<br>                    });</p>
-<pre><code>        obj.attr(&quot;disabled&quot;, true);
-        if(true) {
-            countdown--;
-        } else {
-            obj.attr(&quot;disabled&quot;, false);
-            obj.value = &quot;获取验证码&quot;;
-            countdown = 60;
-            return;
-        }
-    }
-
-    if(countdown == 0) {
-        obj.attr(&quot;disabled&quot;, false);
-        obj.innerHTML = &quot;重新获取&quot;;
-        countdown = 60;
-        return;
-    } else {
-        obj.attr(&quot;disabled&quot;, true);
-        countdown--;
-        obj.text(&quot;重新发送&quot; + countdown + &quot;s&quot;);
-    }
-    setTimeout(function() {
-        VerificationCodef()
-    }, 1000)
-}
-
-$(&apos;.refresh&apos;).on(&apos;click&apos;, function() {
-    VerificationCodef();
-})
-</code></pre><p>mui跳转页面的js块<br>    $(“.adjunction”).click(function() {<br>                mui.openWindow({<br>                    url: ‘addBank.html?type=0’,<br>                    id: ‘addBank’<br>                });<br>            });</p>
-<p>获取用户信息<br>通过mui()的方式进行修改   不仅仅是innerText还有text    $(“.exhibition_i”).text(val+”%”);<br>    userInfo();</p>
-<pre><code>function userInfo() {
-    mui.ajax({
-        type: &quot;get&quot;,
-        url: apqurl + &quot;/api/Mining/PersonalData?AccessToken=&quot; + token,
-        async: true,
-        success: function(dat) {
-            console.log(dat);
-            if(dat.code == 200) {
-                mui(&quot;.Tradable&quot;)[0].innerText = dat.data.DC_CanTradeCurrency;
-                mui(&quot;.TFradable&quot;)[0].innerText = dat.data.CBDC_CanTradeCurrency;
-            } else {
-
-            }
-        }
-    });
-}
-</code></pre><p>mui框架的隐藏项<br>    mui(“.projectile”)[0].classList.add(“mui-hidden”);</p>
-<p>一般请求的方法<br>    function issue(password) {<br>                var Multiple = $(‘.currentPrice’).val();</p>
-<pre><code>    var purchase = $(&apos;.sale&apos;).val();
-    var purchaseNum = $(&apos;.saleNum&apos;).val();
-
-    ResetFunc();
-    mui.ajax({
-        type: &quot;post&quot;,
-        url: apqurl + &apos;/api/Transaction/WhetherTheTransactionMatched&apos;,
-        data: {
-            AccessToken: token,
-            &apos;quantity&apos;: purchase,
-            &apos;price&apos;: purchaseNum,
-            &apos;type&apos;: 1,
-            TransactionType: 3,
-            AccessToken: token,
-            password:password
-        },
-        async: true,
-        success: function(dat) {
-            if(dat.code == 200) {
-                mui.toast(dat.message);
-                JumpLi();
-            } else {
-                mui.toast(dat.message);
-            }
-        }
-    })
-
-};
-</code></pre><p>复制粘贴<br>                if(dat.success){<br>                    $(‘.walletAdder’).text(dat.data.WalletAddres)<br>                    $(‘#copty’).attr(‘data-clipboard-text’,dat.data.WalletAddres)</p>
-<pre><code>     let btn = document.getElementById(&apos;copty&apos;);
-var clipboard = new Clipboard(btn);
-
-clipboard.on(&apos;success&apos;, function (e) {
-  console.log(e);
-});
-
-clipboard.on(&apos;error&apos;, function (e) {
-  console.log(e);
-});    
-    }
-</code></pre>
       
     </div>
     
@@ -465,13 +307,13 @@ clipboard.on(&apos;error&apos;, function (e) {
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/11/23/移动端常用代码/">移动端常见代码</a></p>
+        <p><span>本文标题:</span><a href="/2019/03/07/babel编译es6的操作/">babel编译</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
-        <p><span>发布时间:</span>2018-11-23, 22:02:48</p>
-        <p><span>最后更新:</span>2018-11-23, 22:01:34</p>
+        <p><span>发布时间:</span>2019-03-07, 22:35:07</p>
+        <p><span>最后更新:</span>2019-03-07, 23:30:05</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/11/23/移动端常用代码/" title="移动端常见代码">http://yoursite.com/2018/11/23/移动端常用代码/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/11/23/移动端常用代码/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/03/07/babel编译es6的操作/" title="babel编译">http://yoursite.com/2019/03/07/babel编译es6的操作/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/03/07/babel编译es6的操作/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -483,16 +325,10 @@ clipboard.on(&apos;error&apos;, function (e) {
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/11/23/操作日志/">
-                    vue操作日志
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/11/11/Vue封装组件 /">
-                    vue组件封装
+                <a href="/2018/11/23/操作日志/">
+                    vue操作日志
                 </a>
             </div>
         
@@ -504,7 +340,7 @@ clipboard.on(&apos;error&apos;, function (e) {
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2-配置输出"><span class="toc-number">1.</span> <span class="toc-text">2.配置输出</span></a></li></ol>
         
     </div>
     <style>
@@ -540,7 +376,7 @@ clipboard.on(&apos;error&apos;, function (e) {
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"移动端常见代码　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"babel编译　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -559,8 +395,8 @@ clipboard.on(&apos;error&apos;, function (e) {
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://yoursite.com/2018/11/23/移动端常用代码/';
-            this.page.identifier = '2018/11/23/移动端常用代码/';
+            this.page.url = 'http://yoursite.com/2019/03/07/babel编译es6的操作/';
+            this.page.identifier = '2019/03/07/babel编译es6的操作/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -582,15 +418,13 @@ clipboard.on(&apos;error&apos;, function (e) {
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/11/23/操作日志/" title="上一篇: vue操作日志">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/11/11/Vue封装组件 /" title="下一篇: vue组件封装">
+            <a href="/2018/11/23/操作日志/" title="下一篇: vue操作日志">
                 <i class="fa fa-angle-right"></i>
             </a>
         

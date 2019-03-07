@@ -260,6 +260,67 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-babel编译es6的操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/03/07/babel编译es6的操作/" class="article-date">
+      <time datetime="2019-03-07T14:35:07.721Z" itemprop="datePublished">2019-03-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/07/babel编译es6的操作/">babel编译</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#1. 下载依赖包</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "@babel/core": "^7.2.2",</span><br><span class="line">  "babel-core": "^6.26.3",</span><br><span class="line">  "babel-loader": "^8.0.5",</span><br><span class="line">  "@babel/preset-env": "^7.3.4"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>需要注意的是， Babel默认只转换新的javascript语法，而不转换新的API，比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">babel不会对 :</span><br><span class="line">    Generator</span><br><span class="line">    Set</span><br><span class="line">    Map</span><br><span class="line">    Array.from</span><br><span class="line">    Array.prototype.includes</span><br><span class="line">进行转义，如果需要，要安装全局或者局部垫片进行处理</span><br><span class="line">局部垫片 babel-plugin-transform-runtime babel-runtime -save-dev</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">全局垫片 babel-polyfill   -使用方案</span><br><span class="line">在入口文件直接 import &apos;babel-polyfill&apos;即可，如果打包文件没有进行配置的话，在全局创建.babelrc文件进行配置（在Babel执行编译的过程中，会从项目的根目录下的 .babelrc文件中读取配置。.babelrc是一个json格式的文件。）</span><br><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot; : [</span><br><span class="line">    [&quot;@babel/preset-env&quot;, &#123;</span><br><span class="line">      &quot;targets&quot;: &#123;</span><br><span class="line">        &quot;browsers&quot;: [&quot;last 2 versions&quot;]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">  ],</span><br><span class="line">  &quot;plugins&quot;: [&quot;transform-runtime&quot;] // 如果使用局部垫片改变api的话进行配置</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">如果出现this.setDynamic is not a function ，检查@babel/core/babel-loader和runtime 和transform的版本是否对应</span><br></pre></td></tr></table></figure>
+<h1 id="2-配置输出"><a href="#2-配置输出" class="headerlink" title="2.配置输出"></a>2.配置输出</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry : &#123;</span><br><span class="line">    appTest: <span class="string">'./app.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output : &#123;</span><br><span class="line">    <span class="comment">// filename: '[name].[hash:5].js'</span></span><br><span class="line">    filename: <span class="string">'[name].js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        use:&#123;</span><br><span class="line">          loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">          options: &#123;</span><br><span class="line">            presets: [</span><br><span class="line">              [<span class="string">'@babel/preset-env'</span>, &#123;</span><br><span class="line">                targets: &#123;</span><br><span class="line">                  browsers: [<span class="string">'&gt;1%'</span>, <span class="string">'last 2 versions'</span>]</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;]</span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        exclude: <span class="string">'/node_modules/'</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考链接<a href="https://www.cnblogs.com/tugenhua0707/p/9452471.html" target="_blank" rel="noopener">https://www.cnblogs.com/tugenhua0707/p/9452471.html</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-操作日志" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1208,7 +1269,7 @@ clipboard.on(&apos;error&apos;, function (e) {
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2018 Ken
+                2016-2019 Ken
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
