@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="style-loader css-loader –save-dev 12345678910111213141516171819202122232425262728293031file-loader --save-devvar path = require(&apos;path&apos;)module.exports = &amp;#123;  entry: &amp;#123;    app: &apos;./src/app.js&apos;  &amp;#">
+<meta name="description" content="下载依赖包style-loader css-loader –save-dev 12345678910111213141516171819202122232425262728293031file-loader --save-devvar path = require(&apos;path&apos;)module.exports = &amp;#123;  entry: &amp;#123;    app: &apos;./src/app.js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome back">
+<meta property="og:title" content="webpack处理css">
 <meta property="og:url" content="http://yoursite.com/2019/03/13/webpack处理css/index.html">
 <meta property="og:site_name" content="Welcome back">
-<meta property="og:description" content="style-loader css-loader –save-dev 12345678910111213141516171819202122232425262728293031file-loader --save-devvar path = require(&apos;path&apos;)module.exports = &amp;#123;  entry: &amp;#123;    app: &apos;./src/app.js&apos;  &amp;#">
+<meta property="og:description" content="下载依赖包style-loader css-loader –save-dev 12345678910111213141516171819202122232425262728293031file-loader --save-devvar path = require(&apos;path&apos;)module.exports = &amp;#123;  entry: &amp;#123;    app: &apos;./src/app.js">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-11T11:31:34.149Z">
+<meta property="og:updated_time" content="2019-03-13T14:02:00.833Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome back">
-<meta name="twitter:description" content="style-loader css-loader –save-dev 12345678910111213141516171819202122232425262728293031file-loader --save-devvar path = require(&apos;path&apos;)module.exports = &amp;#123;  entry: &amp;#123;    app: &apos;./src/app.js&apos;  &amp;#">
+<meta name="twitter:title" content="webpack处理css">
+<meta name="twitter:description" content="下载依赖包style-loader css-loader –save-dev 12345678910111213141516171819202122232425262728293031file-loader --save-devvar path = require(&apos;path&apos;)module.exports = &amp;#123;  entry: &amp;#123;    app: &apos;./src/app.js">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Welcome back</title>
+<title>webpack处理css | Welcome back</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -272,10 +272,28 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack处理css
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>style-loader css-loader –save-dev</p>
+        <p>下载依赖包<br>style-loader css-loader –save-dev</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">file-loader --save-dev</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">'./src/app.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    publicPath: <span class="string">'./dist/'</span>,</span><br><span class="line">    filename: <span class="string">'[name].bundle.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// loader: 'style-loader'</span></span><br><span class="line">            loader: <span class="string">'style-loader/url'</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// loader: 'css-loader'</span></span><br><span class="line">            loader: <span class="string">'file-loader'</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: []</span><br><span class="line">&#125;</span><br><span class="line">使用file-loader 是往页面中插入link标签， 比较小众的功能</span><br></pre></td></tr></table></figure>
 
       
@@ -285,12 +303,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/03/13/webpack处理css/"></a></p>
+        <p><span>本文标题:</span><a href="/2019/03/13/webpack处理css/">webpack处理css</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
         <p><span>发布时间:</span>2019-03-13, 21:57:08</p>
-        <p><span>最后更新:</span>2019-03-11, 19:31:34</p>
+        <p><span>最后更新:</span>2019-03-13, 22:02:00</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/03/13/webpack处理css/" title="">http://yoursite.com/2019/03/13/webpack处理css/</a>
+            <span>原始链接:</span><a class="post-url" href="/2019/03/13/webpack处理css/" title="webpack处理css">http://yoursite.com/2019/03/13/webpack处理css/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/03/13/webpack处理css/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -305,14 +323,14 @@
         
             <div id="article-nav-newer" class="article-nav-title">
                 <a href="/2019/03/13/webpack打包公共代码/">
-                    
+                    webpack打包公共代码
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
                 <a href="/2019/03/13/webpack代码分割和懒加载/">
-                    
+                    webpack代码分割和懒加载
                 </a>
             </div>
         
@@ -360,7 +378,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"webpack处理css　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -402,7 +420,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/03/13/webpack打包公共代码/" title="上一篇: ">
+            <a href="/2019/03/13/webpack打包公共代码/" title="上一篇: webpack打包公共代码">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -410,7 +428,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/03/13/webpack代码分割和懒加载/" title="下一篇: ">
+            <a href="/2019/03/13/webpack代码分割和懒加载/" title="下一篇: webpack代码分割和懒加载">
                 <i class="fa fa-angle-right"></i>
             </a>
         
