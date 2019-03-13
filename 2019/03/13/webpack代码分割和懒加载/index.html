@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="扩展思维方式小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了 从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知 小程序无法使用本地图片作为背景图123报错信息为：VM6971:2 pages/cashier/cashier.wxss">
+<meta name="description" content="单页面处理代码分割引入第三方依赖在页面引入中进行修改 123456// import * as _ from &apos;lodash&apos;修改为require.ensure([&apos;lodash&apos;], function() &amp;#123;  var _ = require(&apos;lodash&apos;)  // 注意，这里一定要require，上面的require不会真正的引入  _.join([&apos;1&apos;,&apos;2&apos;], &apos;3&apos;)&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="莫道征途路漫漫">
-<meta property="og:url" content="http://yoursite.com/2018/10/11/杂篇/index.html">
+<meta property="og:title" content="Welcome back">
+<meta property="og:url" content="http://yoursite.com/2019/03/13/webpack代码分割和懒加载/index.html">
 <meta property="og:site_name" content="Welcome back">
-<meta property="og:description" content="扩展思维方式小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了 从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知 小程序无法使用本地图片作为背景图123报错信息为：VM6971:2 pages/cashier/cashier.wxss">
+<meta property="og:description" content="单页面处理代码分割引入第三方依赖在页面引入中进行修改 123456// import * as _ from &apos;lodash&apos;修改为require.ensure([&apos;lodash&apos;], function() &amp;#123;  var _ = require(&apos;lodash&apos;)  // 注意，这里一定要require，上面的require不会真正的引入  _.join([&apos;1&apos;,&apos;2&apos;], &apos;3&apos;)&amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-15T14:51:20.535Z">
+<meta property="og:updated_time" content="2019-03-11T11:31:47.108Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="莫道征途路漫漫">
-<meta name="twitter:description" content="扩展思维方式小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了 从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知 小程序无法使用本地图片作为背景图123报错信息为：VM6971:2 pages/cashier/cashier.wxss">
+<meta name="twitter:title" content="Welcome back">
+<meta name="twitter:description" content="单页面处理代码分割引入第三方依赖在页面引入中进行修改 123456// import * as _ from &apos;lodash&apos;修改为require.ensure([&apos;lodash&apos;], function() &amp;#123;  var _ = require(&apos;lodash&apos;)  // 注意，这里一定要require，上面的require不会真正的引入  _.join([&apos;1&apos;,&apos;2&apos;], &apos;3&apos;)&amp;">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>莫道征途路漫漫 | Welcome back</title>
+<title>Welcome back</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -257,11 +257,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-杂篇" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-webpack代码分割和懒加载" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/10/11/杂篇/" class="article-date">
-      <time datetime="2018-10-11T12:37:02.896Z" itemprop="datePublished">2018-10-11</time>
+      <a href="/2019/03/13/webpack代码分割和懒加载/" class="article-date">
+      <time datetime="2019-03-13T13:57:08.966Z" itemprop="datePublished">2019-03-13</time>
 </a>
 
 
@@ -272,39 +272,17 @@
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      莫道征途路漫漫
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-
-        
-        <div class="clearfix"></div>
-      </div>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="扩展思维方式"><a href="#扩展思维方式" class="headerlink" title="扩展思维方式"></a>扩展思维方式</h2><p>小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了</p>
-<p>从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知</p>
-<h2 id="小程序无法使用本地图片作为背景图"><a href="#小程序无法使用本地图片作为背景图" class="headerlink" title="小程序无法使用本地图片作为背景图"></a>小程序无法使用本地图片作为背景图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">报错信息为：VM6971:2 pages/cashier/cashier.wxss 中的本地资源图片无法通过 WXSS 获取，可以使用网络图片，或者 base64，或者使用&lt;image/&gt;标签。请参考文档：    </span><br><span class="line"></span><br><span class="line">我的解决方案是使用image读取本地图片，然后利用层级覆盖实现背景效果 ， 因为我们所看到的平面，本质上是一个3D立体</span><br></pre></td></tr></table></figure>
-<p>##小程序的checkbox样式问题<br>既然无法修改，就直接抛弃。自己写一个样式，点击更换，用data进行保存判断实现点击效果</p>
-<p>##git命令的实现<br>要想使用git命令，必须去git官网下载安装包，然后填写用户名进行操作<br>website:<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></p>
-<p>另一种方法 下载github desktop进行页面级操作</p>
-<h3 id="数据无法更新到wxml的情况"><a href="#数据无法更新到wxml的情况" class="headerlink" title="数据无法更新到wxml的情况"></a>数据无法更新到wxml的情况</h3><p>使用  this.setData({</p>
-<p>​      selectPic:wx.getStorageSync(“loginSel”)</p>
-<p>​    })</p>
-<p>异步数据无法快速同步到页面上，使用this.setData({})进行解决</p>
-<p>还有一个是this.$apply()  是异步函数强制更新数据</p>
-<p>#愿效滴水永不弃</p>
+        <h1 id="单页面处理代码分割"><a href="#单页面处理代码分割" class="headerlink" title="单页面处理代码分割"></a>单页面处理代码分割</h1><h2 id="引入第三方依赖"><a href="#引入第三方依赖" class="headerlink" title="引入第三方依赖"></a>引入第三方依赖</h2><p>在页面引入中进行修改</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import * as _ from 'lodash'</span></span><br><span class="line">修改为</span><br><span class="line"><span class="built_in">require</span>.ensure([<span class="string">'lodash'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>)  <span class="comment">// 注意，这里一定要require，上面的require不会真正的引入</span></span><br><span class="line">  _.join([<span class="string">'1'</span>,<span class="string">'2'</span>], <span class="string">'3'</span>)</span><br><span class="line">&#125;, <span class="string">'vendor'</span>) <span class="comment">//这里是指定的chunkName</span></span><br></pre></td></tr></table></figure>
+<h2 id="判断引入模块"><a href="#判断引入模块" class="headerlink" title="判断引入模块"></a>判断引入模块</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">在pageA里面修改代码</span><br><span class="line">page = <span class="string">'subpageA'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (page === <span class="string">'subpageA'</span>) &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'./subPageA'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> subpageA = <span class="built_in">require</span>(<span class="string">'./subPageA'</span>)</span><br><span class="line">  &#125;, <span class="string">'subPageA'</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'./subPageB'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> subpageA = <span class="built_in">require</span>(<span class="string">'./subPageB'</span>)</span><br><span class="line">  &#125;, <span class="string">'subPageB'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// import './subPageA'</span></span><br><span class="line"><span class="comment">// import './subPageB'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 分离页面代码和第三方依赖</span></span><br><span class="line"><span class="built_in">require</span>.ensure([<span class="string">'lodash'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>)</span><br><span class="line">  _.join([<span class="string">'1'</span>,<span class="string">'2'</span>],<span class="string">'3'</span>)</span><br><span class="line">&#125;,<span class="string">'vendor'</span>)</span><br><span class="line"><span class="comment">// import * as _ from 'lodash'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="string">'PageA'</span></span><br></pre></td></tr></table></figure>
+<h2 id="抽离公共代码块modulesA"><a href="#抽离公共代码块modulesA" class="headerlink" title="抽离公共代码块modulesA"></a>抽离公共代码块modulesA</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">因为modulesA代码是同时被subpageA和subpageB页面引入的，在pageA页面中，我们有进行判断是引入subpageA还是subPageB页面，所以我们直接</span><br><span class="line">在pageA里面直接引入moduleA</span><br><span class="line"><span class="built_in">require</span>.include(<span class="string">'./moduleA'</span>)</span><br><span class="line"></span><br><span class="line">这样进行打包的时候，我们在subPageA和subPageB的包里面就没有modelA的代码，而是放在了common里面了</span><br><span class="line">这里需要在webpack.config.js里面进行配置</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: <span class="string">'common'</span>,</span><br><span class="line">      minChunks: <span class="number">2</span>,</span><br><span class="line">      chunks: [<span class="string">'pageA'</span>, <span class="string">'pageB'</span>]</span><br><span class="line">    &#125;),</span><br><span class="line">      </span><br><span class="line"> 如果没有进行配置optimeze插件的话，moduleA里面的代码会被打包到pageA代码里面</span><br></pre></td></tr></table></figure>
+<p>动态import 和 require.ensure不一样的地方：</p>
+<p>import 引入后直接就执行了</p>
+<h2 id="动态import"><a href="#动态import" class="headerlink" title="动态import"></a>动态import</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (page === <span class="string">'subpageA'</span>) &#123;</span><br><span class="line">  <span class="comment">// require.ensure(['./subPageA'], function() &#123;</span></span><br><span class="line">  <span class="comment">//   var subpageA = require('./subPageA')</span></span><br><span class="line">  <span class="comment">// &#125;, 'subPageA')</span></span><br><span class="line">  <span class="keyword">import</span>(<span class="string">'./subPageA'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">subPageA</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(subPageA)</span><br><span class="line">  &#125;)</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">如果不指定chunkName, 会打包成<span class="number">1</span>/<span class="number">2</span>等类型的chunkName</span><br><span class="line">在动态<span class="keyword">import</span>中指定chunkName 需要用到魔法注释</span><br><span class="line"><span class="keyword">import</span>(<span class="comment">/* webpackChunkName: 'subPageA' */</span> <span class="string">'./subPageA'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>这个有什么用？，如果进行打包的话，是把moduleA的代码打包出来</p>
 
       
     </div>
@@ -313,13 +291,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/10/11/杂篇/">莫道征途路漫漫</a></p>
+        <p><span>本文标题:</span><a href="/2019/03/13/webpack代码分割和懒加载/"></a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
-        <p><span>发布时间:</span>2018-10-11, 20:37:02</p>
-        <p><span>最后更新:</span>2018-10-15, 22:51:20</p>
+        <p><span>发布时间:</span>2019-03-13, 21:57:08</p>
+        <p><span>最后更新:</span>2019-03-11, 19:31:47</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/10/11/杂篇/" title="莫道征途路漫漫">http://yoursite.com/2018/10/11/杂篇/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/10/11/杂篇/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/03/13/webpack代码分割和懒加载/" title="">http://yoursite.com/2019/03/13/webpack代码分割和懒加载/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/03/13/webpack代码分割和懒加载/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -332,15 +310,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/11/04/node的简单使用/">
-                    node的简单使用
+                <a href="/2019/03/13/webpack处理css/">
+                    
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/09/07/flexible/">
-                    flexible填坑
+                <a href="/2019/03/07/babel编译es6的操作/">
+                    babel编译
                 </a>
             </div>
         
@@ -352,7 +330,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展思维方式"><span class="toc-number">1.</span> <span class="toc-text">扩展思维方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小程序无法使用本地图片作为背景图"><span class="toc-number">2.</span> <span class="toc-text">小程序无法使用本地图片作为背景图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据无法更新到wxml的情况"><span class="toc-number">2.1.</span> <span class="toc-text">数据无法更新到wxml的情况</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#单页面处理代码分割"><span class="toc-number">1.</span> <span class="toc-text">单页面处理代码分割</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引入第三方依赖"><span class="toc-number">1.1.</span> <span class="toc-text">引入第三方依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断引入模块"><span class="toc-number">1.2.</span> <span class="toc-text">判断引入模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽离公共代码块modulesA"><span class="toc-number">1.3.</span> <span class="toc-text">抽离公共代码块modulesA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态import"><span class="toc-number">1.4.</span> <span class="toc-text">动态import</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async"><span class="toc-number">1.5.</span> <span class="toc-text">async</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -388,7 +366,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"莫道征途路漫漫　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -407,8 +385,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://yoursite.com/2018/10/11/杂篇/';
-            this.page.identifier = '2018/10/11/杂篇/';
+            this.page.url = 'http://yoursite.com/2019/03/13/webpack代码分割和懒加载/';
+            this.page.identifier = '2019/03/13/webpack代码分割和懒加载/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -430,7 +408,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/11/04/node的简单使用/" title="上一篇: node的简单使用">
+            <a href="/2019/03/13/webpack处理css/" title="上一篇: ">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -438,7 +416,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/09/07/flexible/" title="下一篇: flexible填坑">
+            <a href="/2019/03/07/babel编译es6的操作/" title="下一篇: babel编译">
                 <i class="fa fa-angle-right"></i>
             </a>
         
