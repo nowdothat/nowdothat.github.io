@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="转换base64 mui(&amp;quot;.uploadBtn&amp;quot;)[0].onchange =function(){             var reader = new FileReader();             reader.onload = function(e) {     //                    mui(‘.positive’)[0].src = r">
+<meta name="description" content="类选择器1.长名称或词组可以使用中横线来为选择器命名。2.不建议使用“_”下划线来命名CSS选择器。 ​            输入的时候少按一个shift键;　        浏览器兼容问题 (比如使用tips的选择器命名，在IE6是无效的)　        能良好区分JavaScript变量命名(JS变量命名是用“”) 行内元素​    高、宽无效，但水平方向的padding和margin可以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动端常见代码">
-<meta property="og:url" content="http://yoursite.com/2018/11/23/移动端常用代码/index.html">
+<meta property="og:title" content="css小知识">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/css小知识/index.html">
 <meta property="og:site_name" content="Welcome back">
-<meta property="og:description" content="转换base64 mui(&amp;quot;.uploadBtn&amp;quot;)[0].onchange =function(){             var reader = new FileReader();             reader.onload = function(e) {     //                    mui(‘.positive’)[0].src = r">
+<meta property="og:description" content="类选择器1.长名称或词组可以使用中横线来为选择器命名。2.不建议使用“_”下划线来命名CSS选择器。 ​            输入的时候少按一个shift键;　        浏览器兼容问题 (比如使用tips的选择器命名，在IE6是无效的)　        能良好区分JavaScript变量命名(JS变量命名是用“”) 行内元素​    高、宽无效，但水平方向的padding和margin可以">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-23T14:01:34.447Z">
+<meta property="og:updated_time" content="2019-05-23T11:36:02.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动端常见代码">
-<meta name="twitter:description" content="转换base64 mui(&amp;quot;.uploadBtn&amp;quot;)[0].onchange =function(){             var reader = new FileReader();             reader.onload = function(e) {     //                    mui(‘.positive’)[0].src = r">
+<meta name="twitter:title" content="css小知识">
+<meta name="twitter:description" content="类选择器1.长名称或词组可以使用中横线来为选择器命名。2.不建议使用“_”下划线来命名CSS选择器。 ​            输入的时候少按一个shift键;　        浏览器兼容问题 (比如使用tips的选择器命名，在IE6是无效的)　        能良好区分JavaScript变量命名(JS变量命名是用“”) 行内元素​    高、宽无效，但水平方向的padding和margin可以">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>移动端常见代码 | Welcome back</title>
+<title>css小知识 | Welcome back</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -257,11 +257,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-移动端常用代码" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-css小知识" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/23/移动端常用代码/" class="article-date">
-      <time datetime="2018-11-23T14:02:48.429Z" itemprop="datePublished">2018-11-23</time>
+      <a href="/2019/05/23/css小知识/" class="article-date">
+      <time datetime="2019-05-23T11:34:10.956Z" itemprop="datePublished">2019-05-23</time>
 </a>
 
 
@@ -276,7 +276,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      移动端常见代码
+      css小知识
     </h1>
   
 
@@ -293,171 +293,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>转换base64</p>
-<pre><code>mui(&quot;.uploadBtn&quot;)[0].onchange =function(){
-            var reader = new FileReader();
-            reader.onload = function(e) {    
-</code></pre><p>//                    mui(‘.positive’)[0].src = reader.result<br>                    console.log(reader.result)<br>                }</p>
-<p>//                console.log(this.files[0])<br>                reader.readAsDataURL(this.files[0]);<br>            }</p>
-<pre><code>let transReDetail = JSON.parse($(e.target).attr(&apos;data-transRep&apos;))
-</code></pre><p>验证模块<br>function dingxiangjiaoyi(){<br>        let shuliang = $(‘.dingxiangNub’).val()<br>        let adder = $(‘.dingxiangAdder’).val()<br>        let dingxiangPwd = $(‘.dingxiangPwd’).val()<br>        if(shuliang == “”){<br>            mui.toast(‘数量不能为空’)<br>            return<br>        }<br>        if(adder == “”){<br>            mui.toast(‘地址不能为空’)<br>            return<br>        }<br>        if(dingxiangPwd == “”){<br>            mui.toast(‘密码不能为空’)<br>            return<br>        }<br>        $.ajax({<br>            url: apqurl +’’,<br>            type: “post”,<br>            success: function(dat){<br>                console.log(dat)<br>            }<br>        })<br>    }</p>
-<p>基础模块<br>$(function(){<br>    let token = get(‘mytoKen’)<br>    init()<br>    function init(){<br>        getList()<br>    }<br>    function getList(){<br>        $.ajax({<br>            url: apqurl +’api/user/GetUserInfo?token=’+token,<br>            type: “get”,<br>            success: function(dat){<br>                console.log(dat)<br>            }<br>        })<br>    }<br>})</p>
-<script src="./js/template-web.js"></script>
-<script src="./js/require.js"></script>
-<script src="./js/jquery-2.1.0.js"></script>
-<script src="./js/mui.min.js"></script>
-<script src="./js/transaction.js"></script>
+        <h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><p>1.长名称或词组可以使用中横线来为选择器命名。<br>2.不建议使用“_”下划线来命名CSS选择器。</p>
+<p>​            输入的时候少按一个shift键;<br>　        浏览器兼容问题 (比如使用<em>tips的选择器命名，在IE6是无效的)<br>　        能良好区分JavaScript变量命名(JS变量命名是用“</em>”)</p>
+<h2 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h2><p>​    高、宽无效，但水平方向的padding和margin可以设置，垂直方向的无效。</p>
+<p>​    行内元素只能容纳文本或则其他行内元素。（a特殊）</p>
+<h2 id="display"><a href="#display" class="headerlink" title="display"></a>display</h2><p>只有 文字才 能组成段落  因此 p  里面不能放块级元素，同理还有这些标签h1,h2,h3,h4,h5,h6,dt，他们都是文字类块级标签，里面不能放其他块级元素。</p>
+<p>inline-block</p>
+<p>​    在行内元素中有几个特殊的标签——<img>、<input>、<td>，可以对它们设置宽高和对齐属性，有些资料可能会称                  它们为行内块元素。</td></p>
 
-
-<p>返回按键<br>    mui(“body”).on(“tap”, “.back”, function() {<br>                backFn(window);<br>            });<br>    function backFn(w) {<br>                var ws = null;<br>                if(w.plus) {<br>                    console.log(1)<br>                    ws || (ws = plus.webview.currentWebview());<br>                    ws.close(‘auto’);<br>                    plus.webview.getWebviewById(‘currencyExchange’).reload();</p>
-<pre><code>    } else if(history.length &gt; 1) {
-        console.log(3)
-        history.back();
-    } else {
-        w.close();
-    }
-}
-</code></pre><p>转换时间块</p>
-<pre><code>Date.prototype.Format = function(fmt) {
-                       var o = {   
-                           &quot;M+&quot; : this.getMonth()+1,                 //月份   
-                           &quot;d+&quot; : this.getDate(),                    //日   
-                           &quot;h+&quot; : this.getHours(),                   //小时   
-                           &quot;m+&quot; : this.getMinutes(),                 //分   
-                           &quot;s+&quot; : this.getSeconds(),                 //秒   
-                           &quot;q+&quot; : Math.floor((this.getMonth()+3)/3), //季度   
-                           &quot;S&quot;  : this.getMilliseconds()             //毫秒   
-                       };   
-                       if(/(y+)/.test(fmt))   
-                           fmt=fmt.replace(RegExp.$1, (this.getFullYear()+&quot;&quot;).substr(4 - RegExp.$1.length));   
-                       for(var k in o)   
-                           if(new RegExp(&quot;(&quot;+ k +&quot;)&quot;).test(fmt))   
-                       fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : ((&quot;00&quot;+ o[k]).substr((&quot;&quot;+ o[k]).length)));   
-                       return fmt;   
-                   } 
-</code></pre><p>let dingxiangHtml = template(‘dingxiangTmp’,{‘ken’:dat.data})<br>                    $(‘#dingxiangTab’).html(dingxiangHtml)</p>
-<p>let testArr =dat.data.TeamRewardList<br>                let testArrAll = []<br>                        for(let i = 0;i&lt;testArr.length;i++){<br>                            if(testArr[i].AddTime){<br>                                testArrAll.push(testArr[i].AddTime)<br>                            }<br>                        }<br>                        for(let k=0;k&lt;testArrAll.length;k++){<br>                            testArrAll[k] = new Date(testArrAll[k]).Format(‘MM-dd hh:mm’)<br>                        }<br>                        for(let j = 0;j&lt;testArrAll.length;j++){<br>                            $(‘.timeArr’).html(testArrAll[j])<br>                        }</p>
-<p>实现跳转功能<br>    for(let i =0;i&lt;aBtnAll.length;i++){<br>                                        aBtnAll[i].addEventListener(‘tap’, function() {<br>                                            mui.openWindow({<br>                                                url: ‘machineDetail.html’,<br>//                                                id: ‘MyrecordCenter’<br>                                            });<br>                                        });<br>                                    }</p>
-<p>.center {</p>
-<p>  left: 50%;</p>
-<p>  top: 50%;</p>
-<p>  transform: translate(-50%, -50%);</p>
-<p>}</p>
-<p>jq Tab<br> $(function(){<br>       $(“.clickBtn div”).on(“click”,function(){<br>         var index = $(this).index();<br>         $(this).parents(“#box”).find(“.tabValueAll div”).eq(index).show().siblings().hide();<br>       })<br>    })</p>
-<p>返回按钮功能实现<br>        mui.init();<br>            mui(“body”).on(“tap”, “.back”, function() {<br>                backFn(window);<br>            });</p>
-<p>function backFn(w) {<br>                var ws = null;<br>                if(w.plus) {<br>                    console.log(1)<br>                    ws || (ws = plus.webview.currentWebview());<br>                    ws.close(‘auto’);<br>                    plus.webview.getWebviewById(‘BankCar’).reload();</p>
-<pre><code>    } else if(history.length &gt; 1) {
-        console.log(3)
-        history.back();
-    } else {
-        w.close();
-    }
-}
-</code></pre><p>验证码JS块<br>    var countdown = 60;</p>
-<pre><code>function VerificationCodef() {
-    var obj = $(&apos;.refresh&apos;);
-    if(countdown == 60) {
-        //                    
-        mui.ajax({
-            type: &quot;get&quot;,
-            url: apqurl + &quot;/api/VerificationCode/&quot;+phone,
-            data: {
-
-            },
-            async: true,
-            success: function(dat) {
-                if(dat.success) {
-</code></pre><p>//                                mui(“.collect”)[0].value = dat.data<br>                                mui.toast(dat.message);<br>                            } else {<br>                                mui.toast(dat.message);<br>                            }<br>                        }<br>                    });</p>
-<pre><code>        obj.attr(&quot;disabled&quot;, true);
-        if(true) {
-            countdown--;
-        } else {
-            obj.attr(&quot;disabled&quot;, false);
-            obj.value = &quot;获取验证码&quot;;
-            countdown = 60;
-            return;
-        }
-    }
-
-    if(countdown == 0) {
-        obj.attr(&quot;disabled&quot;, false);
-        obj.innerHTML = &quot;重新获取&quot;;
-        countdown = 60;
-        return;
-    } else {
-        obj.attr(&quot;disabled&quot;, true);
-        countdown--;
-        obj.text(&quot;重新发送&quot; + countdown + &quot;s&quot;);
-    }
-    setTimeout(function() {
-        VerificationCodef()
-    }, 1000)
-}
-
-$(&apos;.refresh&apos;).on(&apos;click&apos;, function() {
-    VerificationCodef();
-})
-</code></pre><p>mui跳转页面的js块<br>    $(“.adjunction”).click(function() {<br>                mui.openWindow({<br>                    url: ‘addBank.html?type=0’,<br>                    id: ‘addBank’<br>                });<br>            });</p>
-<p>获取用户信息<br>通过mui()的方式进行修改   不仅仅是innerText还有text    $(“.exhibition_i”).text(val+”%”);<br>    userInfo();</p>
-<pre><code>function userInfo() {
-    mui.ajax({
-        type: &quot;get&quot;,
-        url: apqurl + &quot;/api/Mining/PersonalData?AccessToken=&quot; + token,
-        async: true,
-        success: function(dat) {
-            console.log(dat);
-            if(dat.code == 200) {
-                mui(&quot;.Tradable&quot;)[0].innerText = dat.data.DC_CanTradeCurrency;
-                mui(&quot;.TFradable&quot;)[0].innerText = dat.data.CBDC_CanTradeCurrency;
-            } else {
-
-            }
-        }
-    });
-}
-</code></pre><p>mui框架的隐藏项<br>    mui(“.projectile”)[0].classList.add(“mui-hidden”);</p>
-<p>一般请求的方法<br>    function issue(password) {<br>                var Multiple = $(‘.currentPrice’).val();</p>
-<pre><code>    var purchase = $(&apos;.sale&apos;).val();
-    var purchaseNum = $(&apos;.saleNum&apos;).val();
-
-    ResetFunc();
-    mui.ajax({
-        type: &quot;post&quot;,
-        url: apqurl + &apos;/api/Transaction/WhetherTheTransactionMatched&apos;,
-        data: {
-            AccessToken: token,
-            &apos;quantity&apos;: purchase,
-            &apos;price&apos;: purchaseNum,
-            &apos;type&apos;: 1,
-            TransactionType: 3,
-            AccessToken: token,
-            password:password
-        },
-        async: true,
-        success: function(dat) {
-            if(dat.code == 200) {
-                mui.toast(dat.message);
-                JumpLi();
-            } else {
-                mui.toast(dat.message);
-            }
-        }
-    })
-
-};
-</code></pre><p>复制粘贴<br>                if(dat.success){<br>                    $(‘.walletAdder’).text(dat.data.WalletAddres)<br>                    $(‘#copty’).attr(‘data-clipboard-text’,dat.data.WalletAddres)</p>
-<pre><code>     let btn = document.getElementById(&apos;copty&apos;);
-var clipboard = new Clipboard(btn);
-
-clipboard.on(&apos;success&apos;, function (e) {
-  console.log(e);
-});
-
-clipboard.on(&apos;error&apos;, function (e) {
-  console.log(e);
-});    
-    }
-</code></pre>
       
     </div>
     
@@ -465,13 +308,13 @@ clipboard.on(&apos;error&apos;, function (e) {
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/11/23/移动端常用代码/">移动端常见代码</a></p>
+        <p><span>本文标题:</span><a href="/2019/05/23/css小知识/">css小知识</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
-        <p><span>发布时间:</span>2018-11-23, 22:02:48</p>
-        <p><span>最后更新:</span>2018-11-23, 22:01:34</p>
+        <p><span>发布时间:</span>2019-05-23, 19:34:10</p>
+        <p><span>最后更新:</span>2019-05-23, 19:36:02</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/11/23/移动端常用代码/" title="移动端常见代码">http://yoursite.com/2018/11/23/移动端常用代码/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/11/23/移动端常用代码/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/05/23/css小知识/" title="css小知识">http://yoursite.com/2019/05/23/css小知识/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/05/23/css小知识/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -484,15 +327,15 @@ clipboard.on(&apos;error&apos;, function (e) {
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/11/23/操作日志/">
-                    vue操作日志
+                <a href="/2019/05/23/VueRouter/">
+                    VueRouter总结
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/11/11/Vue封装组件 /">
-                    vue组件封装
+                <a href="/2019/03/13/webpack打包公共代码/">
+                    webpack打包公共代码
                 </a>
             </div>
         
@@ -504,7 +347,7 @@ clipboard.on(&apos;error&apos;, function (e) {
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#类选择器"><span class="toc-number">1.</span> <span class="toc-text">类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行内元素"><span class="toc-number">2.</span> <span class="toc-text">行内元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#display"><span class="toc-number">3.</span> <span class="toc-text">display</span></a></li></ol>
         
     </div>
     <style>
@@ -540,7 +383,7 @@ clipboard.on(&apos;error&apos;, function (e) {
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"移动端常见代码　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"css小知识　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -559,8 +402,8 @@ clipboard.on(&apos;error&apos;, function (e) {
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://yoursite.com/2018/11/23/移动端常用代码/';
-            this.page.identifier = '2018/11/23/移动端常用代码/';
+            this.page.url = 'http://yoursite.com/2019/05/23/css小知识/';
+            this.page.identifier = '2019/05/23/css小知识/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -582,7 +425,7 @@ clipboard.on(&apos;error&apos;, function (e) {
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/11/23/操作日志/" title="上一篇: vue操作日志">
+            <a href="/2019/05/23/VueRouter/" title="上一篇: VueRouter总结">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -590,7 +433,7 @@ clipboard.on(&apos;error&apos;, function (e) {
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/11/11/Vue封装组件 /" title="下一篇: vue组件封装">
+            <a href="/2019/03/13/webpack打包公共代码/" title="下一篇: webpack打包公共代码">
                 <i class="fa fa-angle-right"></i>
             </a>
         

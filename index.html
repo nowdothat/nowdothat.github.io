@@ -260,6 +260,159 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-VueRouter" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/23/VueRouter/" class="article-date">
+      <time datetime="2019-05-23T11:36:32.530Z" itemprop="datePublished">2019-05-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/23/VueRouter/">VueRouter总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#<router-link> 组件跳转</router-link></p>
+<p><router-link>组件类似于a标签链接跳转.推荐理由：</router-link></p>
+<ul>
+<li><p>在history模式下，会触发守卫点击事件，让浏览器不再重新加载页面</p>
+</li>
+<li><p>在history模式下使用base选项之后。所有的to属性都不需要写基础路径了  —“ 默认为/“</p>
+</li>
+<li><p>可以使用JavaScript表达式</p>
+<p>​</p>
+</li>
+</ul>
+<h1 id="功能性组件"><a href="#功能性组件" class="headerlink" title=" 功能性组件"></a><router-view> 功能性组件</router-view></h1><p>这个组件是一个functionnal组件，渲染路径匹配到的视图组件，router-view可以进行多层嵌套</p>
+<p>router-view 的props：–name 如果 <code>&lt;router-view&gt;</code>设置了名称，则会渲染对应的路由配置中 <code>components</code> 下的相应组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">我们有可能使用命名视图创建嵌套视图的复杂布局。这时你也需要命名用到的嵌套 router-view 组件。下面以一个设置面板为例：</span><br><span class="line">/settings/emails                                       /settings/profile</span><br><span class="line">+-----------------------------------+                  +------------------------------+</span><br><span class="line">| UserSettings                      |                  | UserSettings                 |</span><br><span class="line">| +-----+-------------------------+ |                  | +-----+--------------------+ |</span><br><span class="line">| | Nav | UserEmailsSubscriptions | |  +------------&gt;  | | Nav | UserProfile        | |</span><br><span class="line">| |     +-------------------------+ |                  | |     +--------------------+ |</span><br><span class="line">| |     |                         | |                  | |     | UserProfilePreview | |</span><br><span class="line">| +-----+-------------------------+ |                  | +-----+--------------------+ |</span><br><span class="line">+-----------------------------------+                  +------------------------------+</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;h1&gt;User Settings&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">  &lt;NavBar/</span>&gt;</span><br><span class="line">  &lt;router-view/&gt;</span><br><span class="line">  &lt;router-view name=<span class="string">"helper"</span>/&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">路由配置</span></span><br><span class="line"><span class="regexp">&#123;</span></span><br><span class="line"><span class="regexp">  path: '/</span>settings<span class="string">',</span></span><br><span class="line"><span class="string">  // 你也可以在顶级路由就配置命名视图</span></span><br><span class="line"><span class="string">  component: UserSettings,</span></span><br><span class="line"><span class="string">  children: [&#123;</span></span><br><span class="line"><span class="string">    path: '</span>emails<span class="string">',</span></span><br><span class="line"><span class="string">    component: UserEmailsSubscriptions</span></span><br><span class="line"><span class="string">  &#125;, &#123;</span></span><br><span class="line"><span class="string">    path: '</span>profile<span class="string">',</span></span><br><span class="line"><span class="string">    components: &#123;</span></span><br><span class="line"><span class="string">      default: UserProfile,</span></span><br><span class="line"><span class="string">      helper: UserProfilePreview</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;]</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">当然了</span></span><br></pre></td></tr></table></figure>
+<h1 id="构建实例"><a href="#构建实例" class="headerlink" title="构建实例"></a>构建实例</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes,</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  linkExactActiveClass: <span class="string">'active'</span>, <span class="comment">//全局配置 &lt;router-link&gt; 精确激活的class 类名”</span></span><br><span class="line">  scrollBehavior(to, <span class="keyword">from</span>, savedPosition) &#123;</span><br><span class="line">    <span class="comment">// return 期望滚动到哪个的位置</span></span><br><span class="line">    <span class="keyword">if</span>(savedPosition) &#123;</span><br><span class="line">      <span class="keyword">return</span> savedPosition;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  base: <span class="string">'/'</span>,</span><br><span class="line">  fallback: <span class="literal">true</span> <span class="comment">//当浏览器不支持 history.pushState 控制路由是否应该回退到 hash 模式。默认值为 true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">分析实例配置：</span><br><span class="line">routes: 类型<span class="built_in">Array</span>&lt;RouteConfig&gt;</span><br><span class="line">  RouteConfig:</span><br><span class="line">  	<span class="number">1.</span> path: string</span><br><span class="line">    <span class="number">2.</span> component ? : Componetn; <span class="comment">// 组件-推荐使用() =&gt; import('@/views/some/someList')</span></span><br><span class="line">    <span class="number">3.</span> name ? : string; <span class="comment">//命名路由 --权限控制</span></span><br><span class="line">    <span class="number">4.</span> components? : &#123;[name: string] : Compoent&#125; <span class="comment">// 命名视图组件--暂时不知道有什么用</span></span><br><span class="line">    <span class="number">5.</span> redirect? : string | Location | <span class="built_in">Function</span> <span class="comment">// 重定向 -- 修改路由有别与alias</span></span><br><span class="line">    <span class="number">6.</span> props? : boolean | <span class="built_in">Object</span> | <span class="built_in">Function</span> <span class="comment">// 一般通过path/test2/:id来匹配路由信息</span></span><br><span class="line">    <span class="number">7.</span> alias? : string | <span class="built_in">Array</span>&lt;string&gt; <span class="comment">// 别名</span></span><br><span class="line">      	-- a组件的别名是/b， 意味着，当用户访问路由/b的时候，url显示/b，但是路由实际匹配a组件内容</span><br><span class="line">    <span class="number">8.</span> children ? : <span class="built_in">Array</span>&lt;routeConfig&gt; <span class="comment">// 嵌套路由</span></span><br><span class="line">    <span class="number">9.</span> beforeEnter <span class="comment">// 路由独享守卫</span></span><br><span class="line">    <span class="number">10</span> meta ? : any <span class="comment">// 设置元信息 通过$route.matched来获取 </span></span><br><span class="line">      	-- <span class="keyword">if</span> (to.matched.some(<span class="function"><span class="params">record</span> =&gt;</span> record.meta.requiresAuth)) &#123;&#125;</span><br><span class="line">    		<span class="number">2.6</span>+以后版本更新了下面<span class="number">2</span>个config</span><br><span class="line">    <span class="number">11</span> caseSensitive? : boolean <span class="comment">// 匹配规则是否大小写敏感（默认：false）</span></span><br><span class="line">    <span class="number">12</span> pathToRegexpOptions ? : <span class="built_in">Object</span>  <span class="comment">//编译正则的选项</span></span><br></pre></td></tr></table></figure>
+<h1 id="路由对象的属性"><a href="#路由对象的属性" class="headerlink" title="路由对象的属性"></a>路由对象的属性</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$route.path: string <span class="comment">// 绝对路径</span></span><br><span class="line">$route.params: <span class="built_in">Object</span> <span class="comment">// 包含动态片段和全匹配片段</span></span><br><span class="line">$route.query : <span class="built_in">Object</span> <span class="comment">// URL查询参数</span></span><br><span class="line">$route.hash : string</span><br><span class="line">$route.fullPath: string</span><br><span class="line">$route.matched： <span class="built_in">Array</span>&lt;routeRecord&gt; <span class="comment">//路由记录--展示路由对象</span></span><br><span class="line">$route.name : <span class="comment">//当前路由的名称</span></span><br><span class="line">$route.redirectedFrom: <span class="comment">//如果存在重定向，即为重定向来源的路由的名字</span></span><br></pre></td></tr></table></figure>
+<h1 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h1><p>通过在Vue根实例router配置传入router实例，下面的这些属性成员会被注入到每个子组件里</p>
+<ul>
+<li>this.$router   ：  router实例–常见操作this.$touer.push()</li>
+<li>this.$route： 当前激活的路由信息对象，这个属性是只读的，属性看上面的内容↑</li>
+</ul>
+<h1 id="组件内部的配置选项"><a href="#组件内部的配置选项" class="headerlink" title="组件内部的配置选项"></a>组件内部的配置选项</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteEnter (to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">  <span class="comment">// 在渲染该组件的对应路由被 confirm 前调用</span></span><br><span class="line">  <span class="comment">// 因为当守卫执行前，组件实例还没被创建</span></span><br><span class="line">   next(<span class="function"><span class="params">vm</span> =&gt;</span> &#123;</span><br><span class="line">       <span class="comment">// 不！能！获取组件实例 `this`</span></span><br><span class="line">  	<span class="comment">// 可以通过 `vm` 访问组件实例</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;,</span><br><span class="line">beforeRouteUpdate (to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">  <span class="comment">// 在当前路由改变，但是该组件被复用时调用 2.2新增</span></span><br><span class="line">  <span class="comment">// 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，</span></span><br><span class="line">  <span class="comment">// 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。</span></span><br><span class="line">  <span class="comment">// 可以访问组件实例 `this`</span></span><br><span class="line">&#125;,</span><br><span class="line">beforeRouteLeave (to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">  <span class="comment">// 导航离开该组件的对应路由时调用</span></span><br><span class="line">  <span class="comment">// 可以访问组件实例 `this`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="导航解析流程"><a href="#导航解析流程" class="headerlink" title="导航解析流程"></a>导航解析流程</h1><ol>
+<li>导航被触发。</li>
+<li>在失活的组件里调用离开守卫。</li>
+<li>调用全局的 <code>beforeEach</code> 守卫。</li>
+<li>在重用的组件里调用 <code>beforeRouteUpdate</code> 守卫 (2.2+)。</li>
+<li>在路由配置里调用 <code>beforeEnter</code>。</li>
+<li>解析异步路由组件。</li>
+<li>在被激活的组件里调用 <code>beforeRouteEnter</code>。</li>
+<li>调用全局的 <code>beforeResolve</code> 守卫 (2.5+)。</li>
+<li>导航被确认。</li>
+<li>调用全局的 <code>afterEach</code> 钩子。</li>
+<li>触发 DOM 更新。</li>
+<li>用创建好的实例调用 <code>beforeRouteEnter</code> 守卫中传给 <code>next</code> 的回调函数。</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-css小知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/23/css小知识/" class="article-date">
+      <time datetime="2019-05-23T11:34:10.956Z" itemprop="datePublished">2019-05-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/23/css小知识/">css小知识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><p>1.长名称或词组可以使用中横线来为选择器命名。<br>2.不建议使用“_”下划线来命名CSS选择器。</p>
+<p>​            输入的时候少按一个shift键;<br>　        浏览器兼容问题 (比如使用<em>tips的选择器命名，在IE6是无效的)<br>　        能良好区分JavaScript变量命名(JS变量命名是用“</em>”)</p>
+<h2 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h2><p>​    高、宽无效，但水平方向的padding和margin可以设置，垂直方向的无效。</p>
+<p>​    行内元素只能容纳文本或则其他行内元素。（a特殊）</p>
+<h2 id="display"><a href="#display" class="headerlink" title="display"></a>display</h2><p>只有 文字才 能组成段落  因此 p  里面不能放块级元素，同理还有这些标签h1,h2,h3,h4,h5,h6,dt，他们都是文字类块级标签，里面不能放其他块级元素。</p>
+<p>inline-block</p>
+<p>​    在行内元素中有几个特殊的标签——<img>、<input>、<td>，可以对它们设置宽高和对齐属性，有些资料可能会称                  它们为行内块元素。</td></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-webpack打包公共代码" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -413,7 +566,8 @@
 <p>动态import 和 require.ensure不一样的地方：</p>
 <p>import 引入后直接就执行了</p>
 <h2 id="动态import"><a href="#动态import" class="headerlink" title="动态import"></a>动态import</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (page === <span class="string">'subpageA'</span>) &#123;</span><br><span class="line">  <span class="comment">// require.ensure(['./subPageA'], function() &#123;</span></span><br><span class="line">  <span class="comment">//   var subpageA = require('./subPageA')</span></span><br><span class="line">  <span class="comment">// &#125;, 'subPageA')</span></span><br><span class="line">  <span class="keyword">import</span>(<span class="string">'./subPageA'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">subPageA</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(subPageA)</span><br><span class="line">  &#125;)</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">如果不指定chunkName, 会打包成<span class="number">1</span>/<span class="number">2</span>等类型的chunkName</span><br><span class="line">在动态<span class="keyword">import</span>中指定chunkName 需要用到魔法注释</span><br><span class="line"><span class="keyword">import</span>(<span class="comment">/* webpackChunkName: 'subPageA' */</span> <span class="string">'./subPageA'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>这个有什么用？，如果进行打包的话，是把moduleA的代码打包出来</p>
+<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>这个有什么用？，如果是多entry进行打包的话，是把公共模块的代码打包出来–不用指定哪个模块引用了公共模块了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">  new webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">    async: &apos;async-common&apos;,   指定打包的chunkname	</span><br><span class="line">    children: true,			注意这个属性不可以和chunk等一些属性共用（具体自行百度）</span><br><span class="line">    minChunks:2</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -973,150 +1127,6 @@ clipboard.on(&apos;error&apos;, function (e) {
 <h1 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line">引入自定义的处理函数</span><br><span class="line"><span class="keyword">var</span> handler = <span class="built_in">require</span>(<span class="string">"./handler-express"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过Router函数创建路由模块对象</span></span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"><span class="comment">// 设置-配置路由-告知router什么时候执行哪个函数</span></span><br><span class="line">router.get(<span class="string">'/data'</span>,handler.getDataInfo)</span><br><span class="line">      .get(<span class="string">'/'</span>,handler.getIndex)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 暴露路由</span></span><br><span class="line"><span class="built_in">module</span>.exports = router</span><br></pre></td></tr></table></figure>
 <h1 id="路由配置处理"><a href="#路由配置处理" class="headerlink" title="路由配置处理"></a>路由配置处理</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">引入数据库处理对象</span><br><span class="line"><span class="keyword">var</span> mymodule = <span class="built_in">require</span>(<span class="string">'./mymodule.-express.js'</span>)</span><br><span class="line">暴露写法</span><br><span class="line">exports.getDataInfo=<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">  mymodule.getInfo(<span class="function">(<span class="params">err,data</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.end(err)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// 一定要注意,我们的数据操作模块中的返回的数据是数组，而不是对象</span></span><br><span class="line">            res.end(<span class="built_in">JSON</span>.stringify(data))</span><br><span class="line">            <span class="comment">// res.end(JSON.parse(data.toString()))</span></span><br><span class="line">            <span class="comment">// console.log(data);</span></span><br><span class="line">        &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.getIndex=<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">     mymodule.getIndex(<span class="function">(<span class="params">err,data</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.end(<span class="string">'err'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// 一定要注意,我们的数据操作模块中的返回的数据是数组，而不是对象</span></span><br><span class="line">            <span class="comment">// res.render(__dirname+"/views/index.html",data)</span></span><br><span class="line">            res.end(data)</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="数据库处理"><a href="#数据库处理" class="headerlink" title="数据库处理"></a>数据库处理</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">引入下载包</span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line">引入读取模块</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">配置数据库</span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</span><br><span class="line">  host:<span class="string">'127.0.0.1'</span>,</span><br><span class="line">  user:<span class="string">'root'</span>, 连接sql名称</span><br><span class="line">  password:<span class="string">'123456'</span>, </span><br><span class="line">  database:<span class="string">'sanguo'</span> 数据库名称</span><br><span class="line">&#125;)</span><br><span class="line">连接数据库</span><br><span class="line">connection.connect()</span><br><span class="line"></span><br><span class="line">暴露读取写法</span><br><span class="line"><span class="built_in">module</span>.exports.getInfo=<span class="function">(<span class="params">callback</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="comment">// var sql = 'select * from index'</span></span><br><span class="line">  <span class="keyword">var</span> sql = <span class="string">'select name from zhuye'</span>   选择zhuye这个设计表</span><br><span class="line">   <span class="comment">// 执行Sql命令，并接收返回值</span></span><br><span class="line">    connection.query(sql,(err,result,fields) =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result);</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            callback(err)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        </span><br><span class="line">            callback(<span class="literal">null</span>,result)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">这里<span class="built_in">module</span>.exports  和exports是一样的</span><br><span class="line"><span class="built_in">module</span>.exports.getIndex=<span class="function">(<span class="params">callback</span>)=&gt;</span>&#123;</span><br><span class="line">  fs.readFile(__dirname+<span class="string">'/views/index.html'</span>,(err,data)=&gt;&#123;</span><br><span class="line">  <span class="comment">/*   console.log(err);</span></span><br><span class="line"><span class="comment">    console.log('----------');</span></span><br><span class="line"><span class="comment">    console.log(data); */</span></span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">      callback(err)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      callback(<span class="literal">null</span>,data.toString())</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-杂篇" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/11/杂篇/" class="article-date">
-      <time datetime="2018-10-11T12:37:02.896Z" itemprop="datePublished">2018-10-11</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/11/杂篇/">莫道征途路漫漫</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="扩展思维方式"><a href="#扩展思维方式" class="headerlink" title="扩展思维方式"></a>扩展思维方式</h2><p>小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了</p>
-<p>从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知</p>
-<h2 id="小程序无法使用本地图片作为背景图"><a href="#小程序无法使用本地图片作为背景图" class="headerlink" title="小程序无法使用本地图片作为背景图"></a>小程序无法使用本地图片作为背景图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">报错信息为：VM6971:2 pages/cashier/cashier.wxss 中的本地资源图片无法通过 WXSS 获取，可以使用网络图片，或者 base64，或者使用&lt;image/&gt;标签。请参考文档：    </span><br><span class="line"></span><br><span class="line">我的解决方案是使用image读取本地图片，然后利用层级覆盖实现背景效果 ， 因为我们所看到的平面，本质上是一个3D立体</span><br></pre></td></tr></table></figure>
-<p>##小程序的checkbox样式问题<br>既然无法修改，就直接抛弃。自己写一个样式，点击更换，用data进行保存判断实现点击效果</p>
-<p>##git命令的实现<br>要想使用git命令，必须去git官网下载安装包，然后填写用户名进行操作<br>website:<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></p>
-<p>另一种方法 下载github desktop进行页面级操作</p>
-<h3 id="数据无法更新到wxml的情况"><a href="#数据无法更新到wxml的情况" class="headerlink" title="数据无法更新到wxml的情况"></a>数据无法更新到wxml的情况</h3><p>使用  this.setData({</p>
-<p>​      selectPic:wx.getStorageSync(“loginSel”)</p>
-<p>​    })</p>
-<p>异步数据无法快速同步到页面上，使用this.setData({})进行解决</p>
-<p>还有一个是this.$apply()  是异步函数强制更新数据</p>
-<p>#愿效滴水永不弃</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-flexible" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/07/flexible/" class="article-date">
-      <time datetime="2018-09-06T17:16:13.538Z" itemprop="datePublished">2018-09-07</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/07/flexible/">flexible填坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="flexible是什么"><a href="#flexible是什么" class="headerlink" title="flexible是什么"></a>flexible是什么</h1><p>淘宝手淘团队的移动适配方案</p>
-<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><ol>
-<li><p>相对路径</p>
-<ol>
-<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"build/flexible_css.debug.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"build/flexible.debug.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>cdn路径： <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script></p>
-</li>
-</ol>
-<h3 id="写入meta"><a href="#写入meta" class="headerlink" title="写入meta"></a>写入meta</h3>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!dpr &amp;&amp; !scale) &#123;</span><br><span class="line">    <span class="keyword">var</span> isAndroid = win.navigator.appVersion.match(<span class="regexp">/android/gi</span>);</span><br><span class="line">    <span class="keyword">var</span> isIPhone = win.navigator.appVersion.match(<span class="regexp">/iphone/gi</span>);</span><br><span class="line">    <span class="keyword">var</span> devicePixelRatio = win.devicePixelRatio;</span><br><span class="line">    <span class="keyword">if</span> (isIPhone) &#123;</span><br><span class="line">        <span class="comment">// iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案</span></span><br><span class="line">        <span class="keyword">if</span> (devicePixelRatio &gt;= <span class="number">3</span> &amp;&amp; (!dpr || dpr &gt;= <span class="number">3</span>)) &#123;                </span><br><span class="line">            dpr = <span class="number">3</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (devicePixelRatio &gt;= <span class="number">2</span> &amp;&amp; (!dpr || dpr &gt;= <span class="number">2</span>))&#123;</span><br><span class="line">            dpr = <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dpr = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 其他设备下，仍旧使用1倍的方案</span></span><br><span class="line">        dpr = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    scale = <span class="number">1</span> / dpr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">上面的是灵活写法，也可以固定为普通屏</span><br></pre></td></tr></table></figure>
-<h3 id="使用CSSREM配置px转换rem值"><a href="#使用CSSREM配置px转换rem值" class="headerlink" title="使用CSSREM配置px转换rem值"></a>使用CSSREM配置px转换rem值</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1. 在vscode中安装完成之后修改默认配置</span><br><span class="line">    &quot;cssrem.rootFontSize&quot;: 75 //设置默认字体大小</span><br><span class="line">    &quot;cssrem.autoRemovePrefixZero&quot;:false    //去除前缀为0</span><br><span class="line">    </span><br><span class="line">2. 在sublime中使用</span><br><span class="line">      下载本项目，比如：git clone https://github.com/flashlizi/cssrem</span><br><span class="line">      进入packages目录：Sublime Text -&gt; Preferences -&gt; Browse Packages...</span><br><span class="line">      复制下载的cssrem目录到刚才的packges目录里。</span><br><span class="line">      重启Sublime Text。</span><br><span class="line">      配置参数</span><br><span class="line">      参数配置文件：Sublime Text -&gt; Preferences -&gt; Package Settings -&gt; cssrem</span><br><span class="line"></span><br><span class="line">      px_to_rem - px转rem的单位比例，默认为40。</span><br><span class="line">      max_rem_fraction_length - px转rem的小数部分的最大长度。默认为6。</span><br><span class="line">      available_file_types - 启用此插件的文件类型。默认为：[&quot;.css&quot;, &quot;.less&quot;, &quot;.sass&quot;]。</span><br></pre></td></tr></table></figure>
-</code></pre><h3 id="最后是字体的书写"><a href="#最后是字体的书写" class="headerlink" title="最后是字体的书写"></a>最后是字体的书写</h3><pre><code>上面的都是样式布局的使用，但是我们要考虑的字体的显示
-
-来自官方的语言：我们在iPhone3G和iPhone4的Retina屏下面，希望看到的文本字号是相同的。也就是说，我们**不希望文本在Retina屏幕下变小**，另外，我们**希望在大屏手机上看到更多文本**，以及，现在绝大多数的字体文件都自带一些点阵尺寸，通常是`16px`和`24px`，所以我们**不希望出现13px和15px这样的奇葩尺寸**。
-
-如此一来，就决定了在制作H5的页面中，`rem`并不适合用到段落文本上。所以在Flexible整个适配方案中，考虑文本还是使用`px`作为单位。只不过使用`[data-dpr]`属性来区分不同`dpr`下的文本字号大小。
-
-#### 所以我们应该这样做
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">定义一个scss函数   使用@mixin定义函数  使用@include来引用函数</span><br><span class="line">@mixin font-dpr($font-size)&#123;</span><br><span class="line">    font-size: $font-size;</span><br><span class="line"></span><br><span class="line">    [data-dpr=&quot;2&quot;] &amp; &#123;</span><br><span class="line">        font-size: $font-size * 2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [data-dpr=&quot;3&quot;] &amp; &#123;</span><br><span class="line">        font-size: $font-size * 3;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">h3&#123;</span><br><span class="line">  @include font-dpr(16px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre><h1 id="知识贵在实践-加油！"><a href="#知识贵在实践-加油！" class="headerlink" title="知识贵在实践~加油！"></a>知识贵在实践~加油！</h1>
       
     </div>
     
