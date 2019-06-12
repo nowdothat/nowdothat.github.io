@@ -1,83 +1,286 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
-  <meta charset="utf-8">
-  
 
-  
-  <title>Welcome back</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ken的 vue react 前端个人总结">
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Ken" />
+
+
+    
+    
+
+
+<meta name="description" content="vue react 前端个人总结">
 <meta name="keywords" content="vue react 前端个人总结">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Welcome back">
 <meta property="og:url" content="https://github.com/nowdothat/vue/index.html">
 <meta property="og:site_name" content="Welcome back">
-<meta property="og:description" content="ken的 vue react 前端个人总结">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="vue react 前端个人总结">
+<meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Welcome back">
-<meta name="twitter:description" content="ken的 vue react 前端个人总结">
-  
-    <link rel="alternate" href="/atom.xml" title="Welcome back" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+<meta name="twitter:description" content="vue react 前端个人总结">
 
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Welcome back" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <style> .article { opacity: 0;} </style>
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Welcome back</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: true,
+        isPost: false,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
 <body>
   <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Welcome back</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Ken的个人总结</a>
-        </h2>
-      
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Ken</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Ken的个人总结</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/nowdothat/vue"></form>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Ken</a></h1>
       </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Ken</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Ken的个人总结</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap">
   
     <article id="post-react入门指南" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/02/react入门指南/" class="article-date">
-  <time datetime="2019-06-02T14:39:13.463Z" itemprop="datePublished">2019-06-02</time>
+  
+    <div class="article-meta">
+      <a href="/2019/06/02/react入门指南/" class="article-date">
+      <time datetime="2019-06-02T14:39:13.463Z" itemprop="datePublished">2019-06-02</time>
 </a>
-    
-  </div>
+
+
+    </div>
+  
   <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -89,9 +292,11 @@
   
 
       </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
+          
         <h1 id="React简介"><a href="#React简介" class="headerlink" title="React简介"></a>React简介</h1><p>React 应用程序的组成部分： 元素和组件</p>
 <h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><h3 id="JSX语法介绍"><a href="#JSX语法介绍" class="headerlink" title="JSX语法介绍"></a>JSX语法介绍</h3><p>我们建议<a href="https://react.docschina.org/docs/introducing-jsx.html" target="_blank" rel="noopener">使用 JSX</a> 来编写你的 UI 组件。每个 JSX 元素都是调用 <a href="https://react.docschina.org/docs/react-api.html#createelement" target="_blank" rel="noopener"><code>React.createElement()</code></a> 的语法糖。一般来说，如果你使用了 JSX，就不再需要调用以下方法。</p>
 <ul>
@@ -221,25 +426,42 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/nowdothat/vue/2019/06/02/react入门指南/" data-id="cjwskb23f000f04yiw3qho987" class="article-share-link">Share</a>
+    
+    <div class="article-info article-info-index">
       
       
-    </footer>
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
   
 </article>
 
 
+
+
+
+
+
+
+
   
     <article id="post-Vue初步分析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/26/Vue初步分析/" class="article-date">
-  <time datetime="2019-05-26T13:21:44.465Z" itemprop="datePublished">2019-05-26</time>
+  
+    <div class="article-meta">
+      <a href="/2019/05/26/Vue初步分析/" class="article-date">
+      <time datetime="2019-05-26T13:21:44.465Z" itemprop="datePublished">2019-05-26</time>
 </a>
-    
-  </div>
+
+
+    </div>
+  
   <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -251,9 +473,11 @@
   
 
       </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
+          
         <h1 id="Vue的简介"><a href="#Vue的简介" class="headerlink" title="Vue的简介"></a>Vue的简介</h1><ul>
 <li>Vue是一套用于构建用户界面的渐进式框架</li>
 <li>可以自底向上逐层引用</li>
@@ -374,25 +598,42 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/nowdothat/vue/2019/05/26/Vue初步分析/" data-id="cjwskb22o000204yig5ecyniw" class="article-share-link">Share</a>
+    
+    <div class="article-info article-info-index">
       
       
-    </footer>
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
   
 </article>
 
 
+
+
+
+
+
+
+
   
     <article id="post-VueRouter" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/23/VueRouter/" class="article-date">
-  <time datetime="2019-05-23T11:36:32.530Z" itemprop="datePublished">2019-05-23</time>
+  
+    <div class="article-meta">
+      <a href="/2019/05/23/VueRouter/" class="article-date">
+      <time datetime="2019-05-23T11:36:32.530Z" itemprop="datePublished">2019-05-23</time>
 </a>
-    
-  </div>
+
+
+    </div>
+  
   <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -404,9 +645,11 @@
   
 
       </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
+          
         <p>#<router-link> 组件跳转</router-link></p>
 <p><router-link>组件类似于a标签链接跳转.推荐理由：</router-link></p>
 <ul>
@@ -446,25 +689,42 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/nowdothat/vue/2019/05/23/VueRouter/" data-id="cjwskb22i000004yi21dbt5qo" class="article-share-link">Share</a>
+    
+    <div class="article-info article-info-index">
       
       
-    </footer>
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
   
 </article>
 
 
+
+
+
+
+
+
+
   
     <article id="post-css小知识" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/23/css小知识/" class="article-date">
-  <time datetime="2019-05-23T11:34:10.956Z" itemprop="datePublished">2019-05-23</time>
+  
+    <div class="article-meta">
+      <a href="/2019/05/23/css小知识/" class="article-date">
+      <time datetime="2019-05-23T11:34:10.956Z" itemprop="datePublished">2019-05-23</time>
 </a>
-    
-  </div>
+
+
+    </div>
+  
   <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -476,9 +736,11 @@
   
 
       </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
+          
         <h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><p>1.长名称或词组可以使用中横线来为选择器命名。<br>2.不建议使用“_”下划线来命名CSS选择器。</p>
 <p>​            输入的时候少按一个shift键;<br>　        浏览器兼容问题 (比如使用<em>tips的选择器命名，在IE6是无效的)<br>　        能良好区分JavaScript变量命名(JS变量命名是用“</em>”)</p>
 <h2 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h2><p>​    高、宽无效，但水平方向的padding和margin可以设置，垂直方向的无效。</p>
@@ -489,25 +751,42 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/nowdothat/vue/2019/05/23/css小知识/" data-id="cjwskb22u000604yipwch9hke" class="article-share-link">Share</a>
+    
+    <div class="article-info article-info-index">
       
       
-    </footer>
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
   
 </article>
 
 
+
+
+
+
+
+
+
   
     <article id="post-webpack打包公共代码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/13/webpack打包公共代码/" class="article-date">
-  <time datetime="2019-03-13T13:57:09.013Z" itemprop="datePublished">2019-03-13</time>
+  
+    <div class="article-meta">
+      <a href="/2019/03/13/webpack打包公共代码/" class="article-date">
+      <time datetime="2019-03-13T13:57:09.013Z" itemprop="datePublished">2019-03-13</time>
 </a>
-    
-  </div>
+
+
+    </div>
+  
   <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -519,9 +798,11 @@
   
 
       </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
+          
         <h1 id="注意，本文档基于webpack-3-1-0"><a href="#注意，本文档基于webpack-3-1-0" class="headerlink" title="注意，本文档基于webpack@3.1.0"></a>注意，本文档基于<a href="mailto:webpack@3.1.0" target="_blank" rel="noopener">webpack@3.1.0</a></h1><p>webpack不会对单页面进行公共代码的打包，所以需要多entry</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    <span class="string">'pageA'</span>: <span class="string">'./src/pageA'</span>,</span><br><span class="line">    <span class="string">'pageB'</span>: <span class="string">'./src/pageB'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">    filename: <span class="string">'[name].bundle.js'</span>,</span><br><span class="line">    chunkFilename: <span class="string">'[name].chunk.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: <span class="string">'common'</span>,</span><br><span class="line">      minChunks: <span class="number">2</span>   出现次数判断是否打包到common.js里面</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>页面分析：</p>
@@ -530,25 +811,42 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/nowdothat/vue/2019/03/13/webpack打包公共代码/" data-id="cjwskb231000b04yin6ylna22" class="article-share-link">Share</a>
+    
+    <div class="article-info article-info-index">
       
       
-    </footer>
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
   
 </article>
 
 
+
+
+
+
+
+
+
   
     <article id="post-webpack处理css" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/13/webpack处理css/" class="article-date">
-  <time datetime="2019-03-13T13:57:08.997Z" itemprop="datePublished">2019-03-13</time>
+  
+    <div class="article-meta">
+      <a href="/2019/03/13/webpack处理css/" class="article-date">
+      <time datetime="2019-03-13T13:57:08.997Z" itemprop="datePublished">2019-03-13</time>
 </a>
-    
-  </div>
+
+
+    </div>
+  
   <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -560,33 +858,52 @@
   
 
       </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
+          
         <p>下载依赖包<br>style-loader css-loader –save-dev</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">file-loader --save-dev</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">'./src/app.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    publicPath: <span class="string">'./dist/'</span>,</span><br><span class="line">    filename: <span class="string">'[name].bundle.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// loader: 'style-loader'</span></span><br><span class="line">            loader: <span class="string">'style-loader/url'</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// loader: 'css-loader'</span></span><br><span class="line">            loader: <span class="string">'file-loader'</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: []</span><br><span class="line">&#125;</span><br><span class="line">使用file-loader 是往页面中插入link标签， 比较小众的功能</span><br></pre></td></tr></table></figure>
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/nowdothat/vue/2019/03/13/webpack处理css/" data-id="cjwskb230000a04yij3b2g39n" class="article-share-link">Share</a>
+    
+    <div class="article-info article-info-index">
       
       
-    </footer>
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
   
 </article>
 
 
+
+
+
+
+
+
+
   
     <article id="post-webpack代码分割和懒加载" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/13/webpack代码分割和懒加载/" class="article-date">
-  <time datetime="2019-03-13T13:57:08.966Z" itemprop="datePublished">2019-03-13</time>
+  
+    <div class="article-meta">
+      <a href="/2019/03/13/webpack代码分割和懒加载/" class="article-date">
+      <time datetime="2019-03-13T13:57:08.966Z" itemprop="datePublished">2019-03-13</time>
 </a>
-    
-  </div>
+
+
+    </div>
+  
   <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -598,9 +915,11 @@
   
 
       </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
+          
         <h1 id="单页面处理代码分割"><a href="#单页面处理代码分割" class="headerlink" title="单页面处理代码分割"></a>单页面处理代码分割</h1><h2 id="引入第三方依赖"><a href="#引入第三方依赖" class="headerlink" title="引入第三方依赖"></a>引入第三方依赖</h2><p>在页面引入中进行修改</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import * as _ from 'lodash'</span></span><br><span class="line">修改为</span><br><span class="line"><span class="built_in">require</span>.ensure([<span class="string">'lodash'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>)  <span class="comment">// 注意，这里一定要require，上面的require不会真正的引入</span></span><br><span class="line">  _.join([<span class="string">'1'</span>,<span class="string">'2'</span>], <span class="string">'3'</span>)</span><br><span class="line">&#125;, <span class="string">'vendor'</span>) <span class="comment">//这里是指定的chunkName</span></span><br></pre></td></tr></table></figure>
 <h2 id="判断引入模块"><a href="#判断引入模块" class="headerlink" title="判断引入模块"></a>判断引入模块</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">在pageA里面修改代码</span><br><span class="line">page = <span class="string">'subpageA'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (page === <span class="string">'subpageA'</span>) &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'./subPageA'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> subpageA = <span class="built_in">require</span>(<span class="string">'./subPageA'</span>)</span><br><span class="line">  &#125;, <span class="string">'subPageA'</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'./subPageB'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> subpageA = <span class="built_in">require</span>(<span class="string">'./subPageB'</span>)</span><br><span class="line">  &#125;, <span class="string">'subPageB'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// import './subPageA'</span></span><br><span class="line"><span class="comment">// import './subPageB'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 分离页面代码和第三方依赖</span></span><br><span class="line"><span class="built_in">require</span>.ensure([<span class="string">'lodash'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>)</span><br><span class="line">  _.join([<span class="string">'1'</span>,<span class="string">'2'</span>],<span class="string">'3'</span>)</span><br><span class="line">&#125;,<span class="string">'vendor'</span>)</span><br><span class="line"><span class="comment">// import * as _ from 'lodash'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="string">'PageA'</span></span><br></pre></td></tr></table></figure>
@@ -613,25 +932,42 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/nowdothat/vue/2019/03/13/webpack代码分割和懒加载/" data-id="cjwskb22z000904yikjkie8bp" class="article-share-link">Share</a>
+    
+    <div class="article-info article-info-index">
       
       
-    </footer>
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
   
 </article>
 
 
+
+
+
+
+
+
+
   
     <article id="post-babel编译es6的操作" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/07/babel编译es6的操作/" class="article-date">
-  <time datetime="2019-03-07T14:35:07.721Z" itemprop="datePublished">2019-03-07</time>
+  
+    <div class="article-meta">
+      <a href="/2019/03/07/babel编译es6的操作/" class="article-date">
+      <time datetime="2019-03-07T14:35:07.721Z" itemprop="datePublished">2019-03-07</time>
 </a>
-    
-  </div>
+
+
+    </div>
+  
   <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -643,9 +979,11 @@
   
 
       </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
+          
         <p>#1. 下载依赖包</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "@babel/core": "^7.2.2",</span><br><span class="line">  "babel-core": "^6.26.3",</span><br><span class="line">  "babel-loader": "^8.0.5",</span><br><span class="line">  "@babel/preset-env": "^7.3.4"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p>需要注意的是， Babel默认只转换新的javascript语法，而不转换新的API，比如</p>
@@ -655,110 +993,120 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/nowdothat/vue/2019/03/07/babel编译es6的操作/" data-id="cjwskb22s000504yiig8rx3js" class="article-share-link">Share</a>
+    
+    <div class="article-info article-info-index">
       
       
-    </footer>
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
   
 </article>
 
 
-  
 
 
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
-  </nav>
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
 
-  
-    
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul>
-    </div>
-  </div>
 
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/06/02/react入门指南/">React基础个人总结</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/26/Vue初步分析/">Vue初步分析</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/23/VueRouter/">VueRouter总结</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/23/css小知识/">css小知识</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/13/webpack打包公共代码/">webpack打包公共代码</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
   
-</aside>
-        
-      </div>
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</div>
       <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 Ken<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 Ken
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
     </div>
-  </div>
 </footer>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
 
 
 
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
   </div>
 </body>
 </html>
