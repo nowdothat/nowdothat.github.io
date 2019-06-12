@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>莫道征途路漫漫 | Welcome back</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="扩展思维方式小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了 从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知 小程序无法使用本地图片作为背景图123报错信息为：VM6971:2 pages/cashier/cashier.wxss">
+<meta name="keywords" content="vue react 前端个人总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫道征途路漫漫">
+<meta property="og:url" content="https://github.com/nowdothat/vue/2018/10/11/杂篇/index.html">
+<meta property="og:site_name" content="Welcome back">
+<meta property="og:description" content="扩展思维方式小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了 从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知 小程序无法使用本地图片作为背景图123报错信息为：VM6971:2 pages/cashier/cashier.wxss">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-15T14:51:20.535Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="莫道征途路漫漫">
+<meta name="twitter:description" content="扩展思维方式小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了 从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知 小程序无法使用本地图片作为背景图123报错信息为：VM6971:2 pages/cashier/cashier.wxss">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome back" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome back</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Ken的个人总结</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/nowdothat/vue"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-杂篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/11/杂篇/" class="article-date">
+  <time datetime="2018-10-11T12:37:02.896Z" itemprop="datePublished">2018-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      莫道征途路漫漫
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="扩展思维方式"><a href="#扩展思维方式" class="headerlink" title="扩展思维方式"></a>扩展思维方式</h2><p>小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了</p>
+<p>从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知</p>
+<h2 id="小程序无法使用本地图片作为背景图"><a href="#小程序无法使用本地图片作为背景图" class="headerlink" title="小程序无法使用本地图片作为背景图"></a>小程序无法使用本地图片作为背景图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">报错信息为：VM6971:2 pages/cashier/cashier.wxss 中的本地资源图片无法通过 WXSS 获取，可以使用网络图片，或者 base64，或者使用&lt;image/&gt;标签。请参考文档：    </span><br><span class="line"></span><br><span class="line">我的解决方案是使用image读取本地图片，然后利用层级覆盖实现背景效果 ， 因为我们所看到的平面，本质上是一个3D立体</span><br></pre></td></tr></table></figure>
+<p>##小程序的checkbox样式问题<br>既然无法修改，就直接抛弃。自己写一个样式，点击更换，用data进行保存判断实现点击效果</p>
+<p>##git命令的实现<br>要想使用git命令，必须去git官网下载安装包，然后填写用户名进行操作<br>website:<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></p>
+<p>另一种方法 下载github desktop进行页面级操作</p>
+<h3 id="数据无法更新到wxml的情况"><a href="#数据无法更新到wxml的情况" class="headerlink" title="数据无法更新到wxml的情况"></a>数据无法更新到wxml的情况</h3><p>使用  this.setData({</p>
+<p>​      selectPic:wx.getStorageSync(“loginSel”)</p>
+<p>​    })</p>
+<p>异步数据无法快速同步到页面上，使用this.setData({})进行解决</p>
+<p>还有一个是this.$apply()  是异步函数强制更新数据</p>
+<p>#愿效滴水永不弃</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/nowdothat/vue/2018/10/11/杂篇/" data-id="cjwskb235000d04yiaujaqm0h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/04/node的简单使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          node的简单使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/07/flexible/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">flexible填坑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/02/react入门指南/">React基础个人总结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/26/Vue初步分析/">Vue初步分析</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/VueRouter/">VueRouter总结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/css小知识/">css小知识</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/13/webpack打包公共代码/">webpack打包公共代码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ken<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

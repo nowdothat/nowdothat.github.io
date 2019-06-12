@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>React基础个人总结 | Welcome back</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="React简介React 应用程序的组成部分： 元素和组件 元素JSX语法介绍我们建议使用 JSX 来编写你的 UI 组件。每个 JSX 元素都是调用 React.createElement() 的语法糖。一般来说，如果你使用了 JSX，就不再需要调用以下方法。  createElement() createFactory()  1234567891011121314151617181920212">
+<meta name="keywords" content="vue react 前端个人总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React基础个人总结">
+<meta property="og:url" content="https://github.com/nowdothat/vue/2019/06/02/react入门指南/index.html">
+<meta property="og:site_name" content="Welcome back">
+<meta property="og:description" content="React简介React 应用程序的组成部分： 元素和组件 元素JSX语法介绍我们建议使用 JSX 来编写你的 UI 组件。每个 JSX 元素都是调用 React.createElement() 的语法糖。一般来说，如果你使用了 JSX，就不再需要调用以下方法。  createElement() createFactory()  1234567891011121314151617181920212">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-11T15:52:59.761Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React基础个人总结">
+<meta name="twitter:description" content="React简介React 应用程序的组成部分： 元素和组件 元素JSX语法介绍我们建议使用 JSX 来编写你的 UI 组件。每个 JSX 元素都是调用 React.createElement() 的语法糖。一般来说，如果你使用了 JSX，就不再需要调用以下方法。  createElement() createFactory()  1234567891011121314151617181920212">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome back" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome back</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Ken的个人总结</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/nowdothat/vue"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-react入门指南" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/02/react入门指南/" class="article-date">
+  <time datetime="2019-06-02T14:39:13.463Z" itemprop="datePublished">2019-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React基础个人总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="React简介"><a href="#React简介" class="headerlink" title="React简介"></a>React简介</h1><p>React 应用程序的组成部分： 元素和组件</p>
+<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><h3 id="JSX语法介绍"><a href="#JSX语法介绍" class="headerlink" title="JSX语法介绍"></a>JSX语法介绍</h3><p>我们建议<a href="https://react.docschina.org/docs/introducing-jsx.html" target="_blank" rel="noopener">使用 JSX</a> 来编写你的 UI 组件。每个 JSX 元素都是调用 <a href="https://react.docschina.org/docs/react-api.html#createelement" target="_blank" rel="noopener"><code>React.createElement()</code></a> 的语法糖。一般来说，如果你使用了 JSX，就不再需要调用以下方法。</p>
+<ul>
+<li><a href="https://react.docschina.org/docs/react-api.html#createelement" target="_blank" rel="noopener"><code>createElement()</code></a></li>
+<li><a href="https://react.docschina.org/docs/react-api.html#createfactory" target="_blank" rel="noopener"><code>createFactory()</code></a></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">JSX 是JavaScript 的语法扩展，它具有 JavaScript 的全部功能。</span><br><span class="line"></span><br><span class="line">React 认为渲染逻辑本质上与其他 UI 逻辑内在耦合，比如，在 UI 中需要绑定处理事件、在某些时刻状态发生变化时需要通知到 UI，以及需要在 UI 中展示准备好的数据。</span><br><span class="line"></span><br><span class="line">React 并没有采用将标记与逻辑进行分离到不同文件这种人为地分离方式，而是通过将二者共同存放在称之为“组件”的松散耦合单元之中，来实现关注点分离。</span><br><span class="line"></span><br><span class="line">React 不强制要求使用 JSX，但是大多数人发现，在 JavaScript 代码中将 JSX 和 UI 放在一起时，会在视觉上有辅助作用。它还可以使 React 显示更多有用的错误和警告消息。</span><br><span class="line"></span><br><span class="line">在 JSX 语法中，你可以在大括号内放置任何有效的 JavaScript 表达式。例如，<span class="number">2</span> + <span class="number">2</span>，user.firstName 或 formatName(user) 都是有效的 JavaScript 表达式.下面是个简单的例子</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatName</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> user.firstName + <span class="string">' '</span> + user.lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  firstName: <span class="string">'Harper'</span>,</span><br><span class="line">  lastName: <span class="string">'Perez'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> element = (</span><br><span class="line">  &lt;h1&gt;</span><br><span class="line">    Hello, &#123;formatName(user)&#125;!</span><br><span class="line">  &lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">  element,</span></span><br><span class="line"><span class="regexp">  document.getElementById('root')</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">            我们将一个js表达式插进jsx语法中，并实现了'Harper Perez'</span></span><br><span class="line"><span class="regexp">            如果是在Vue项目中，我们可以使用computed计算属性进行这样的操作</span></span><br><span class="line"><span class="regexp"> </span></span><br><span class="line"><span class="regexp">  注意：我们在定义element变量的时候，使用的是()的形式。原因是：我们建议将内容包裹在括号中，虽然这样做不是强制要求的，但是这可以避免遇到自动插入分号陷阱。</span></span><br></pre></td></tr></table></figure>
+<h6 id="jsx也是一个表达式，意味着可以进行函数渲染"><a href="#jsx也是一个表达式，意味着可以进行函数渲染" class="headerlink" title="jsx也是一个表达式，意味着可以进行函数渲染"></a>jsx也是一个表达式，意味着可以进行函数渲染</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getGreeting</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (user) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;formatName(user)&#125;!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, Stranger.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="JSX的特定属性"><a href="#JSX的特定属性" class="headerlink" title="JSX的特定属性"></a>JSX的特定属性</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">tabIndex</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;user.avatarUrl&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">// ""和&#123;&#125;只能同时使用一个，对于同一属性不能同时使用这2种符号</span></span><br></pre></td></tr></table></figure>
+<p><strong>警告：</strong></p>
+<p>因为 JSX 语法上更接近 JavaScript 而不是 HTML，所以 React DOM 使用 <code>camelCase</code>（小驼峰命名）来定义属性的名称，而不使用 HTML 属性名称的命名约定。</p>
+<p>例如，JSX 里的 <code>class</code> 变成了 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/className" target="_blank" rel="noopener"><code>className</code></a>，而 <code>tabindex</code> 则变为 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex" target="_blank" rel="noopener"><code>tabIndex</code></a>。</p>
+<h6 id="JSX-表示对象"><a href="#JSX-表示对象" class="headerlink" title="JSX 表示对象"></a>JSX 表示对象</h6><p>Babel 会把 JSX 转译成一个名为 <code>React.createElement()</code> 函数调用。</p>
+<p>以下两种示例代码完全等效：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = (</span><br><span class="line">  &lt;h1 className=<span class="string">"greeting"</span>&gt;</span><br><span class="line">    Hello, world!</span><br><span class="line">  &lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">const element = React.createElement(</span></span><br><span class="line"><span class="regexp">  'h1',</span></span><br><span class="line"><span class="regexp">  &#123;className: 'greeting'&#125;,</span></span><br><span class="line"><span class="regexp">  'Hello, world!'</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">-------------------------------------简化编译---------------------------------</span></span><br><span class="line"><span class="regexp">  const element = &#123;</span></span><br><span class="line"><span class="regexp">  type: 'h1',</span></span><br><span class="line"><span class="regexp">  props: &#123;</span></span><br><span class="line"><span class="regexp">    className: 'greeting',</span></span><br><span class="line"><span class="regexp">    children: 'Hello, world!'</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br></pre></td></tr></table></figure>
+<h3 id="react元素不可变性"><a href="#react元素不可变性" class="headerlink" title="react元素不可变性"></a>react元素不可变性</h3><p>React 元素是<a href="https://en.wikipedia.org/wiki/Immutable_object" target="_blank" rel="noopener">不可变对象</a>。一旦被创建，你就无法更改它的子元素或者属性。一个元素就像电影的单帧：它代表了某个特定时刻的 UI。</p>
+<p>React DOM 会将元素和它的子元素与它们之前的状态进行比较，并只会进行必要的更新来使 DOM 达到预期的状态。</p>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>组件也可以被定义为可被包装的函数</p>
+<p>定义组件最简单的方式就是编写 JavaScript 函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该函数是一个有效的 React 组件，因为它接收唯一带有数据的 “props”（代表属性）对象与并返回一个 React 元素。这类组件被称为“函数组件”，因为它本质上就是 JavaScript 函数。</p>
+<p>你同时还可以使用 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="noopener">ES6 的 class</a> 来定义组件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Welcome extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述两个组件在 React 里是等效的</p>
+<h6 id="自定义函数组件"><a href="#自定义函数组件" class="headerlink" title="自定义函数组件"></a>自定义函数组件</h6><p>React 元素也可以是用户自定义的组件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;Welcome name=&quot;Sara&quot; /&gt;;</span><br></pre></td></tr></table></figure>
+<p>当 React 元素为用户自定义组件时，它会将 JSX 所接收的属性（attributes）转换为单个对象传递给组件，这个对象被称之为 “props”。</p>
+<p>例如，这段代码会在页面上渲染 “Hello, Sara”：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">Welcome</span> <span class="attr">name</span>=<span class="string">"Sara"</span> /&gt;</span>;</span></span><br><span class="line"><span class="xml">ReactDOM.render(</span></span><br><span class="line"><span class="xml">  element,</span></span><br><span class="line"><span class="xml">  document.getElementById('root')</span></span><br><span class="line"><span class="xml">);</span></span><br><span class="line"><span class="xml">// 分析步骤：</span></span><br><span class="line"><span class="xml">	1. 我们调用ReactDom.render()函数，并传入jsx语法变量elemnnt作为参数</span></span><br><span class="line"><span class="xml">    2. React调用Welcome组件， 并将&#123;name: 'Sara'&#125;作为props传入</span></span><br><span class="line"><span class="xml">    3. Welcome组件将 jsx对象作为返回值</span></span><br><span class="line"><span class="xml">    4. React DOM将DOM进行对比更新</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 组件名称必须以大写字母开头,React 会将以小写字母开头的组件视为原生 DOM 标签</p>
+<p>​        <strong>所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。</strong>–类似于Vue的单向数据流，子组件不能修改父组件的传值，只能通过触发父组件的事件进行修改</p>
+<p>​        所以我们只能修改组件内部的数据state，它 允许 React 组件随用户操作、网络响应或者其他变化而动态更改输出内容。 —–对比Vue的data和props</p>
+<h6 id="正确使用state"><a href="#正确使用state" class="headerlink" title="正确使用state"></a>正确使用state</h6><ul>
+<li><p>不要直接修改state—使用setState({})</p>
+<ul>
+<li>构造函数是唯一可以给 <code>this.state</code> 赋值的地方</li>
+</ul>
+</li>
+<li><p>state的更新可能是异步的</p>
+<ul>
+<li><p>出于性能考虑，React 可能会把多个 <code>setState()</code> 调用合并成一个调用</p>
+</li>
+<li><p>因为 <code>this.props</code> 和 <code>this.state</code> 可能会异步更新，所以你不要依赖他们的值来更新下一个状态。</p>
+<ul>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Wrong</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line">  counter: <span class="keyword">this</span>.state.counter + <span class="keyword">this</span>.props.increment,</span><br><span class="line">&#125;);</span><br><span class="line">要解决这个问题，可以让 setState() 接收一个函数而不是一个对象。这个函数用上一个 state 作为第一个参数，将此次更新被应用时的 props 做为第二个参数：</span><br><span class="line"><span class="comment">// Correct</span></span><br><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">state, props</span>) =&gt;</span> (&#123;</span><br><span class="line">  counter: state.counter + props.increment</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>state的更新会被合并</p>
+<ul>
+<li>当你调用 <code>setState()</code> 的时候，React 会把你提供的对象合并到当前的 state</li>
+<li>这就意味着：当你的state对象里面有多个值时，你多次调用setState（{someKeys:xx}）这里的对象合并是浅合并，setState方法保留了其他未被重置的属性，但是完全替换了someKyes</li>
+</ul>
+</li>
+</ul>
+<h6 id="将函数组件转换为class组件"><a href="#将函数组件转换为class组件" class="headerlink" title="将函数组件转换为class组件"></a>将函数组件转换为class组件</h6><p>———–需要注意的是，如果是通过compoent={}的形式，需要在constructor(props)进行传递</p>
+<ol>
+<li><p>创建一个同名的 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="noopener">ES6 class</a>，并且继承于 <code>React.Component</code>。</p>
+</li>
+<li><p>添加一个空的 <code>render()</code> 方法。</p>
+</li>
+<li><p>将函数体移动到 <code>render()</code> 方法之中。</p>
+</li>
+<li><p>在 <code>render()</code> 方法中使用 <code>this.props</code> 替换 <code>props</code>。</p>
+</li>
+<li><p>删除剩余的空函数声明</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// React.Component 是使用 ES6 classes 方式定义 React 组件的基类</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Some</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    	&lt;div&gt;<span class="keyword">do</span> some thing&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>———————通过以下方式将 <code>props</code> 传递到父类的构造函数中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">  <span class="keyword">super</span>(props);</span><br><span class="line">  <span class="keyword">this</span>.state = &#123;<span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>()&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><ul>
+<li>React 事件的命名采用小驼峰式（camelCase），而不是纯小写。</li>
+<li>使用 JSX 语法时你需要传入一个函数作为事件处理函数，而不是一个字符串。—使用表达式</li>
+</ul>
+<p>一般情况下，传入没有调用的函数都会丢失this指向，解决办法是使用Function.prototype.bind()或者是使用箭头函数，亦或者是class fields进行解决</p>
+<h6 id="函数传入参数"><a href="#函数传入参数" class="headerlink" title="函数传入参数"></a>函数传入参数</h6><p>在循环中，通常我们会为事件处理函数传递额外的参数。例如，若 <code>id</code> 是你要删除那一行的 ID，以下两种方式都可以向事件处理函数传递参数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;(e) =&gt; <span class="keyword">this</span>.deleteRow(id, e)&#125;&gt;Delete Row&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;button onClick=&#123;this.deleteRow.bind(this, id)&#125;&gt;Delete Row&lt;/</span>button&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="循环渲染需要带key"><a href="#循环渲染需要带key" class="headerlink" title="循环渲染需要带key"></a>循环渲染需要带key</h3><p>React 支持 <code>key</code> 属性。当子元素拥有 key 时，React 使用 key 来匹配原有树上的子元素以及最新树上的子元素</p>
+<p>Vue的key属性也是做同样的事情，进行diffing算法运算</p>
+<h1 id="react-PureComponet"><a href="#react-PureComponet" class="headerlink" title="react.PureComponet"></a>react.PureComponet</h1><p><code>React.PureComponent</code> 中的 <code>shouldComponentUpdate()</code> 将跳过所有子组件树的 prop 更新。因此，请确保所有子组件也都是“纯”的组件。</p>
+<h1 id="需要注意的小细节"><a href="#需要注意的小细节" class="headerlink" title="需要注意的小细节"></a>需要注意的小细节</h1><ul>
+<li>autoFocus一定要配合tabIndexReact </li>
+<li>来使用</li>
+<li>constructor要配置super使用</li>
+<li>渲染的时候要使用标签的形式进行渲染</li>
+<li>在组件内部的dom元素中添加事件<ul>
+<li><h2 onclick="{clickFun}"></h2>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="组件渲染时的this问题"><a href="#组件渲染时的this问题" class="headerlink" title="组件渲染时的this问题"></a>组件渲染时的this问题</h4><p>react 在render({this.state.xx})拿值是可以，但是在执行函数的时候却为undefined的原因？<br>—因为js是单线程事件型语言，当遇到函数或者定时器等异步操作时，会先向下执行，等事件触发，或者有空闲的时候再执行异步操作–那个时候，上下文已经丢失，所以this执行就已经丢失了<br>———–办法就是，</p>
+<ol>
+<li>在dom渲染的时候，手动绑定上下文{this.事件名.bind(this)}</li>
+<li>使用() =&gt; {利用箭头函数的特性绑定this}</li>
+</ol>
+<h4 id="组件的基本生命周期"><a href="#组件的基本生命周期" class="headerlink" title="组件的基本生命周期"></a>组件的基本生命周期</h4><p>以类定义的组件，都有一样的生命周期</p>
+<ul>
+<li>constructor() {}</li>
+<li>componentWillMount() {} //加载前，可以进行拿取数据</li>
+<li>render() {}</li>
+<li>componentDidMount() {} //页面加载完成</li>
+<li>if（进行更新state)————–<ul>
+<li>componentWillUpdate() {} // 可以进行数据的验证</li>
+<li>render()</li>
+<li>compoentDidUpdate()  //更新完成</li>
+</ul>
+</li>
+</ul>
+<p>有一个this.forceUpdate() –强制更新DOM    </p>
+<p>shouldCompoentUpdate() {return false} —不进行更新  — 控制componentWillUpdate的执行</p>
+<p>————————————————————特殊的——————————————————</p>
+<p>componentWillUnmount()—-:通过非React提供的方式注册的事件，通常需要在这个方法中注销事件，以及该组件中使用的计时器，也需要在这里清除！！！</p>
+<h2 id="setState的作用"><a href="#setState的作用" class="headerlink" title="setState的作用"></a>setState的作用</h2><ol>
+<li>可以用来更新数据</li>
+<li>会自动地调用render()</li>
+</ol>
+<h2 id="父子组件中遇到的问题"><a href="#父子组件中遇到的问题" class="headerlink" title="父子组件中遇到的问题"></a>父子组件中遇到的问题</h2><p>父组件调用了render方法，则子组件必定会调用render方法。子组件调用render方法，则父组件不会调用render方法</p>
+<p>父组件向子组件传值，是将父组件的数据或者方法作为子组件的属性值进行传递</p>
+<p>​    子组件通过this.props.属性进行获取—（如果是通过函数的方式，则通过形参的方式进行获取）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/nowdothat/vue/2019/06/02/react入门指南/" data-id="cjwskb23f000f04yiw3qho987" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/26/Vue初步分析/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue初步分析</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/02/react入门指南/">React基础个人总结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/26/Vue初步分析/">Vue初步分析</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/VueRouter/">VueRouter总结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/css小知识/">css小知识</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/13/webpack打包公共代码/">webpack打包公共代码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ken<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

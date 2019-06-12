@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Vue初步分析 | Welcome back</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Vue的简介 Vue是一套用于构建用户界面的渐进式框架 可以自底向上逐层引用 Vue的核心库只关注视图层  Vue组件 跨组件数据流  自定义事件通信 构建工具集成 单向数据流  组件注册或者如果你通过 Babel 和 webpack 使用 ES2015 模块，那么代码看起来更像： 12345678import ComponentA from &apos;./ComponentA.vue&apos;export de">
+<meta name="keywords" content="vue react 前端个人总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue初步分析">
+<meta property="og:url" content="https://github.com/nowdothat/vue/2019/05/26/Vue初步分析/index.html">
+<meta property="og:site_name" content="Welcome back">
+<meta property="og:description" content="Vue的简介 Vue是一套用于构建用户界面的渐进式框架 可以自底向上逐层引用 Vue的核心库只关注视图层  Vue组件 跨组件数据流  自定义事件通信 构建工具集成 单向数据流  组件注册或者如果你通过 Babel 和 webpack 使用 ES2015 模块，那么代码看起来更像： 12345678import ComponentA from &apos;./ComponentA.vue&apos;export de">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-26T13:30:16.331Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue初步分析">
+<meta name="twitter:description" content="Vue的简介 Vue是一套用于构建用户界面的渐进式框架 可以自底向上逐层引用 Vue的核心库只关注视图层  Vue组件 跨组件数据流  自定义事件通信 构建工具集成 单向数据流  组件注册或者如果你通过 Babel 和 webpack 使用 ES2015 模块，那么代码看起来更像： 12345678import ComponentA from &apos;./ComponentA.vue&apos;export de">
+  
+    <link rel="alternate" href="/atom.xml" title="Welcome back" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welcome back</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Ken的个人总结</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/nowdothat/vue"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Vue初步分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/26/Vue初步分析/" class="article-date">
+  <time datetime="2019-05-26T13:21:44.465Z" itemprop="datePublished">2019-05-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue初步分析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Vue的简介"><a href="#Vue的简介" class="headerlink" title="Vue的简介"></a>Vue的简介</h1><ul>
+<li>Vue是一套用于构建用户界面的渐进式框架</li>
+<li>可以自底向上逐层引用</li>
+<li>Vue的核心库只关注视图层</li>
+</ul>
+<h1 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h1><ul>
+<li>跨组件数据流 </li>
+<li>自定义事件通信</li>
+<li>构建工具集成</li>
+<li>单向数据流</li>
+</ul>
+<h4 id="组件注册"><a href="#组件注册" class="headerlink" title="组件注册"></a>组件注册</h4><p>或者如果你通过 Babel 和 webpack 使用 ES2015 模块，那么代码看起来更像：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ComponentA <span class="keyword">from</span> <span class="string">'./ComponentA.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    ComponentA</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意在 ES2015+ 中，在对象中放一个类似 <code>ComponentA</code> 的变量名其实是 <code>ComponentA: ComponentA</code> 的缩写，即这个变量名同时是：</p>
+<ul>
+<li>用在模板中的自定义元素的名称</li>
+<li>包含了这个组件选项的变量名</li>
+</ul>
+<h4 id="动态组件"><a href="#动态组件" class="headerlink" title="动态组件"></a>动态组件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;component v-bind:is=<span class="string">"currentTabComponent"</span>&gt;&lt;/component&gt;</span><br><span class="line"></span><br><span class="line">在上述的示例中，currentTabComponent 可以包括</span><br><span class="line">	已注册组件的名字</span><br><span class="line">	一个组件的选项对象</span><br></pre></td></tr></table></figure>
+<h4 id="全局组件"><a href="#全局组件" class="headerlink" title="全局组件"></a>全局组件</h4><p>如果你的组件颗粒度很小，那么可以考虑将其注册在全局上</p>
+<p>记住<strong>全局注册的行为必须在根 Vue 实例 (通过 new Vue) 创建之前发生</strong></p>
+<h4 id="props属性"><a href="#props属性" class="headerlink" title="props属性"></a>props属性</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">  title: <span class="built_in">String</span>,</span><br><span class="line">  likes: <span class="built_in">Number</span>,</span><br><span class="line">  isPublished: <span class="built_in">Boolean</span>,</span><br><span class="line">  commentIds: <span class="built_in">Array</span>,</span><br><span class="line">  author: <span class="built_in">Object</span>,</span><br><span class="line">  callback: <span class="built_in">Function</span>,</span><br><span class="line">  contactsPromise: <span class="built_in">Promise</span> <span class="comment">// or any other constructor</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这不仅为你的组件提供了文档，还会在它们遇到错误的类型时从浏览器的 JavaScript 控制台提示用户</p>
+<h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><ul>
+<li><p>即使传递的是静态数组，也需要使用v-bind</p>
+</li>
+<li><p>单向数据流</p>
+<ul>
+<li>所有的 prop 都使得其父子 prop 之间形成了一个<strong>单向下行绑定</strong>：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。</li>
+<li>如果真的需要改<ul>
+<li><strong>这个 prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用。</strong></li>
+<li><strong>这个 prop 以一种原始的值传入且需要进行转换</strong></li>
+</ul>
+</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<h1 id="Vue实例"><a href="#Vue实例" class="headerlink" title="Vue实例"></a>Vue实例</h1><p>var vm = new Vue({</p>
+<p>​    el: ‘#example’,    Vue 实例使用的根 DOM 元素</p>
+<p>​    data: data,    Vue实例观察的数据对象，Vue实例代理了对其data对象属性的访问</p>
+<p>​    props    当前组件接收到的props对象，Vue实例代理了对其props对象属性的访问</p>
+<p>​    options</p>
+<p>​        用于当前Vue实例的初始化选项。需要在选项中包含自定义属性时会有用处</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">  customOption: &apos;foo&apos;,</span><br><span class="line">  created: function() &#123;</span><br><span class="line">    console.log(this.$options.customOption) =&gt; &apos;foo&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>​    parent    父实例，如果当前实例有的话</p>
+<p>​    root    当前组件树的根实例，如果没有父实例–将会是其自己</p>
+<p>​    children</p>
+<p>​        当前实例的直接子组件，需要注意$children并不保证顺序，也不是响应式的。</p>
+<p>​        如果你发现自己正在尝试使用$children来进行数据绑定，考虑使用一个数组配置v-for来生成子组件，并且使用Array作为真正的来源</p>
+<p>​    slots</p>
+<p>​    scopedSlots</p>
+<p>​    refs        一个对象，持有注册过 <strong>ref</strong>特性的所有的DOM元素和组件实例</p>
+<p>​    isServer    当前 Vue 实例是否运行于服务器。</p>
+<p>​    attrs     { [key: string]: string }</p>
+<p>​        包含了父作用域中不作为prop被识别（且获取）的特性绑定（class和style除外)。当一个组件没有声明任何prop时，这里会包含所有父作用域的绑定，并且可以通过v-bind=”$attrs”传入内部组件</p>
+<p>​    listeners</p>
+<p>​        包含了父作用域中的（不含.native修饰器的）v-on 事件监听器。它可以通过v-on=”$listeners” 传入内部组件</p>
+<p>});</p>
+<p>所有的Vue组件都是Vue实例，并且接受相同的选项对象（一些根实例特有的选项除外:el） –参考Vue-router</p>
+<h4 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h4><h5 id="vm-watch-expOrFn-callback-options"><a href="#vm-watch-expOrFn-callback-options" class="headerlink" title="vm.$watch(expOrFn, callback, [options])"></a>vm.$watch(expOrFn, callback, [options])</h5><ul>
+<li><p>参数：</p>
+<ul>
+<li>{string | Function} expOrFn</li>
+<li>{Function | Object} callback</li>
+<li>{object} [options]<ul>
+<li>{boolean} deep</li>
+<li>{boolean} immediate</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>返回值： {Function} unwatch</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vm.$watch(<span class="string">'a.b.c'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newVal, oldVal</span>) </span>&#123;</span><br><span class="line">  <span class="string">'do something'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> unwatch = vm.$watch(<span class="string">'a'</span>, Fun);</span><br><span class="line">取消观察操作</span><br><span class="line">unwatch()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选项 ：deep</p>
+<ul>
+<li><p>为了发现对象内部值的变化，可以在选项参数中指定 <strong>deep: true</strong> 。–（注意数组不需要这么做）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vm.$watch(<span class="string">'someObject'</span>, callback, &#123;</span><br><span class="line">  deep: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line">vm.someObject.nestedValue = <span class="number">123</span></span><br><span class="line"><span class="comment">// callback is fired</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>选项：immediate</p>
+<ul>
+<li><p>在选项参数中指定 <strong>immediate:true</strong> 将立即以表达式的当前值触发回调</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vm.$watch(<span class="string">'a'</span>, callback, &#123;</span><br><span class="line">  immediate: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 立即以 'a' 的当前值触发回调</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="vm-set-target-propertyName-index-value"><a href="#vm-set-target-propertyName-index-value" class="headerlink" title="vm.$set(target, propertyName/index, value);"></a>vm.$set(target, propertyName/index, value);</h5><h5 id="vm-delete-target-propertyName-index-value"><a href="#vm-delete-target-propertyName-index-value" class="headerlink" title="vm.$delete(target,propertyName/index,value);"></a>vm.$delete(target,propertyName/index,value);</h5><h4 id="实例属性-数据"><a href="#实例属性-数据" class="headerlink" title="实例属性-数据"></a>实例属性-数据</h4><ul>
+<li>只有当实例被创建时，data中存在的属性才是响应式的<ul>
+<li>递归defineProperty() ,采用数据劫持结合发布-订阅模式</li>
+</ul>
+</li>
+<li>如果你知道你晚些会用一些值，你需要设置一些初始值</li>
+<li>唯一的例外是使用Object.freeze() <ul>
+<li>无法再次修改本身及原型</li>
+</ul>
+</li>
+</ul>
+<p>向外暴露的<strong>实例</strong>属性和方法</p>
+<p>vm.$data === data; =&gt; true</p>
+<p>vm.$el === document.getElementById(‘example’) =&gt; true</p>
+<p>vm.$watch (‘a’, function(newValue, oldValue) {})</p>
+<h4 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算属性将被混入到vue的实例中</span></span><br><span class="line">computed: &#123;</span><br><span class="line"><span class="comment">//计算属性的getter</span></span><br><span class="line">  reversedMessage: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// this指向vm实例</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.message.split(<span class="string">''</span>).reverse().join()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">《tips》: 如果使用了箭头函数，需要传递一个参数--获取vm实例对象</span><br><span class="line">		计算属性的结果会被缓存，除非依赖的响应式属性变化才会重新计算。注意，如果某个依赖（比如非响应式属性）在该实例范畴之外，则计算属性是不会被更新的 --- 比如为对象新增一个属性，这个属性一开始没被定义</span><br><span class="line">        												（<span class="keyword">this</span>.myObject.newProperty = <span class="string">'hi'</span>)</span><br><span class="line">        	</span><br><span class="line"> -----------------------------------计算属性的setter----------------------------</span><br><span class="line">   computed: &#123;</span><br><span class="line">     fullName: &#123;</span><br><span class="line">       <span class="comment">// getter</span></span><br><span class="line">       get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">       <span class="comment">// setter</span></span><br><span class="line">       set: <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>) </span>&#123;</span><br><span class="line">         <span class="keyword">var</span> names = newValue.split(<span class="string">''</span>);</span><br><span class="line">         <span class="keyword">this</span>.firstName = names[<span class="number">0</span>];</span><br><span class="line">         <span class="keyword">this</span>.lastName = names[names-length <span class="number">-1</span>]</span><br><span class="line">       &#125;  </span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">现在再运行  vm.fullNam = <span class="string">'ken Done'</span> 时，setter会被调用</span><br></pre></td></tr></table></figure>
+<h4 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 虽然计算属性在大多数情况下更合适，但是在数据变化时执行异步或开销较大的操作时，这个方式是最有用的</span></span><br><span class="line">watch: &#123;</span><br><span class="line">  question: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.answer = <span class="string">'wait ...'</span></span><br><span class="line">    <span class="keyword">this</span>.someMethod();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>创建前后</p>
+<p>挂载前后</p>
+<p>更新前后</p>
+<p>删除前后</p>
+<h1 id="DOM模板的注意事项"><a href="#DOM模板的注意事项" class="headerlink" title="DOM模板的注意事项"></a>DOM模板的注意事项</h1><p>有些 HTML 元素，诸如 <code>&lt;ul&gt;</code>、<code>&lt;ol&gt;</code>、<code>&lt;table&gt;</code> 和 <code>&lt;select&gt;</code>，对于哪些元素可以出现在其内部是有严格限制的。而有些元素，诸如 <code>&lt;li&gt;</code>、<code>&lt;tr&gt;</code> 和 <code>&lt;option&gt;</code>，只能出现在其它某些特定的元素内部。</p>
+<p>这会导致我们使用这些有约束条件的元素时遇到一些问题。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">  &lt;blog-post-row&gt;&lt;/blog-post-row&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+<p>这个自定义组件 <code>&lt;blog-post-row&gt;</code> 会被作为无效的内容提升到外部，并导致最终渲染结果出错。幸好这个特殊的 <code>is</code> 特性给了我们一个变通的办法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">  &lt;tr is=<span class="string">"blog-post-row"</span>&gt;&lt;/tr&gt;</span><br><span class="line">&lt;<span class="regexp">/table&gt;</span></span><br></pre></td></tr></table></figure>
+<p>—————————————————-或者使用.vue文件的template模板</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/nowdothat/vue/2019/05/26/Vue初步分析/" data-id="cjwskb22o000204yig5ecyniw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/02/react入门指南/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          React基础个人总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/23/VueRouter/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">VueRouter总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/02/react入门指南/">React基础个人总结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/26/Vue初步分析/">Vue初步分析</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/VueRouter/">VueRouter总结</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/css小知识/">css小知识</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/13/webpack打包公共代码/">webpack打包公共代码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ken<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
