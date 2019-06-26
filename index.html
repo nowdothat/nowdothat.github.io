@@ -242,6 +242,161 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-TCP" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/06/26/TCP/" class="article-date">
+      <time datetime="2019-06-26T14:52:14.126Z" itemprop="datePublished">2019-06-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/26/TCP/">TCP/IP协议</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="什么是TCP-IP协议"><a href="#什么是TCP-IP协议" class="headerlink" title="什么是TCP/IP协议"></a>什么是TCP/IP协议</h1><ul>
+<li><p>TCP/IP协议（传输控制协议/互联网协议）不是简单的一个协议，而是一组特别的协议，包括：TCP，IP，UDP，ARP等，这些被称为子协议。在这些协议中，最重要、最著名的就是TCP和IP。因此，大部分网络管理员称整个协议族为“TCP/IP”。</p>
+</li>
+<li><p>TCP/IP的迅速流行要归功于它的低成本、可在不同的平台间进行通信的能力和它开放的特性。“开放”的意思是软件开发人员可以自由地使用和修改TCP/IP的核心协议。TCP/IP是Internet实际采用的标准。UNIX和Linux一直都使用TCP/IP，Windows网络操作系统也以TCP/IP作为默认的协议。</p>
+</li>
+</ul>
+<h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><ul>
+<li>链路层</li>
+<li>网络层</li>
+<li>传输层</li>
+<li>应用层</li>
+</ul>
+<p><img src=".\snipaste_level.png" alt="snipaste_level"></p>
+<ol>
+<li>第一层：网络接口层：TCP/IP协议的最低一层，对实际的网络媒体的管理，包括操作系统中的设备驱动程序和计算机对应的网络接口</li>
+<li>第二层：网络层：该层负责相同或不同网络中计算机之间的通信主要处理数据包和路由。数据包是网络传输的最小数据单位。通过某条传输路线将数据包传给对方。IP协议,ICMP协议，IGMP协议。在IP层中，ARP协议用于将IP地址转换成物理地址，ICMP协议用于报告差错和传送控制信息。IP协议在TCP/IP协议组中处于核心地位。</li>
+<li>第三层：传输层：提供TCP(传输控制协议)，UDP（用户数据报协议）两个协议，主要功能是数据格式化、数据确认和丢失重传等。</li>
+<li>第四层：应用层：TCP/IP协议的<strong>应用层</strong>相当于OSI模型的<strong>会话层、表示层和应用层</strong>，FTP(文件传输协议)，DNS（域名系统），HTTP协议，Telnet（网络远程访问协议）</li>
+</ol>
+<h1 id="主讲第三层的TCP传输控制协议"><a href="#主讲第三层的TCP传输控制协议" class="headerlink" title="主讲第三层的TCP传输控制协议"></a>主讲第三层的TCP传输控制协议</h1><p><code>简述</code></p>
+<p>TCP将包排序并进行错误检查，同时实现<a href="https://baike.baidu.com/item/%E8%99%9A%E7%94%B5%E8%B7%AF/1609903" target="_blank" rel="noopener">虚电路</a>间的连接。TCP数据包中包括序号和确认，所以未按照顺序收到的包可以被排序，而损坏的包可以被重传。</p>
+<p>TCP是面向连接的，无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。在TCP/IP协议中，TCP协议提供可靠的连接服务，连接是通过三次握手进行初始化的。三次握手的目的是同步连接双方的序列号和确认号并交换 TCP窗口大小信息。</p>
+<p><code>tcp包结构</code></p>
+<p><img src=".\snipaste_tcpdata.png" alt="snipaste_tcpdata"></p>
+<p>阮一峰老师的博客：以太网数据包（packet）的大小是固定的，最初是1518字节，后来增加到1522字节。其中， 1500 字节是负载（payload），22字节是头信息（head）</p>
+<p>我的理解：在链路层，由以太网的物理特性决定了数据帧的长度为(46＋18)－(1500＋18)，其中的18是数据帧的头和尾，也就是说数据帧的内容最大为1500(不包括帧头和帧尾)，即MTU(Maximum Transmission Unit)为1500</p>
+<p><img src=".\snipaste_MTUSize.png" alt="snipaste_MTUSize"></p>
+<p>所以TCP包的大小：MTU字节大小1500-IP头部信息20-TCP头长度20-TCP timestrap option12 = 1448Byte</p>
+<p><img src=".\snipaste_TCPDataPage.png" alt="snipaste_TCPDataPage"></p>
+<p>根据上面这张图，可得知：IP数据包在以太网数据包里面,TCP数据包在IP数据包里面</p>
+<h3 id="tcp的序号seq"><a href="#tcp的序号seq" class="headerlink" title="tcp的序号seq"></a>tcp的序号seq</h3><p>TCP会话的每一端都包含一个32位（bit）的序列号，该序列号被用来跟踪该端发送的数据量。每一个包中都包含序列号，在接收端则通过确认号用来通知发送端数据成功接收</p>
+<p>当某个主机开启一个TCP会话时，他的初始序列号是随机的，可能是0和4,294,967,295(二的32次方-1)之间的任意值———tcp/ip详解协议卷第18章18.2.3解释初始序列号随时间变化，每个连接有不同的初始序列号，每4ms加一</p>
+<hr>
+<p>在 TCP 数据报中，有一个 序列号 (Sequence Number)。如果序列号被人猜出来，就会展现出 TCP 的脆弱性。</p>
+<p>如果选择合适的序列号、IP地址以及端口号，那么任何人都能伪造出一个 TCP 报文段，从而 打断 TCP 的正常连接[RFC5961]。一种抵御上述行为的方法是使初始序列号(或者临时端口 号[RFC6056])变得相对难以被猜出，而另一种方法则是加密。</p>
+<p>Linux 系统采用一个相对复杂的过程来选择它的初始序列号。它采用基于时钟的方案，并且针对每一个连接为时钟设置随机的偏移量。随机偏移量是在连接标识(由 2 个 IP 地址与 2 个端口号构成的 4 元组，即 4 元组)的基础上利用加密散列函数得到的。散列函数的输人每隔 5 分钟就会改变一次。在 32 位的初始序列号中，最高的 8 位是一个保密的序列号，而剩余的备位则由散列函数生成。上述方法所生成的序列号很难被猜出，但依然会随着时间而逐步增加。据报告显示， Windows 系统使用了一种基于 RC4[S94] 的类似方案。</p>
+<h4 id="数据包的分割"><a href="#数据包的分割" class="headerlink" title="数据包的分割"></a>数据包的分割</h4><p>那么一次性发送大量数据，就必须分成多个包。比如，一个 100000字节大小的文件/MSS最大报文长度 = TCP报文段</p>
+<h3 id="tcp的确认号ack"><a href="#tcp的确认号ack" class="headerlink" title="tcp的确认号ack"></a>tcp的确认号ack</h3><ol>
+<li><p>发送数据： 服务器向客户端发送一个带有数据的数据包。该数据包中的序列号和确认号与建立连接的第三步的数据包的序列号和确认号相同</p>
+</li>
+<li><p>确认收到: 客户端收到该数据包，向服务器发送一个确认数据包。该数据包中，序列号是为上一个数据包中的确认号值</p>
+<p>这个确认号为服务器发送的上一个数据包中的序列号+该数据包中所带的数据的大小</p>
+<p>回复确认收到的ack = 收到了序列号 + 数据的大小（同时也表示下一次期望收到的序号）</p>
+</li>
+</ol>
+<ul>
+<li>主机A接收主机b 假设编号为0-535的字节（意味着mss值为535byte）,主机A会在发往主机B的报文段的确认号字段ack上填上536</li>
+<li><p>每一个包都可以得到seq和ack, 接收方就可以根据编号进行排序（按照什么顺序进行还原原始文件）或者丢弃。发送方根据ack判断接收方是否收到了指定包，判断是否需要重传</p>
+<p> ​——————这样就保证了数据通信的完整性和可靠性，防止丢包</p>
+</li>
+</ul>
+<h1 id="tcp头字段"><a href="#tcp头字段" class="headerlink" title="tcp头字段"></a>tcp头字段</h1><table>
+<thead>
+<tr>
+<th>seq</th>
+<th>序号 32位标识数据段在已发送的数据流中的位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ack</td>
+<td>确认号,验证是否已被接收</td>
+</tr>
+<tr>
+<td>SYN</td>
+<td>为1表示这是连接请求或是连接接受请求，用于创建连接和使顺序号同步</td>
+</tr>
+<tr>
+<td>ACK</td>
+<td>为1表示确认号字段有效</td>
+</tr>
+<tr>
+<td>FIN</td>
+<td>为1表示发送方没有数据要传输了，要求释放连接。</td>
+</tr>
+<tr>
+<td>PSH</td>
+<td>指示接收方应该尽快将这个报文段交给应用层而不用等待缓冲区装满</td>
+</tr>
+<tr>
+<td>RST</td>
+<td>为1表示出现严重差错。可能需要重现创建TCP连接。还可以用于拒绝非法的报文段和拒绝连接请求</td>
+</tr>
+</tbody>
+</table>
+<h1 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h1><ol>
+<li>客户端通过向服务器端发送一个SYN来创建一个主动打开，作为三次握手的一部分。客户端把这段连接的序号设定为随机数<strong>A</strong>。</li>
+<li>服务器端应当为一个合法的SYN回送一个SYN/ACK。ACK的确认码应为<strong>A+1</strong>，SYN/ACK包本身又有一个随机产生的序号<strong>B</strong>。</li>
+<li>最后，客户端再发送一个<a href="https://zh.wikipedia.org/wiki/%E7%A2%BA%E8%AA%8D%E8%A8%8A%E6%81%AF" target="_blank" rel="noopener">ACK</a>。此时包的序号被设定为<strong>A+1</strong>，而ACK的确认码则为<strong>B+1</strong>。当服务端收到这个ACK的时候，就完成了三次握手，并进入了连接创建状态。</li>
+<li>这里的+1是根据发送的length来决定的</li>
+</ol>
+<p><img src=".\snipaste_startConnect.png" alt="snipaste_startConnect"></p>
+<h1 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h1><p>服务端发送的seq和ack必须和第三次客户端回传的seq和ack保持一致</p>
+<p>客户端确认收到：seq = 服务端的ack  ack = 服务端的seq+该数据包中所带数据的大小（同时也表示下一次期望收到的序号）</p>
+<p>服务器回应：seq = 客户端回传的ack  ack = 客户端回传的seq+客户端回传的length</p>
+<h1 id="关闭连接"><a href="#关闭连接" class="headerlink" title="关闭连接"></a>关闭连接</h1><p>在这个过程中连接的每一侧都独立地被终止。当一个端点要停止它这一侧的连接，就向对侧发送FIN，对侧回复ACK表示确认。因此，拆掉一侧的连接过程需要一对FIN和ACK，分别由两侧端点发出。所以本质是二次，因为是双工原因，所以有4次挥手</p>
+<p><code>首先发出FIN的一侧，如果给对侧的FIN响应了ACK，那么就会超时等待2*MSL时间，然后关闭连接</code></p>
+<p>注意： 首先发出FIN的一侧，如果给对侧的FIN响应了ACK，那么就会超时等待2*MSL时间，然后关闭连接</p>
+<p><img src=".\snipaste_stopConnect.png" alt="snipaste_stopConnect"></p>
+<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p><img src=".\snipaste_summanry.png" alt="snipaste_summanry"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-深入Vue" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -946,70 +1101,6 @@
           
         <p>下载依赖包<br>style-loader css-loader –save-dev</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">file-loader --save-dev</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">'./src/app.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    publicPath: <span class="string">'./dist/'</span>,</span><br><span class="line">    filename: <span class="string">'[name].bundle.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// loader: 'style-loader'</span></span><br><span class="line">            loader: <span class="string">'style-loader/url'</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// loader: 'css-loader'</span></span><br><span class="line">            loader: <span class="string">'file-loader'</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: []</span><br><span class="line">&#125;</span><br><span class="line">使用file-loader 是往页面中插入link标签， 比较小众的功能</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-webpack代码分割和懒加载" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/03/13/webpack代码分割和懒加载/" class="article-date">
-      <time datetime="2019-03-13T13:57:08.966Z" itemprop="datePublished">2019-03-13</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/webpack代码分割和懒加载/">webpack代码分割和懒加载</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="单页面处理代码分割"><a href="#单页面处理代码分割" class="headerlink" title="单页面处理代码分割"></a>单页面处理代码分割</h1><h2 id="引入第三方依赖"><a href="#引入第三方依赖" class="headerlink" title="引入第三方依赖"></a>引入第三方依赖</h2><p>在页面引入中进行修改</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import * as _ from 'lodash'</span></span><br><span class="line">修改为</span><br><span class="line"><span class="built_in">require</span>.ensure([<span class="string">'lodash'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>)  <span class="comment">// 注意，这里一定要require，上面的require不会真正的引入</span></span><br><span class="line">  _.join([<span class="string">'1'</span>,<span class="string">'2'</span>], <span class="string">'3'</span>)</span><br><span class="line">&#125;, <span class="string">'vendor'</span>) <span class="comment">//这里是指定的chunkName</span></span><br></pre></td></tr></table></figure>
-<h2 id="判断引入模块"><a href="#判断引入模块" class="headerlink" title="判断引入模块"></a>判断引入模块</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">在pageA里面修改代码</span><br><span class="line">page = <span class="string">'subpageA'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (page === <span class="string">'subpageA'</span>) &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'./subPageA'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> subpageA = <span class="built_in">require</span>(<span class="string">'./subPageA'</span>)</span><br><span class="line">  &#125;, <span class="string">'subPageA'</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'./subPageB'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> subpageA = <span class="built_in">require</span>(<span class="string">'./subPageB'</span>)</span><br><span class="line">  &#125;, <span class="string">'subPageB'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// import './subPageA'</span></span><br><span class="line"><span class="comment">// import './subPageB'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 分离页面代码和第三方依赖</span></span><br><span class="line"><span class="built_in">require</span>.ensure([<span class="string">'lodash'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>)</span><br><span class="line">  _.join([<span class="string">'1'</span>,<span class="string">'2'</span>],<span class="string">'3'</span>)</span><br><span class="line">&#125;,<span class="string">'vendor'</span>)</span><br><span class="line"><span class="comment">// import * as _ from 'lodash'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="string">'PageA'</span></span><br></pre></td></tr></table></figure>
-<h2 id="抽离公共代码块modulesA"><a href="#抽离公共代码块modulesA" class="headerlink" title="抽离公共代码块modulesA"></a>抽离公共代码块modulesA</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">因为modulesA代码是同时被subpageA和subpageB页面引入的，在pageA页面中，我们有进行判断是引入subpageA还是subPageB页面，所以我们直接</span><br><span class="line">在pageA里面直接引入moduleA</span><br><span class="line"><span class="built_in">require</span>.include(<span class="string">'./moduleA'</span>)</span><br><span class="line"></span><br><span class="line">这样进行打包的时候，我们在subPageA和subPageB的包里面就没有modelA的代码，而是放在了common里面了</span><br><span class="line">这里需要在webpack.config.js里面进行配置</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: <span class="string">'common'</span>,</span><br><span class="line">      minChunks: <span class="number">2</span>,</span><br><span class="line">      chunks: [<span class="string">'pageA'</span>, <span class="string">'pageB'</span>]</span><br><span class="line">    &#125;),</span><br><span class="line">      </span><br><span class="line"> 如果没有进行配置optimeze插件的话，moduleA里面的代码会被打包到pageA代码里面</span><br></pre></td></tr></table></figure>
-<p>动态import 和 require.ensure不一样的地方：</p>
-<p>import 引入后直接就执行了</p>
-<h2 id="动态import"><a href="#动态import" class="headerlink" title="动态import"></a>动态import</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (page === <span class="string">'subpageA'</span>) &#123;</span><br><span class="line">  <span class="comment">// require.ensure(['./subPageA'], function() &#123;</span></span><br><span class="line">  <span class="comment">//   var subpageA = require('./subPageA')</span></span><br><span class="line">  <span class="comment">// &#125;, 'subPageA')</span></span><br><span class="line">  <span class="keyword">import</span>(<span class="string">'./subPageA'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">subPageA</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(subPageA)</span><br><span class="line">  &#125;)</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">如果不指定chunkName, 会打包成<span class="number">1</span>/<span class="number">2</span>等类型的chunkName</span><br><span class="line">在动态<span class="keyword">import</span>中指定chunkName 需要用到魔法注释</span><br><span class="line"><span class="keyword">import</span>(<span class="comment">/* webpackChunkName: 'subPageA' */</span> <span class="string">'./subPageA'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>这个有什么用？，如果是多entry进行打包的话，是把公共模块的代码打包出来–不用指定哪个模块引用了公共模块了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">  new webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">    async: &apos;async-common&apos;,   指定打包的chunkname	</span><br><span class="line">    children: true,			注意这个属性不可以和chunk等一些属性共用（具体自行百度）</span><br><span class="line">    minChunks:2</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
       
     </div>
