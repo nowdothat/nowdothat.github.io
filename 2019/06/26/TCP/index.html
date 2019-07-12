@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://github.com/nowdothat/vue/2019/06/26/TCP/snipaste_startConnect.png">
 <meta property="og:image" content="https://github.com/nowdothat/vue/2019/06/26/TCP/snipaste_stopConnect.png">
 <meta property="og:image" content="https://github.com/nowdothat/vue/2019/06/26/TCP/snipaste_summanry.png">
-<meta property="og:updated_time" content="2019-06-26T14:51:31.545Z">
+<meta property="og:updated_time" content="2019-07-12T13:42:37.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP&#x2F;IP协议">
 <meta name="twitter:description" content="什么是TCP/IP协议 TCP/IP协议（传输控制协议/互联网协议）不是简单的一个协议，而是一组特别的协议，包括：TCP，IP，UDP，ARP等，这些被称为子协议。在这些协议中，最重要、最著名的就是TCP和IP。因此，大部分网络管理员称整个协议族为“TCP/IP”。  TCP/IP的迅速流行要归功于它的低成本、可在不同的平台间进行通信的能力和它开放的特性。“开放”的意思是软件开发人员可以自由地使用">
@@ -292,7 +292,7 @@
 <li>传输层</li>
 <li>应用层</li>
 </ul>
-<p><img src=".\snipaste_level.png" alt="snipaste_level"></p>
+<p><img src="/nowdothat/vue/2019/06/26/TCP/snipaste_level.png" alt="snipaste_level"></p>
 <ol>
 <li>第一层：网络接口层：TCP/IP协议的最低一层，对实际的网络媒体的管理，包括操作系统中的设备驱动程序和计算机对应的网络接口</li>
 <li>第二层：网络层：该层负责相同或不同网络中计算机之间的通信主要处理数据包和路由。数据包是网络传输的最小数据单位。通过某条传输路线将数据包传给对方。IP协议,ICMP协议，IGMP协议。在IP层中，ARP协议用于将IP地址转换成物理地址，ICMP协议用于报告差错和传送控制信息。IP协议在TCP/IP协议组中处于核心地位。</li>
@@ -303,12 +303,12 @@
 <p>TCP将包排序并进行错误检查，同时实现<a href="https://baike.baidu.com/item/%E8%99%9A%E7%94%B5%E8%B7%AF/1609903" target="_blank" rel="noopener">虚电路</a>间的连接。TCP数据包中包括序号和确认，所以未按照顺序收到的包可以被排序，而损坏的包可以被重传。</p>
 <p>TCP是面向连接的，无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。在TCP/IP协议中，TCP协议提供可靠的连接服务，连接是通过三次握手进行初始化的。三次握手的目的是同步连接双方的序列号和确认号并交换 TCP窗口大小信息。</p>
 <p><code>tcp包结构</code></p>
-<p><img src=".\snipaste_tcpdata.png" alt="snipaste_tcpdata"></p>
+<p><img src="/nowdothat/vue/2019/06/26/TCP/snipaste_tcpdata.png" alt="snipaste_tcpdata"></p>
 <p>阮一峰老师的博客：以太网数据包（packet）的大小是固定的，最初是1518字节，后来增加到1522字节。其中， 1500 字节是负载（payload），22字节是头信息（head）</p>
 <p>我的理解：在链路层，由以太网的物理特性决定了数据帧的长度为(46＋18)－(1500＋18)，其中的18是数据帧的头和尾，也就是说数据帧的内容最大为1500(不包括帧头和帧尾)，即MTU(Maximum Transmission Unit)为1500</p>
-<p><img src=".\snipaste_MTUSize.png" alt="snipaste_MTUSize"></p>
+<p><img src="/nowdothat/vue/2019/06/26/TCP/snipaste_MTUSize.png" alt="snipaste_MTUSize"></p>
 <p>所以TCP包的大小：MTU字节大小1500-IP头部信息20-TCP头长度20-TCP timestrap option12 = 1448Byte</p>
-<p><img src=".\snipaste_TCPDataPage.png" alt="snipaste_TCPDataPage"></p>
+<p><img src="/nowdothat/vue/2019/06/26/TCP/snipaste_TCPDataPage.png" alt="snipaste_TCPDataPage"></p>
 <p>根据上面这张图，可得知：IP数据包在以太网数据包里面,TCP数据包在IP数据包里面</p>
 <h3 id="tcp的序号seq"><a href="#tcp的序号seq" class="headerlink" title="tcp的序号seq"></a>tcp的序号seq</h3><p>TCP会话的每一端都包含一个32位（bit）的序列号，该序列号被用来跟踪该端发送的数据量。每一个包中都包含序列号，在接收端则通过确认号用来通知发送端数据成功接收</p>
 <p>当某个主机开启一个TCP会话时，他的初始序列号是随机的，可能是0和4,294,967,295(二的32次方-1)之间的任意值———tcp/ip详解协议卷第18章18.2.3解释初始序列号随时间变化，每个连接有不同的初始序列号，每4ms加一</p>
@@ -371,15 +371,15 @@
 <li>最后，客户端再发送一个<a href="https://zh.wikipedia.org/wiki/%E7%A2%BA%E8%AA%8D%E8%A8%8A%E6%81%AF" target="_blank" rel="noopener">ACK</a>。此时包的序号被设定为<strong>A+1</strong>，而ACK的确认码则为<strong>B+1</strong>。当服务端收到这个ACK的时候，就完成了三次握手，并进入了连接创建状态。</li>
 <li>这里的+1是根据发送的length来决定的</li>
 </ol>
-<p><img src=".\snipaste_startConnect.png" alt="snipaste_startConnect"></p>
+<p><img src="/nowdothat/vue/2019/06/26/TCP/snipaste_startConnect.png" alt="snipaste_startConnect"></p>
 <h1 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h1><p>服务端发送的seq和ack必须和第三次客户端回传的seq和ack保持一致</p>
 <p>客户端确认收到：seq = 服务端的ack  ack = 服务端的seq+该数据包中所带数据的大小（同时也表示下一次期望收到的序号）</p>
 <p>服务器回应：seq = 客户端回传的ack  ack = 客户端回传的seq+客户端回传的length</p>
 <h1 id="关闭连接"><a href="#关闭连接" class="headerlink" title="关闭连接"></a>关闭连接</h1><p>在这个过程中连接的每一侧都独立地被终止。当一个端点要停止它这一侧的连接，就向对侧发送FIN，对侧回复ACK表示确认。因此，拆掉一侧的连接过程需要一对FIN和ACK，分别由两侧端点发出。所以本质是二次，因为是双工原因，所以有4次挥手</p>
 <p><code>首先发出FIN的一侧，如果给对侧的FIN响应了ACK，那么就会超时等待2*MSL时间，然后关闭连接</code></p>
 <p>注意： 首先发出FIN的一侧，如果给对侧的FIN响应了ACK，那么就会超时等待2*MSL时间，然后关闭连接</p>
-<p><img src=".\snipaste_stopConnect.png" alt="snipaste_stopConnect"></p>
-<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p><img src=".\snipaste_summanry.png" alt="snipaste_summanry"></p>
+<p><img src="/nowdothat/vue/2019/06/26/TCP/snipaste_stopConnect.png" alt="snipaste_stopConnect"></p>
+<h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p><img src="/nowdothat/vue/2019/06/26/TCP/snipaste_summanry.png" alt="snipaste_summanry"></p>
 
       
     </div>
@@ -391,7 +391,7 @@
         <p><span>本文标题:</span><a href="/2019/06/26/TCP/">TCP/IP协议</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
         <p><span>发布时间:</span>2019-06-26, 22:52:14</p>
-        <p><span>最后更新:</span>2019-06-26, 22:51:31</p>
+        <p><span>最后更新:</span>2019-07-12, 21:42:37</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/06/26/TCP/" title="TCP/IP协议">https://github.com/nowdothat/vue/2019/06/26/TCP/</a>
             <span class="copy-path" data-clipboard-text="原文: https://github.com/nowdothat/vue/2019/06/26/TCP/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
