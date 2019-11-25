@@ -242,6 +242,88 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-git实用技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/25/git实用技巧/" class="article-date">
+      <time datetime="2019-11-25T12:43:14.832Z" itemprop="datePublished">2019-11-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/25/git实用技巧/">git 实用技巧</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="什么是-Git"><a href="#什么是-Git" class="headerlink" title="什么是 Git"></a>什么是 Git</h1><p>git 是一个分布式版本控制系统,维护的就是一个commitID树，分别保存着不同状态下的代码。 所以你对代码的任何修改，最终都会保存在本地的 .git 文件夹下</p>
+<h2 id="新增分支"><a href="#新增分支" class="headerlink" title="新增分支"></a>新增分支</h2><p>git checkout -b newBranch<br>git push origin newBranch</p>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><p>// 删除本地分支，如果本地还有未合并的代码，则不能删除<br>git branch -d oldBranch<br>// 强制删除本地分支<br>git branch -D oldBranch<br>// 删除远程分支<br>git push origin -d oldBranch</p>
+<h2 id="修改未-push-的-commit-信息"><a href="#修改未-push-的-commit-信息" class="headerlink" title="修改未 push 的 commit 信息"></a>修改未 push 的 commit 信息</h2><p><code>git commit --amend</code> 可以对上一次的提交做修改</p>
+<h2 id="添加某一文件全部内容"><a href="#添加某一文件全部内容" class="headerlink" title="添加某一文件全部内容"></a>添加某一文件全部内容</h2><p><code>git add header-footer/xx/pc</code><br><code>git add file/xx</code></p>
+<h2 id="取消删除跟踪文件"><a href="#取消删除跟踪文件" class="headerlink" title="取消删除跟踪文件"></a>取消删除跟踪文件</h2><p><code>git checkout .</code> &amp;&amp; <code>git clean -xdf</code>    ： 请勿随便使用  git clean -xdf</p>
+<h2 id="取消删除最后一个提交-更改"><a href="#取消删除最后一个提交-更改" class="headerlink" title="取消删除最后一个提交/更改"></a>取消删除最后一个提交/更改</h2><p><code>git reset HEAD~1</code>   : 此命令将恢复/删除最后一个提交/更改，然后可以再次 pull 再推送,可用其来解决冲突（保存文件，执行命令，git pull ， 放置文件）</p>
+<h2 id="回滚记录"><a href="#回滚记录" class="headerlink" title="回滚记录"></a>回滚记录</h2><p>// 会将提交记录回滚，代码不回滚，用来合并 commit<br>git reset abc123</p>
+<p>// 会将提交记录和代码全部回滚<br>git reset –hard abc123</p>
+<p>// 将部分代码文件回滚<br>git checkout – files</p>
+<h2 id="stash-储藏"><a href="#stash-储藏" class="headerlink" title="stash 储藏"></a>stash 储藏</h2><p>stash 储藏，只能保存修改，不能储藏新建文件</p>
+<p>使用方法: </p>
+<p>git stash save ‘some ‘      保存信息—可进行切换分支<br>git stash list        查看所有列表<br>git stash apply       不会删除进行恢复<br>git stash pop          恢复删除<br>git stash clear         全部删除</p>
+<h2 id="合并-commit"><a href="#合并-commit" class="headerlink" title="合并 commit"></a>合并 commit</h2><h3 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h3><ol>
+<li>git rebase -i commitId (这个 commitid 是跟随之后的id, 也就是 合并的分支的前一个分支–  分支 123 ，那么久是git log 的 第三个 commitid)</li>
+<li>然后修改下方的 id pick 为 squash</li>
+<li>删除老的commit 信息， 输入新的 commit 信息</li>
+<li>:wq  over</li>
+</ol>
+<h3 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h3><p>使用 git log 找到起始 commitID<br>git reset commitID，切记不要用 –hard 参数<br>重新 git add &amp;&amp; git commit<br>git push -f origin branchName，因为会有冲突，所以需要强制覆盖远端分支，请务必谨慎。<br>合并到 master 中，然后更新远端 master。</p>
+<h2 id="reflog-找回丢失的提交"><a href="#reflog-找回丢失的提交" class="headerlink" title="reflog 找回丢失的提交"></a>reflog 找回丢失的提交</h2><p>变基时干掉过的某次提交，你只要在本地工作副本中提交过，那么，提交就会被添加到引用日志 <code>reflog</code> 中，你依然可以通过 <code>git reflog</code> 显示当前分支的所有活动的列表<br>运行：</p>
+<ol>
+<li>git reflog</li>
+<li>git checkout <code>想回到的地方</code></li>
+<li>复制信息</li>
+<li>git checkout HEAD</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-observerDesign" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1057,66 +1139,6 @@
 <h2 id="display"><a href="#display" class="headerlink" title="display"></a>display</h2><p>只有 文字才 能组成段落  因此 p  里面不能放块级元素，同理还有这些标签h1,h2,h3,h4,h5,h6,dt，他们都是文字类块级标签，里面不能放其他块级元素。</p>
 <p>inline-block</p>
 <p>​    在行内元素中有几个特殊的标签——<img>、<input>、<td>，可以对它们设置宽高和对齐属性，有些资料可能会称                  它们为行内块元素。</td></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-webpack打包公共代码" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/03/13/webpack打包公共代码/" class="article-date">
-      <time datetime="2019-03-13T13:57:09.013Z" itemprop="datePublished">2019-03-13</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/webpack打包公共代码/">webpack打包公共代码</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="注意，本文档基于webpack-3-1-0"><a href="#注意，本文档基于webpack-3-1-0" class="headerlink" title="注意，本文档基于webpack@3.1.0"></a>注意，本文档基于<a href="mailto:webpack@3.1.0" target="_blank" rel="noopener">webpack@3.1.0</a></h1><p>webpack不会对单页面进行公共代码的打包，所以需要多entry</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    <span class="string">'pageA'</span>: <span class="string">'./src/pageA'</span>,</span><br><span class="line">    <span class="string">'pageB'</span>: <span class="string">'./src/pageB'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">    filename: <span class="string">'[name].bundle.js'</span>,</span><br><span class="line">    chunkFilename: <span class="string">'[name].chunk.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: <span class="string">'common'</span>,</span><br><span class="line">      minChunks: <span class="number">2</span>   出现次数判断是否打包到common.js里面</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>页面分析：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">pageA.js</span><br><span class="line">import &apos;./subPageA&apos;</span><br><span class="line">import &apos;./subPageB&apos;</span><br><span class="line">export default &apos;PageA&apos;</span><br><span class="line"></span><br><span class="line">pageB.js</span><br><span class="line">import &apos;./subPageA&apos;</span><br><span class="line">import &apos;./subPageB&apos;</span><br><span class="line">export default &apos;PageB&apos;</span><br><span class="line"></span><br><span class="line">subpageA.js</span><br><span class="line">import * as modulesA from &apos;./moduleA&apos;</span><br><span class="line">export default function Fun() &#123;</span><br><span class="line">  console.log(&apos;subpageA&apos;)</span><br><span class="line">  modulesA(&apos;subpageA的输出&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">subpageB.js</span><br><span class="line">import * as modulesA from &apos;./moduleA&apos;</span><br><span class="line">export default function FunB() &#123;</span><br><span class="line">  console.log(&apos;subpageB&apos;)</span><br><span class="line">  modulesA(&apos;subpageB的输出&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">modulesA.js</span><br><span class="line">export default function modules(data) &#123;</span><br><span class="line">  console.log(data)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">通过查看打包后的pageA/B包的大小判定是否打包成功，打包成功后的pageA/B里面没有subpageA/B/modulesA的代码在里面</span><br></pre></td></tr></table></figure>
-<h1 id="打包第三方和公共方法"><a href="#打包第三方和公共方法" class="headerlink" title="打包第三方和公共方法"></a>打包第三方和公共方法</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    <span class="string">'pageA'</span>: <span class="string">'./src/pageA'</span>,</span><br><span class="line">    <span class="string">'pageB'</span>: <span class="string">'./src/pageB'</span>,</span><br><span class="line">    <span class="string">'vendor'</span>: [<span class="string">'lodash'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">    filename: <span class="string">'[name].bundle.js'</span>,</span><br><span class="line">    chunkFilename: <span class="string">'[name].chunk.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: <span class="string">'common'</span>,</span><br><span class="line">      minChunks: <span class="number">2</span>,</span><br><span class="line">      chunks: [<span class="string">'pageA'</span>, <span class="string">'pageB'</span>] <span class="comment">//这里需要自己写入口文件，因为判定了entry入口,否则报错</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: [<span class="string">'vendor'</span>,<span class="string">'manifest'</span>], <span class="comment">//第三方的包，和webpack自己生成的文件</span></span><br><span class="line">      minChunks: <span class="literal">Infinity</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

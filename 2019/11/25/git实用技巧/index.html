@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="下载依赖包style-loader css-loader –save-dev 12345678910111213141516171819202122232425262728293031file-loader --save-devvar path = require(&apos;path&apos;)module.exports = &amp;#123;  entry: &amp;#123;    app: &apos;./src/app.js">
+<meta name="description" content="什么是 Gitgit 是一个分布式版本控制系统,维护的就是一个commitID树，分别保存着不同状态下的代码。 所以你对代码的任何修改，最终都会保存在本地的 .git 文件夹下 新增分支git checkout -b newBranchgit push origin newBranch 删除分支// 删除本地分支，如果本地还有未合并的代码，则不能删除git branch -d oldBranch/">
 <meta name="keywords" content="vue react 前端个人总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack处理css">
-<meta property="og:url" content="https://github.com/nowdothat/vue/2019/03/13/webpack处理css/index.html">
+<meta property="og:title" content="git 实用技巧">
+<meta property="og:url" content="https://github.com/nowdothat/vue/2019/11/25/git实用技巧/index.html">
 <meta property="og:site_name" content="Welcome back">
-<meta property="og:description" content="下载依赖包style-loader css-loader –save-dev 12345678910111213141516171819202122232425262728293031file-loader --save-devvar path = require(&apos;path&apos;)module.exports = &amp;#123;  entry: &amp;#123;    app: &apos;./src/app.js">
+<meta property="og:description" content="什么是 Gitgit 是一个分布式版本控制系统,维护的就是一个commitID树，分别保存着不同状态下的代码。 所以你对代码的任何修改，最终都会保存在本地的 .git 文件夹下 新增分支git checkout -b newBranchgit push origin newBranch 删除分支// 删除本地分支，如果本地还有未合并的代码，则不能删除git branch -d oldBranch/">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-13T14:05:56.999Z">
+<meta property="og:updated_time" content="2019-11-25T13:17:02.757Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack处理css">
-<meta name="twitter:description" content="下载依赖包style-loader css-loader –save-dev 12345678910111213141516171819202122232425262728293031file-loader --save-devvar path = require(&apos;path&apos;)module.exports = &amp;#123;  entry: &amp;#123;    app: &apos;./src/app.js">
+<meta name="twitter:title" content="git 实用技巧">
+<meta name="twitter:description" content="什么是 Gitgit 是一个分布式版本控制系统,维护的就是一个commitID树，分别保存着不同状态下的代码。 所以你对代码的任何修改，最终都会保存在本地的 .git 文件夹下 新增分支git checkout -b newBranchgit push origin newBranch 删除分支// 删除本地分支，如果本地还有未合并的代码，则不能删除git branch -d oldBranch/">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>webpack处理css | Welcome back</title>
+<title>git 实用技巧 | Welcome back</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -236,11 +236,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-webpack处理css" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-git实用技巧" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/03/13/webpack处理css/" class="article-date">
-      <time datetime="2019-03-13T13:57:08.997Z" itemprop="datePublished">2019-03-13</time>
+      <a href="/2019/11/25/git实用技巧/" class="article-date">
+      <time datetime="2019-11-25T12:43:14.832Z" itemprop="datePublished">2019-11-25</time>
 </a>
 
 
@@ -255,7 +255,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      webpack处理css
+      git 实用技巧
     </h1>
   
 
@@ -272,8 +272,33 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>下载依赖包<br>style-loader css-loader –save-dev</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">file-loader --save-dev</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">'./src/app.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    publicPath: <span class="string">'./dist/'</span>,</span><br><span class="line">    filename: <span class="string">'[name].bundle.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// loader: 'style-loader'</span></span><br><span class="line">            loader: <span class="string">'style-loader/url'</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// loader: 'css-loader'</span></span><br><span class="line">            loader: <span class="string">'file-loader'</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: []</span><br><span class="line">&#125;</span><br><span class="line">使用file-loader 是往页面中插入link标签， 比较小众的功能</span><br></pre></td></tr></table></figure>
+        <h1 id="什么是-Git"><a href="#什么是-Git" class="headerlink" title="什么是 Git"></a>什么是 Git</h1><p>git 是一个分布式版本控制系统,维护的就是一个commitID树，分别保存着不同状态下的代码。 所以你对代码的任何修改，最终都会保存在本地的 .git 文件夹下</p>
+<h2 id="新增分支"><a href="#新增分支" class="headerlink" title="新增分支"></a>新增分支</h2><p>git checkout -b newBranch<br>git push origin newBranch</p>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><p>// 删除本地分支，如果本地还有未合并的代码，则不能删除<br>git branch -d oldBranch<br>// 强制删除本地分支<br>git branch -D oldBranch<br>// 删除远程分支<br>git push origin -d oldBranch</p>
+<h2 id="修改未-push-的-commit-信息"><a href="#修改未-push-的-commit-信息" class="headerlink" title="修改未 push 的 commit 信息"></a>修改未 push 的 commit 信息</h2><p><code>git commit --amend</code> 可以对上一次的提交做修改</p>
+<h2 id="添加某一文件全部内容"><a href="#添加某一文件全部内容" class="headerlink" title="添加某一文件全部内容"></a>添加某一文件全部内容</h2><p><code>git add header-footer/xx/pc</code><br><code>git add file/xx</code></p>
+<h2 id="取消删除跟踪文件"><a href="#取消删除跟踪文件" class="headerlink" title="取消删除跟踪文件"></a>取消删除跟踪文件</h2><p><code>git checkout .</code> &amp;&amp; <code>git clean -xdf</code>    ： 请勿随便使用  git clean -xdf</p>
+<h2 id="取消删除最后一个提交-更改"><a href="#取消删除最后一个提交-更改" class="headerlink" title="取消删除最后一个提交/更改"></a>取消删除最后一个提交/更改</h2><p><code>git reset HEAD~1</code>   : 此命令将恢复/删除最后一个提交/更改，然后可以再次 pull 再推送,可用其来解决冲突（保存文件，执行命令，git pull ， 放置文件）</p>
+<h2 id="回滚记录"><a href="#回滚记录" class="headerlink" title="回滚记录"></a>回滚记录</h2><p>// 会将提交记录回滚，代码不回滚，用来合并 commit<br>git reset abc123</p>
+<p>// 会将提交记录和代码全部回滚<br>git reset –hard abc123</p>
+<p>// 将部分代码文件回滚<br>git checkout – files</p>
+<h2 id="stash-储藏"><a href="#stash-储藏" class="headerlink" title="stash 储藏"></a>stash 储藏</h2><p>stash 储藏，只能保存修改，不能储藏新建文件</p>
+<p>使用方法: </p>
+<p>git stash save ‘some ‘      保存信息—可进行切换分支<br>git stash list        查看所有列表<br>git stash apply       不会删除进行恢复<br>git stash pop          恢复删除<br>git stash clear         全部删除</p>
+<h2 id="合并-commit"><a href="#合并-commit" class="headerlink" title="合并 commit"></a>合并 commit</h2><h3 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h3><ol>
+<li>git rebase -i commitId (这个 commitid 是跟随之后的id, 也就是 合并的分支的前一个分支–  分支 123 ，那么久是git log 的 第三个 commitid)</li>
+<li>然后修改下方的 id pick 为 squash</li>
+<li>删除老的commit 信息， 输入新的 commit 信息</li>
+<li>:wq  over</li>
+</ol>
+<h3 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h3><p>使用 git log 找到起始 commitID<br>git reset commitID，切记不要用 –hard 参数<br>重新 git add &amp;&amp; git commit<br>git push -f origin branchName，因为会有冲突，所以需要强制覆盖远端分支，请务必谨慎。<br>合并到 master 中，然后更新远端 master。</p>
+<h2 id="reflog-找回丢失的提交"><a href="#reflog-找回丢失的提交" class="headerlink" title="reflog 找回丢失的提交"></a>reflog 找回丢失的提交</h2><p>变基时干掉过的某次提交，你只要在本地工作副本中提交过，那么，提交就会被添加到引用日志 <code>reflog</code> 中，你依然可以通过 <code>git reflog</code> 显示当前分支的所有活动的列表<br>运行：</p>
+<ol>
+<li>git reflog</li>
+<li>git checkout <code>想回到的地方</code></li>
+<li>复制信息</li>
+<li>git checkout HEAD</li>
+</ol>
 
       
     </div>
@@ -282,13 +307,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/03/13/webpack处理css/">webpack处理css</a></p>
+        <p><span>本文标题:</span><a href="/2019/11/25/git实用技巧/">git 实用技巧</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
-        <p><span>发布时间:</span>2019-03-13, 21:57:08</p>
-        <p><span>最后更新:</span>2019-03-13, 22:05:56</p>
+        <p><span>发布时间:</span>2019-11-25, 20:43:14</p>
+        <p><span>最后更新:</span>2019-11-25, 21:17:02</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/03/13/webpack处理css/" title="webpack处理css">https://github.com/nowdothat/vue/2019/03/13/webpack处理css/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://github.com/nowdothat/vue/2019/03/13/webpack处理css/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/11/25/git实用技巧/" title="git 实用技巧">https://github.com/nowdothat/vue/2019/11/25/git实用技巧/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/nowdothat/vue/2019/11/25/git实用技巧/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -300,16 +325,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/03/13/webpack打包公共代码/">
-                    webpack打包公共代码
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/03/13/webpack代码分割和懒加载/">
-                    webpack代码分割和懒加载
+                <a href="/2019/07/27/observerDesign/">
+                    js-Observer pattern
                 </a>
             </div>
         
@@ -321,7 +340,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是-Git"><span class="toc-number">1.</span> <span class="toc-text">什么是 Git</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#新增分支"><span class="toc-number">1.1.</span> <span class="toc-text">新增分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除分支"><span class="toc-number">1.2.</span> <span class="toc-text">删除分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改未-push-的-commit-信息"><span class="toc-number">1.3.</span> <span class="toc-text">修改未 push 的 commit 信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加某一文件全部内容"><span class="toc-number">1.4.</span> <span class="toc-text">添加某一文件全部内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取消删除跟踪文件"><span class="toc-number">1.5.</span> <span class="toc-text">取消删除跟踪文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取消删除最后一个提交-更改"><span class="toc-number">1.6.</span> <span class="toc-text">取消删除最后一个提交/更改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回滚记录"><span class="toc-number">1.7.</span> <span class="toc-text">回滚记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stash-储藏"><span class="toc-number">1.8.</span> <span class="toc-text">stash 储藏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#合并-commit"><span class="toc-number">1.9.</span> <span class="toc-text">合并 commit</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rebase"><span class="toc-number">1.9.1.</span> <span class="toc-text">rebase</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reset"><span class="toc-number">1.9.2.</span> <span class="toc-text">reset</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reflog-找回丢失的提交"><span class="toc-number">1.10.</span> <span class="toc-text">reflog 找回丢失的提交</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -357,7 +376,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"webpack处理css　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"git 实用技巧　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -373,7 +392,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2019/03/13/webpack处理css/" data-title="webpack处理css" data-url="https://github.com/nowdothat/vue/2019/03/13/webpack处理css/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2019/11/25/git实用技巧/" data-title="git 实用技巧" data-url="https://github.com/nowdothat/vue/2019/11/25/git实用技巧/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -396,15 +415,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/03/13/webpack打包公共代码/" title="上一篇: webpack打包公共代码">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/03/13/webpack代码分割和懒加载/" title="下一篇: webpack代码分割和懒加载">
+            <a href="/2019/07/27/observerDesign/" title="下一篇: js-Observer pattern">
                 <i class="fa fa-angle-right"></i>
             </a>
         

@@ -242,6 +242,66 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-webpack打包公共代码" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/03/13/webpack打包公共代码/" class="article-date">
+      <time datetime="2019-03-13T13:57:09.013Z" itemprop="datePublished">2019-03-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/13/webpack打包公共代码/">webpack打包公共代码</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="注意，本文档基于webpack-3-1-0"><a href="#注意，本文档基于webpack-3-1-0" class="headerlink" title="注意，本文档基于webpack@3.1.0"></a>注意，本文档基于<a href="mailto:webpack@3.1.0" target="_blank" rel="noopener">webpack@3.1.0</a></h1><p>webpack不会对单页面进行公共代码的打包，所以需要多entry</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    <span class="string">'pageA'</span>: <span class="string">'./src/pageA'</span>,</span><br><span class="line">    <span class="string">'pageB'</span>: <span class="string">'./src/pageB'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">    filename: <span class="string">'[name].bundle.js'</span>,</span><br><span class="line">    chunkFilename: <span class="string">'[name].chunk.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: <span class="string">'common'</span>,</span><br><span class="line">      minChunks: <span class="number">2</span>   出现次数判断是否打包到common.js里面</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>页面分析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">pageA.js</span><br><span class="line">import &apos;./subPageA&apos;</span><br><span class="line">import &apos;./subPageB&apos;</span><br><span class="line">export default &apos;PageA&apos;</span><br><span class="line"></span><br><span class="line">pageB.js</span><br><span class="line">import &apos;./subPageA&apos;</span><br><span class="line">import &apos;./subPageB&apos;</span><br><span class="line">export default &apos;PageB&apos;</span><br><span class="line"></span><br><span class="line">subpageA.js</span><br><span class="line">import * as modulesA from &apos;./moduleA&apos;</span><br><span class="line">export default function Fun() &#123;</span><br><span class="line">  console.log(&apos;subpageA&apos;)</span><br><span class="line">  modulesA(&apos;subpageA的输出&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">subpageB.js</span><br><span class="line">import * as modulesA from &apos;./moduleA&apos;</span><br><span class="line">export default function FunB() &#123;</span><br><span class="line">  console.log(&apos;subpageB&apos;)</span><br><span class="line">  modulesA(&apos;subpageB的输出&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">modulesA.js</span><br><span class="line">export default function modules(data) &#123;</span><br><span class="line">  console.log(data)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">通过查看打包后的pageA/B包的大小判定是否打包成功，打包成功后的pageA/B里面没有subpageA/B/modulesA的代码在里面</span><br></pre></td></tr></table></figure>
+<h1 id="打包第三方和公共方法"><a href="#打包第三方和公共方法" class="headerlink" title="打包第三方和公共方法"></a>打包第三方和公共方法</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    <span class="string">'pageA'</span>: <span class="string">'./src/pageA'</span>,</span><br><span class="line">    <span class="string">'pageB'</span>: <span class="string">'./src/pageB'</span>,</span><br><span class="line">    <span class="string">'vendor'</span>: [<span class="string">'lodash'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</span><br><span class="line">    filename: <span class="string">'[name].bundle.js'</span>,</span><br><span class="line">    chunkFilename: <span class="string">'[name].chunk.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: <span class="string">'common'</span>,</span><br><span class="line">      minChunks: <span class="number">2</span>,</span><br><span class="line">      chunks: [<span class="string">'pageA'</span>, <span class="string">'pageB'</span>] <span class="comment">//这里需要自己写入口文件，因为判定了entry入口,否则报错</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: [<span class="string">'vendor'</span>,<span class="string">'manifest'</span>], <span class="comment">//第三方的包，和webpack自己生成的文件</span></span><br><span class="line">      minChunks: <span class="literal">Infinity</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-webpack处理css" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -896,73 +956,6 @@ clipboard.on(&apos;error&apos;, function (e) {
 <h1 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line">引入自定义的处理函数</span><br><span class="line"><span class="keyword">var</span> handler = <span class="built_in">require</span>(<span class="string">"./handler-express"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过Router函数创建路由模块对象</span></span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"><span class="comment">// 设置-配置路由-告知router什么时候执行哪个函数</span></span><br><span class="line">router.get(<span class="string">'/data'</span>,handler.getDataInfo)</span><br><span class="line">      .get(<span class="string">'/'</span>,handler.getIndex)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 暴露路由</span></span><br><span class="line"><span class="built_in">module</span>.exports = router</span><br></pre></td></tr></table></figure>
 <h1 id="路由配置处理"><a href="#路由配置处理" class="headerlink" title="路由配置处理"></a>路由配置处理</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">引入数据库处理对象</span><br><span class="line"><span class="keyword">var</span> mymodule = <span class="built_in">require</span>(<span class="string">'./mymodule.-express.js'</span>)</span><br><span class="line">暴露写法</span><br><span class="line">exports.getDataInfo=<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">  mymodule.getInfo(<span class="function">(<span class="params">err,data</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.end(err)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// 一定要注意,我们的数据操作模块中的返回的数据是数组，而不是对象</span></span><br><span class="line">            res.end(<span class="built_in">JSON</span>.stringify(data))</span><br><span class="line">            <span class="comment">// res.end(JSON.parse(data.toString()))</span></span><br><span class="line">            <span class="comment">// console.log(data);</span></span><br><span class="line">        &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.getIndex=<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">     mymodule.getIndex(<span class="function">(<span class="params">err,data</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.end(<span class="string">'err'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// 一定要注意,我们的数据操作模块中的返回的数据是数组，而不是对象</span></span><br><span class="line">            <span class="comment">// res.render(__dirname+"/views/index.html",data)</span></span><br><span class="line">            res.end(data)</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="数据库处理"><a href="#数据库处理" class="headerlink" title="数据库处理"></a>数据库处理</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">引入下载包</span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line">引入读取模块</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">配置数据库</span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</span><br><span class="line">  host:<span class="string">'127.0.0.1'</span>,</span><br><span class="line">  user:<span class="string">'root'</span>, 连接sql名称</span><br><span class="line">  password:<span class="string">'123456'</span>, </span><br><span class="line">  database:<span class="string">'sanguo'</span> 数据库名称</span><br><span class="line">&#125;)</span><br><span class="line">连接数据库</span><br><span class="line">connection.connect()</span><br><span class="line"></span><br><span class="line">暴露读取写法</span><br><span class="line"><span class="built_in">module</span>.exports.getInfo=<span class="function">(<span class="params">callback</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="comment">// var sql = 'select * from index'</span></span><br><span class="line">  <span class="keyword">var</span> sql = <span class="string">'select name from zhuye'</span>   选择zhuye这个设计表</span><br><span class="line">   <span class="comment">// 执行Sql命令，并接收返回值</span></span><br><span class="line">    connection.query(sql,(err,result,fields) =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result);</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            callback(err)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        </span><br><span class="line">            callback(<span class="literal">null</span>,result)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">这里<span class="built_in">module</span>.exports  和exports是一样的</span><br><span class="line"><span class="built_in">module</span>.exports.getIndex=<span class="function">(<span class="params">callback</span>)=&gt;</span>&#123;</span><br><span class="line">  fs.readFile(__dirname+<span class="string">'/views/index.html'</span>,(err,data)=&gt;&#123;</span><br><span class="line">  <span class="comment">/*   console.log(err);</span></span><br><span class="line"><span class="comment">    console.log('----------');</span></span><br><span class="line"><span class="comment">    console.log(data); */</span></span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">      callback(err)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      callback(<span class="literal">null</span>,data.toString())</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-杂篇" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/11/杂篇/" class="article-date">
-      <time datetime="2018-10-11T12:37:02.896Z" itemprop="datePublished">2018-10-11</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/11/杂篇/">莫道征途路漫漫</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="扩展思维方式"><a href="#扩展思维方式" class="headerlink" title="扩展思维方式"></a>扩展思维方式</h2><p>小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了</p>
-<p>从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知</p>
-<h2 id="小程序无法使用本地图片作为背景图"><a href="#小程序无法使用本地图片作为背景图" class="headerlink" title="小程序无法使用本地图片作为背景图"></a>小程序无法使用本地图片作为背景图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">报错信息为：VM6971:2 pages/cashier/cashier.wxss 中的本地资源图片无法通过 WXSS 获取，可以使用网络图片，或者 base64，或者使用&lt;image/&gt;标签。请参考文档：    </span><br><span class="line"></span><br><span class="line">我的解决方案是使用image读取本地图片，然后利用层级覆盖实现背景效果 ， 因为我们所看到的平面，本质上是一个3D立体</span><br></pre></td></tr></table></figure>
-<p>##小程序的checkbox样式问题<br>既然无法修改，就直接抛弃。自己写一个样式，点击更换，用data进行保存判断实现点击效果</p>
-<p>##git命令的实现<br>要想使用git命令，必须去git官网下载安装包，然后填写用户名进行操作<br>website:<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></p>
-<p>另一种方法 下载github desktop进行页面级操作</p>
-<h3 id="数据无法更新到wxml的情况"><a href="#数据无法更新到wxml的情况" class="headerlink" title="数据无法更新到wxml的情况"></a>数据无法更新到wxml的情况</h3><p>使用  this.setData({</p>
-<p>​      selectPic:wx.getStorageSync(“loginSel”)</p>
-<p>​    })</p>
-<p>异步数据无法快速同步到页面上，使用this.setData({})进行解决</p>
-<p>还有一个是this.$apply()  是异步函数强制更新数据</p>
-<p>#愿效滴水永不弃</p>
-
       
     </div>
     
