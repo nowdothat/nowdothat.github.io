@@ -242,6 +242,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-css小知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/23/css小知识/" class="article-date">
+      <time datetime="2019-05-23T11:34:10.956Z" itemprop="datePublished">2019-05-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/23/css小知识/">css小知识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><p>1.长名称或词组可以使用中横线来为选择器命名。<br>2.不建议使用“_”下划线来命名CSS选择器。</p>
+<p>​            输入的时候少按一个shift键;<br>　        浏览器兼容问题 (比如使用<em>tips的选择器命名，在IE6是无效的)<br>　        能良好区分JavaScript变量命名(JS变量命名是用“</em>”)</p>
+<h2 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h2><p>​    高、宽无效，但水平方向的padding和margin可以设置，垂直方向的无效。</p>
+<p>​    行内元素只能容纳文本或则其他行内元素。（a特殊）</p>
+<h2 id="display"><a href="#display" class="headerlink" title="display"></a>display</h2><p>只有 文字才 能组成段落  因此 p  里面不能放块级元素，同理还有这些标签h1,h2,h3,h4,h5,h6,dt，他们都是文字类块级标签，里面不能放其他块级元素。</p>
+<p>inline-block</p>
+<p>​    在行内元素中有几个特殊的标签——<img>、<input>、<td>，可以对它们设置宽高和对齐属性，有些资料可能会称                  它们为行内块元素。</td></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-webpack打包公共代码" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -898,64 +960,6 @@ clipboard.on(&apos;error&apos;, function (e) {
 </li>
 </ol>
 <h1 id="子组件的内容"><a href="#子组件的内容" class="headerlink" title="子组件的内容"></a>子组件的内容</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">   &lt;!-- 添加dialog --&gt;</span><br><span class="line">      &lt;el-dialog title=<span class="string">"添加用户"</span> :visible.sync=<span class="string">"addFormVisible"</span>&gt;</span><br><span class="line">      &lt;el-form :model=<span class="string">"addform"</span> ref=<span class="string">"addform"</span> :rules=<span class="string">"rules"</span> label-width=<span class="string">"100px"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"demo-ruleForm"</span>&gt;</span><br><span class="line">        &lt;el-form-item label=<span class="string">"用户名"</span> prop=<span class="string">"username"</span>&gt;</span><br><span class="line">          &lt;el-input v-model=<span class="string">"addform.username"</span>&gt;&lt;/el-input&gt;</span><br><span class="line">        &lt;/el-form-item&gt;</span><br><span class="line">        &lt;el-form-item label="密码" prop="password"&gt;</span><br><span class="line">          &lt;el-input v-model="addform.password"&gt;&lt;/el-input&gt;</span><br><span class="line">        &lt;/el-form-item&gt;</span><br><span class="line">        &lt;el-form-item label="邮箱" prop="email"&gt;</span><br><span class="line">          &lt;el-input v-model="addform.email"&gt;&lt;/el-input&gt;</span><br><span class="line">        &lt;/el-form-item&gt;</span><br><span class="line">         &lt;el-form-item label="电话" prop="mobile"&gt;</span><br><span class="line">          &lt;el-input v-model="addform.mobile"&gt;&lt;/el-input&gt;</span><br><span class="line">        &lt;/el-form-item&gt;</span><br><span class="line">      &lt;/el-form&gt;</span><br><span class="line">      &lt;div slot="footer" class="dialog-footer"&gt;</span><br><span class="line">        &lt;el-button @click='closeSon'&gt;关闭&lt;/el-button&gt;</span><br><span class="line">        &lt;el-button @click="addFormVisible = false"&gt;取 消&lt;/el-button&gt;</span><br><span class="line">        &lt;el-button type="primary" @click="addBtnUser"&gt;确 定&lt;/el-button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/el-dialog&gt;</span><br><span class="line">    &lt;!-- 添加dialog结束 --&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; addUser , roleList &#125; from '@/api'</span><br><span class="line">export default &#123;</span><br><span class="line">  props: ['username', 'password', 'email', 'mobile', 'addFormVisible'],</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      addform: &#123;&#125;,</span><br><span class="line">      rules: &#123;</span><br><span class="line">        username: [</span><br><span class="line">          &#123;required: true, message: '请输入用户名', trigger: 'blur'&#125;</span><br><span class="line">        ],</span><br><span class="line">        password: [</span><br><span class="line">          &#123;required: true, message: '请输入密码', trigger: 'blur'&#125;</span><br><span class="line">        ],</span><br><span class="line">        email: [</span><br><span class="line">          // 第一个规则是让用户一定要输入邮箱</span><br><span class="line">          &#123;required: true, message: '请输入邮箱', trigger: 'blur'&#125;,</span><br><span class="line">          // 第二个校验规则是如果用户输入了内容，内容必须输入正确合法</span><br><span class="line">          // type: 'email':说明只能输入邮箱类型</span><br><span class="line">          &#123;type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change'&#125;</span><br><span class="line">        ],</span><br><span class="line">        mobile: [</span><br><span class="line">          &#123;required: true, message: '请输入手机号', trigger: 'blur'&#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    initFuction () &#123;</span><br><span class="line">      roleList(&#123;params: &#123;query: this.searchInfo, pagenum: this.pagenum, pagesize: this.pagesize&#125;&#125;)</span><br><span class="line">        .then((res) =&gt; &#123;</span><br><span class="line">          // console.log(res)</span><br><span class="line">          if (res.meta.status === 200) &#123;</span><br><span class="line">            this.userList = res.data.users</span><br><span class="line">            this.total = res.data.total</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 添加的方法</span><br><span class="line">    closeSon () &#123;</span><br><span class="line">      this.$emit('close')</span><br><span class="line">    &#125;,</span><br><span class="line">    addBtnUser () &#123;</span><br><span class="line">      addUser(this.addform)</span><br><span class="line">        .then((res) =&gt; &#123;</span><br><span class="line">          // console.log(res)</span><br><span class="line">          if (res.meta.status === 201) &#123;</span><br><span class="line">            this.$message(&#123;</span><br><span class="line">              message: '添加角色成功',</span><br><span class="line">              type: 'success'</span><br><span class="line">            &#125;)</span><br><span class="line">            this.$emit('close')</span><br><span class="line">            this.initFuction()</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            this.$message(&#123;</span><br><span class="line">              message: '添加角色失败',</span><br><span class="line">              type: 'warning'</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-node的简单使用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/04/node的简单使用/" class="article-date">
-      <time datetime="2018-11-04T13:17:02.429Z" itemprop="datePublished">2018-11-04</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/04/node的简单使用/">node的简单使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="首先先写一个服务器，采用express框架"><a href="#首先先写一个服务器，采用express框架" class="headerlink" title="首先先写一个服务器，采用express框架"></a>首先先写一个服务器，采用express框架</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by ken on 2018/7/26.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 引入模块</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="comment">// 使用路由</span></span><br><span class="line"><span class="keyword">var</span> router = <span class="built_in">require</span>(<span class="string">'./router-express.js'</span>)</span><br><span class="line"><span class="comment">// 生成服务</span></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"><span class="comment">// 监听接口</span></span><br><span class="line">app.listen(<span class="string">'3008'</span>,()=&gt;&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'http://127.0.0.1:3008'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">/* app.on('request',(req,res)=&gt;&#123;</span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">&#125;) */</span></span><br><span class="line"><span class="comment">// 使用模板引擎：第一个参数是当前模板引擎所支持的文件类型</span></span><br><span class="line">app.engine(<span class="string">'html'</span>, <span class="built_in">require</span>(<span class="string">'express-art-template'</span>));</span><br><span class="line">app.set(<span class="string">'view options'</span>, &#123;</span><br><span class="line">    debug: process.env.NODE_ENV !== <span class="string">'production'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">'public'</span>))</span><br><span class="line">app.use(<span class="string">'/node_modules'</span>,express.static(<span class="string">'node_modules'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注入路由--使用当前路由的配置</span></span><br><span class="line">app.use(router)</span><br></pre></td></tr></table></figure>
-<h1 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line">引入自定义的处理函数</span><br><span class="line"><span class="keyword">var</span> handler = <span class="built_in">require</span>(<span class="string">"./handler-express"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过Router函数创建路由模块对象</span></span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"><span class="comment">// 设置-配置路由-告知router什么时候执行哪个函数</span></span><br><span class="line">router.get(<span class="string">'/data'</span>,handler.getDataInfo)</span><br><span class="line">      .get(<span class="string">'/'</span>,handler.getIndex)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 暴露路由</span></span><br><span class="line"><span class="built_in">module</span>.exports = router</span><br></pre></td></tr></table></figure>
-<h1 id="路由配置处理"><a href="#路由配置处理" class="headerlink" title="路由配置处理"></a>路由配置处理</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">引入数据库处理对象</span><br><span class="line"><span class="keyword">var</span> mymodule = <span class="built_in">require</span>(<span class="string">'./mymodule.-express.js'</span>)</span><br><span class="line">暴露写法</span><br><span class="line">exports.getDataInfo=<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">  mymodule.getInfo(<span class="function">(<span class="params">err,data</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.end(err)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// 一定要注意,我们的数据操作模块中的返回的数据是数组，而不是对象</span></span><br><span class="line">            res.end(<span class="built_in">JSON</span>.stringify(data))</span><br><span class="line">            <span class="comment">// res.end(JSON.parse(data.toString()))</span></span><br><span class="line">            <span class="comment">// console.log(data);</span></span><br><span class="line">        &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.getIndex=<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">     mymodule.getIndex(<span class="function">(<span class="params">err,data</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.end(<span class="string">'err'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// 一定要注意,我们的数据操作模块中的返回的数据是数组，而不是对象</span></span><br><span class="line">            <span class="comment">// res.render(__dirname+"/views/index.html",data)</span></span><br><span class="line">            res.end(data)</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="数据库处理"><a href="#数据库处理" class="headerlink" title="数据库处理"></a>数据库处理</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">引入下载包</span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>)</span><br><span class="line">引入读取模块</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">配置数据库</span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</span><br><span class="line">  host:<span class="string">'127.0.0.1'</span>,</span><br><span class="line">  user:<span class="string">'root'</span>, 连接sql名称</span><br><span class="line">  password:<span class="string">'123456'</span>, </span><br><span class="line">  database:<span class="string">'sanguo'</span> 数据库名称</span><br><span class="line">&#125;)</span><br><span class="line">连接数据库</span><br><span class="line">connection.connect()</span><br><span class="line"></span><br><span class="line">暴露读取写法</span><br><span class="line"><span class="built_in">module</span>.exports.getInfo=<span class="function">(<span class="params">callback</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="comment">// var sql = 'select * from index'</span></span><br><span class="line">  <span class="keyword">var</span> sql = <span class="string">'select name from zhuye'</span>   选择zhuye这个设计表</span><br><span class="line">   <span class="comment">// 执行Sql命令，并接收返回值</span></span><br><span class="line">    connection.query(sql,(err,result,fields) =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(result);</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            callback(err)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        </span><br><span class="line">            callback(<span class="literal">null</span>,result)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">这里<span class="built_in">module</span>.exports  和exports是一样的</span><br><span class="line"><span class="built_in">module</span>.exports.getIndex=<span class="function">(<span class="params">callback</span>)=&gt;</span>&#123;</span><br><span class="line">  fs.readFile(__dirname+<span class="string">'/views/index.html'</span>,(err,data)=&gt;&#123;</span><br><span class="line">  <span class="comment">/*   console.log(err);</span></span><br><span class="line"><span class="comment">    console.log('----------');</span></span><br><span class="line"><span class="comment">    console.log(data); */</span></span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">      callback(err)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      callback(<span class="literal">null</span>,data.toString())</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
