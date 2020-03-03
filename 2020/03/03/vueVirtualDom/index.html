@@ -18,14 +18,14 @@
 <meta name="description" content="virtual dom 简介当我们在用前端三大框架的时候，最常听的词汇便是 虚拟dom (virtual Dom). 本着不能知其然而不知其所以然的原则，我们来好好研究下，什么是 virtual dom Vue 的 virtual dom 的生成一、将模板解析成AST 二、优化AST树，主要是标记静态节点 三、使用AST生成渲染函数 看下面cli例子: 1234&amp;lt;template&amp;gt;	&amp;">
 <meta name="keywords" content="vue react 前端个人总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome back">
+<meta property="og:title" content="Vue Virtual Dom">
 <meta property="og:url" content="https://github.com/nowdothat/vue/2020/03/03/vueVirtualDom/index.html">
 <meta property="og:site_name" content="Welcome back">
 <meta property="og:description" content="virtual dom 简介当我们在用前端三大框架的时候，最常听的词汇便是 虚拟dom (virtual Dom). 本着不能知其然而不知其所以然的原则，我们来好好研究下，什么是 virtual dom Vue 的 virtual dom 的生成一、将模板解析成AST 二、优化AST树，主要是标记静态节点 三、使用AST生成渲染函数 看下面cli例子: 1234&amp;lt;template&amp;gt;	&amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-03T13:49:03.653Z">
+<meta property="og:updated_time" content="2020-03-03T13:52:02.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome back">
+<meta name="twitter:title" content="Vue Virtual Dom">
 <meta name="twitter:description" content="virtual dom 简介当我们在用前端三大框架的时候，最常听的词汇便是 虚拟dom (virtual Dom). 本着不能知其然而不知其所以然的原则，我们来好好研究下，什么是 virtual dom Vue 的 virtual dom 的生成一、将模板解析成AST 二、优化AST树，主要是标记静态节点 三、使用AST生成渲染函数 看下面cli例子: 1234&amp;lt;template&amp;gt;	&amp;">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Welcome back</title>
+<title>Vue Virtual Dom | Welcome back</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -251,6 +251,24 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue Virtual Dom
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
@@ -274,12 +292,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/03/03/vueVirtualDom/"></a></p>
+        <p><span>本文标题:</span><a href="/2020/03/03/vueVirtualDom/">Vue Virtual Dom</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
         <p><span>发布时间:</span>2020-03-03, 21:49:36</p>
-        <p><span>最后更新:</span>2020-03-03, 21:49:03</p>
+        <p><span>最后更新:</span>2020-03-03, 21:52:02</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/03/03/vueVirtualDom/" title="">https://github.com/nowdothat/vue/2020/03/03/vueVirtualDom/</a>
+            <span>原始链接:</span><a class="post-url" href="/2020/03/03/vueVirtualDom/" title="Vue Virtual Dom">https://github.com/nowdothat/vue/2020/03/03/vueVirtualDom/</a>
             <span class="copy-path" data-clipboard-text="原文: https://github.com/nowdothat/vue/2020/03/03/vueVirtualDom/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -343,7 +361,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Vue Virtual Dom　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -359,7 +377,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2020/03/03/vueVirtualDom/" data-title="" data-url="https://github.com/nowdothat/vue/2020/03/03/vueVirtualDom/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2020/03/03/vueVirtualDom/" data-title="Vue Virtual Dom" data-url="https://github.com/nowdothat/vue/2020/03/03/vueVirtualDom/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -394,7 +412,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/03/03/vueVirtualDom/">vueVirtualDom</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/29/树表互转/">树表互转</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/git实用技巧/">git 实用技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/27/observerDesign/">js-Observer pattern</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/26/TCP/">TCP/IP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/13/深入Vue/">深入Vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/react入门指南/">React基础个人总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/Vue初步分析/">Vue初步分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/VueRouter/">VueRouter总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/css小知识/">css小知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/13/webpack打包公共代码/">webpack打包公共代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/13/webpack处理css/">webpack处理css</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/13/webpack代码分割和懒加载/">webpack代码分割和懒加载</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/07/babel编译es6的操作/">babel编译</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/操作日志/">vue操作日志</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/移动端常用代码/">移动端常见代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/11/Vue封装组件 /">vue组件封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/04/node的简单使用/">node的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/杂篇/">莫道征途路漫漫</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/flexible/">flexible填坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/后台管理项目尾声/">遇见预见</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/后台Vue搭建介绍/">后台管理系统</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/03/03/vueVirtualDom/">Vue Virtual Dom</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/29/树表互转/">树表互转</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/git实用技巧/">git 实用技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/27/observerDesign/">js-Observer pattern</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/26/TCP/">TCP/IP协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/13/深入Vue/">深入Vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/02/react入门指南/">React基础个人总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/26/Vue初步分析/">Vue初步分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/VueRouter/">VueRouter总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/23/css小知识/">css小知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/13/webpack打包公共代码/">webpack打包公共代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/13/webpack处理css/">webpack处理css</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/13/webpack代码分割和懒加载/">webpack代码分割和懒加载</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/07/babel编译es6的操作/">babel编译</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/操作日志/">vue操作日志</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/23/移动端常用代码/">移动端常见代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/11/Vue封装组件 /">vue组件封装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/04/node的简单使用/">node的简单使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/11/杂篇/">莫道征途路漫漫</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/flexible/">flexible填坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/后台管理项目尾声/">遇见预见</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/后台Vue搭建介绍/">后台管理系统</a></li></ul>
 
 
 
