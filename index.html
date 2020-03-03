@@ -242,6 +242,62 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-vueVirtualDom" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/03/vueVirtualDom/" class="article-date">
+      <time datetime="2020-03-03T13:49:36.415Z" itemprop="datePublished">2020-03-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="virtual-dom-简介"><a href="#virtual-dom-简介" class="headerlink" title="virtual dom 简介"></a>virtual dom 简介</h1><p>当我们在用前端三大框架的时候，最常听的词汇便是 虚拟dom (virtual Dom). 本着不能知其然而不知其所以然的原则，我们来好好研究下，什么是 virtual dom</p>
+<h1 id="Vue-的-virtual-dom-的生成"><a href="#Vue-的-virtual-dom-的生成" class="headerlink" title="Vue 的 virtual dom 的生成"></a>Vue 的 virtual dom 的生成</h1><p>一、将模板解析成AST</p>
+<p>二、优化AST树，主要是标记静态节点</p>
+<p>三、使用AST生成渲染函数</p>
+<p>看下面cli例子:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;some text&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"><span class="comment">// App.vue</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
+<p>解释： 这是一个 vue-cli 常见的模板。我们可以得到哪些信息： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> App如果要生成 virtual dom, 生成 ast 树</span><br><span class="line">&#123;</span><br><span class="line">  tag: <span class="string">"div"</span></span><br><span class="line">  parent: <span class="literal">undefined</span>,</span><br><span class="line">  attrsList: [],</span><br><span class="line">  attrsMap: &#123;&#125;,</span><br><span class="line">  children: [&#123;</span><br><span class="line">    type: <span class="number">2</span>,</span><br><span class="line">    text: <span class="string">"some"</span>,</span><br><span class="line">    <span class="keyword">static</span>: <span class="literal">false</span></span><br><span class="line">  &#125;]</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">2.</span> 优化 ast 树，并进行标记，如果不进行标记，就会造成渲染缓慢，出错等问题</span><br><span class="line">大家可以使用同 key 的方式进行试验</span><br><span class="line"><span class="number">3.</span> 使用js 创建node 并渲染</span><br><span class="line">  render (createElement, context) &#123;</span><br><span class="line">    <span class="keyword">return</span> createElement(&#123;<span class="built_in">String</span> | <span class="built_in">Object</span> | <span class="built_in">Function</span>&#125;, &#123;<span class="built_in">Object</span>&#125; | &#123;<span class="built_in">String</span> | <span class="built_in">Array</span>&#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><code>createElement</code> 到底会返回什么呢？其实不是一个实际的 DOM 元素。它更准确的名字可能是 createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，包括及其子节点的描述信息。我们把这样的节点描述为“虚拟节点 (virtual node)”，也常简写它为“VNode”。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。</p>
+<h1 id="vnode-的规律"><a href="#vnode-的规律" class="headerlink" title="vnode 的规律"></a>vnode 的规律</h1><p>Vnodes are re-recreated on each render, but the HTML Elements that they reference are re-used - whenever possible<br>这句话其实是很重要的, Vue 想尽办法帮我们提升性能，所以我们就需要用 key 值进行区分渲染, 这个可以联系上面提到的 生成规律第二条</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>虚拟dom 没那么高大上，也没想象中的快速。其本质就是 js 的 createElement 方法。 因为对于 浏览器而言，每个元素都是一个节点。每段文字也是一个节点。甚至注释也都是节点。一个节点就是页面的一个部分。就像家谱树一样，每个节点都可以有孩子节点 (也就是说每个部分可以包含其它的一些部分)。 因为有大量地创建节点, 要更高效地区分渲染,就是 diff 算法产生的缘由。虚拟dom先讲到这里，多说无益，不如动手。欢迎通过 <a href="mailto:kencall@163.com" target="_blank" rel="noopener">kencall@163.com</a> 联系我</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-树表互转" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1127,97 +1183,6 @@
 
 
   
-    <article id="post-VueRouter" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/05/23/VueRouter/" class="article-date">
-      <time datetime="2019-05-23T11:36:32.530Z" itemprop="datePublished">2019-05-23</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/23/VueRouter/">VueRouter总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>#<router-link> 组件跳转</router-link></p>
-<p><router-link>组件类似于a标签链接跳转.推荐理由：</router-link></p>
-<ul>
-<li><p>在history模式下，会触发守卫点击事件，让浏览器不再重新加载页面</p>
-</li>
-<li><p>在history模式下使用base选项之后。所有的to属性都不需要写基础路径了  —“ 默认为/“</p>
-</li>
-<li><p>可以使用JavaScript表达式</p>
-<p>​</p>
-</li>
-</ul>
-<h1 id="功能性组件"><a href="#功能性组件" class="headerlink" title=" 功能性组件"></a><router-view> 功能性组件</router-view></h1><p>这个组件是一个functionnal组件，渲染路径匹配到的视图组件，router-view可以进行多层嵌套</p>
-<p>router-view 的props：–name 如果 <code>&lt;router-view&gt;</code>设置了名称，则会渲染对应的路由配置中 <code>components</code> 下的相应组件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">我们有可能使用命名视图创建嵌套视图的复杂布局。这时你也需要命名用到的嵌套 router-view 组件。下面以一个设置面板为例：</span><br><span class="line">/settings/emails                                       /settings/profile</span><br><span class="line">+-----------------------------------+                  +------------------------------+</span><br><span class="line">| UserSettings                      |                  | UserSettings                 |</span><br><span class="line">| +-----+-------------------------+ |                  | +-----+--------------------+ |</span><br><span class="line">| | Nav | UserEmailsSubscriptions | |  +------------&gt;  | | Nav | UserProfile        | |</span><br><span class="line">| |     +-------------------------+ |                  | |     +--------------------+ |</span><br><span class="line">| |     |                         | |                  | |     | UserProfilePreview | |</span><br><span class="line">| +-----+-------------------------+ |                  | +-----+--------------------+ |</span><br><span class="line">+-----------------------------------+                  +------------------------------+</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;h1&gt;User Settings&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">  &lt;NavBar/</span>&gt;</span><br><span class="line">  &lt;router-view/&gt;</span><br><span class="line">  &lt;router-view name=<span class="string">"helper"</span>/&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">路由配置</span></span><br><span class="line"><span class="regexp">&#123;</span></span><br><span class="line"><span class="regexp">  path: '/</span>settings<span class="string">',</span></span><br><span class="line"><span class="string">  // 你也可以在顶级路由就配置命名视图</span></span><br><span class="line"><span class="string">  component: UserSettings,</span></span><br><span class="line"><span class="string">  children: [&#123;</span></span><br><span class="line"><span class="string">    path: '</span>emails<span class="string">',</span></span><br><span class="line"><span class="string">    component: UserEmailsSubscriptions</span></span><br><span class="line"><span class="string">  &#125;, &#123;</span></span><br><span class="line"><span class="string">    path: '</span>profile<span class="string">',</span></span><br><span class="line"><span class="string">    components: &#123;</span></span><br><span class="line"><span class="string">      default: UserProfile,</span></span><br><span class="line"><span class="string">      helper: UserProfilePreview</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;]</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">当然了</span></span><br></pre></td></tr></table></figure>
-<h1 id="构建实例"><a href="#构建实例" class="headerlink" title="构建实例"></a>构建实例</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes,</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  linkExactActiveClass: <span class="string">'active'</span>, <span class="comment">//全局配置 &lt;router-link&gt; 精确激活的class 类名”</span></span><br><span class="line">  scrollBehavior(to, <span class="keyword">from</span>, savedPosition) &#123;</span><br><span class="line">    <span class="comment">// return 期望滚动到哪个的位置</span></span><br><span class="line">    <span class="keyword">if</span>(savedPosition) &#123;</span><br><span class="line">      <span class="keyword">return</span> savedPosition;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  base: <span class="string">'/'</span>,</span><br><span class="line">  fallback: <span class="literal">true</span> <span class="comment">//当浏览器不支持 history.pushState 控制路由是否应该回退到 hash 模式。默认值为 true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">分析实例配置：</span><br><span class="line">routes: 类型<span class="built_in">Array</span>&lt;RouteConfig&gt;</span><br><span class="line">  RouteConfig:</span><br><span class="line">  	<span class="number">1.</span> path: string</span><br><span class="line">    <span class="number">2.</span> component ? : Componetn; <span class="comment">// 组件-推荐使用() =&gt; import('@/views/some/someList')</span></span><br><span class="line">    <span class="number">3.</span> name ? : string; <span class="comment">//命名路由 --权限控制</span></span><br><span class="line">    <span class="number">4.</span> components? : &#123;[name: string] : Compoent&#125; <span class="comment">// 命名视图组件--暂时不知道有什么用</span></span><br><span class="line">    <span class="number">5.</span> redirect? : string | Location | <span class="built_in">Function</span> <span class="comment">// 重定向 -- 修改路由有别与alias</span></span><br><span class="line">    <span class="number">6.</span> props? : boolean | <span class="built_in">Object</span> | <span class="built_in">Function</span> <span class="comment">// 一般通过path/test2/:id来匹配路由信息</span></span><br><span class="line">    <span class="number">7.</span> alias? : string | <span class="built_in">Array</span>&lt;string&gt; <span class="comment">// 别名</span></span><br><span class="line">      	-- a组件的别名是/b， 意味着，当用户访问路由/b的时候，url显示/b，但是路由实际匹配a组件内容</span><br><span class="line">    <span class="number">8.</span> children ? : <span class="built_in">Array</span>&lt;routeConfig&gt; <span class="comment">// 嵌套路由</span></span><br><span class="line">    <span class="number">9.</span> beforeEnter <span class="comment">// 路由独享守卫</span></span><br><span class="line">    <span class="number">10</span> meta ? : any <span class="comment">// 设置元信息 通过$route.matched来获取 </span></span><br><span class="line">      	-- <span class="keyword">if</span> (to.matched.some(<span class="function"><span class="params">record</span> =&gt;</span> record.meta.requiresAuth)) &#123;&#125;</span><br><span class="line">    		<span class="number">2.6</span>+以后版本更新了下面<span class="number">2</span>个config</span><br><span class="line">    <span class="number">11</span> caseSensitive? : boolean <span class="comment">// 匹配规则是否大小写敏感（默认：false）</span></span><br><span class="line">    <span class="number">12</span> pathToRegexpOptions ? : <span class="built_in">Object</span>  <span class="comment">//编译正则的选项</span></span><br></pre></td></tr></table></figure>
-<h1 id="路由对象的属性"><a href="#路由对象的属性" class="headerlink" title="路由对象的属性"></a>路由对象的属性</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$route.path: string <span class="comment">// 绝对路径</span></span><br><span class="line">$route.params: <span class="built_in">Object</span> <span class="comment">// 包含动态片段和全匹配片段</span></span><br><span class="line">$route.query : <span class="built_in">Object</span> <span class="comment">// URL查询参数</span></span><br><span class="line">$route.hash : string</span><br><span class="line">$route.fullPath: string</span><br><span class="line">$route.matched： <span class="built_in">Array</span>&lt;routeRecord&gt; <span class="comment">//路由记录--展示路由对象</span></span><br><span class="line">$route.name : <span class="comment">//当前路由的名称</span></span><br><span class="line">$route.redirectedFrom: <span class="comment">//如果存在重定向，即为重定向来源的路由的名字</span></span><br></pre></td></tr></table></figure>
-<h1 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h1><p>通过在Vue根实例router配置传入router实例，下面的这些属性成员会被注入到每个子组件里</p>
-<ul>
-<li>this.$router   ：  router实例–常见操作this.$touer.push()</li>
-<li>this.$route： 当前激活的路由信息对象，这个属性是只读的，属性看上面的内容↑</li>
-</ul>
-<h1 id="组件内部的配置选项"><a href="#组件内部的配置选项" class="headerlink" title="组件内部的配置选项"></a>组件内部的配置选项</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteEnter (to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">  <span class="comment">// 在渲染该组件的对应路由被 confirm 前调用</span></span><br><span class="line">  <span class="comment">// 因为当守卫执行前，组件实例还没被创建</span></span><br><span class="line">   next(<span class="function"><span class="params">vm</span> =&gt;</span> &#123;</span><br><span class="line">       <span class="comment">// 不！能！获取组件实例 `this`</span></span><br><span class="line">  	<span class="comment">// 可以通过 `vm` 访问组件实例</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;,</span><br><span class="line">beforeRouteUpdate (to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">  <span class="comment">// 在当前路由改变，但是该组件被复用时调用 2.2新增</span></span><br><span class="line">  <span class="comment">// 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，</span></span><br><span class="line">  <span class="comment">// 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。</span></span><br><span class="line">  <span class="comment">// 可以访问组件实例 `this`</span></span><br><span class="line">&#125;,</span><br><span class="line">beforeRouteLeave (to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">  <span class="comment">// 导航离开该组件的对应路由时调用</span></span><br><span class="line">  <span class="comment">// 可以访问组件实例 `this`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="导航解析流程"><a href="#导航解析流程" class="headerlink" title="导航解析流程"></a>导航解析流程</h1><ol>
-<li>导航被触发。</li>
-<li>在失活的组件里调用离开守卫。</li>
-<li>调用全局的 <code>beforeEach</code> 守卫。</li>
-<li>在重用的组件里调用 <code>beforeRouteUpdate</code> 守卫 (2.2+)。</li>
-<li>在路由配置里调用 <code>beforeEnter</code>。</li>
-<li>解析异步路由组件。</li>
-<li>在被激活的组件里调用 <code>beforeRouteEnter</code>。</li>
-<li>调用全局的 <code>beforeResolve</code> 守卫 (2.5+)。</li>
-<li>导航被确认。</li>
-<li>调用全局的 <code>afterEach</code> 钩子。</li>
-<li>触发 DOM 更新。</li>
-<li>用创建好的实例调用 <code>beforeRouteEnter</code> 守卫中传给 <code>next</code> 的回调函数。</li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1229,7 +1194,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2019 Ken
+                2016-2020 Ken
                 个人总结
             </div>
             <div class="footer-right">
