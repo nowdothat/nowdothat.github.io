@@ -242,6 +242,225 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-移动端常用代码" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/23/移动端常用代码/" class="article-date">
+      <time datetime="2018-11-23T14:02:48.429Z" itemprop="datePublished">2018-11-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/移动端常用代码/">移动端常见代码</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>转换base64</p>
+<pre><code>mui(&quot;.uploadBtn&quot;)[0].onchange =function(){
+            var reader = new FileReader();
+            reader.onload = function(e) {    
+</code></pre><p>//                    mui(‘.positive’)[0].src = reader.result<br>                    console.log(reader.result)<br>                }</p>
+<p>//                console.log(this.files[0])<br>                reader.readAsDataURL(this.files[0]);<br>            }</p>
+<pre><code>let transReDetail = JSON.parse($(e.target).attr(&apos;data-transRep&apos;))
+</code></pre><p>验证模块<br>function dingxiangjiaoyi(){<br>        let shuliang = $(‘.dingxiangNub’).val()<br>        let adder = $(‘.dingxiangAdder’).val()<br>        let dingxiangPwd = $(‘.dingxiangPwd’).val()<br>        if(shuliang == “”){<br>            mui.toast(‘数量不能为空’)<br>            return<br>        }<br>        if(adder == “”){<br>            mui.toast(‘地址不能为空’)<br>            return<br>        }<br>        if(dingxiangPwd == “”){<br>            mui.toast(‘密码不能为空’)<br>            return<br>        }<br>        $.ajax({<br>            url: apqurl +’’,<br>            type: “post”,<br>            success: function(dat){<br>                console.log(dat)<br>            }<br>        })<br>    }</p>
+<p>基础模块<br>$(function(){<br>    let token = get(‘mytoKen’)<br>    init()<br>    function init(){<br>        getList()<br>    }<br>    function getList(){<br>        $.ajax({<br>            url: apqurl +’api/user/GetUserInfo?token=’+token,<br>            type: “get”,<br>            success: function(dat){<br>                console.log(dat)<br>            }<br>        })<br>    }<br>})</p>
+<script src="./js/template-web.js"></script>
+<script src="./js/require.js"></script>
+<script src="./js/jquery-2.1.0.js"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/transaction.js"></script>
+
+
+<p>返回按键<br>    mui(“body”).on(“tap”, “.back”, function() {<br>                backFn(window);<br>            });<br>    function backFn(w) {<br>                var ws = null;<br>                if(w.plus) {<br>                    console.log(1)<br>                    ws || (ws = plus.webview.currentWebview());<br>                    ws.close(‘auto’);<br>                    plus.webview.getWebviewById(‘currencyExchange’).reload();</p>
+<pre><code>    } else if(history.length &gt; 1) {
+        console.log(3)
+        history.back();
+    } else {
+        w.close();
+    }
+}
+</code></pre><p>转换时间块</p>
+<pre><code>Date.prototype.Format = function(fmt) {
+                       var o = {   
+                           &quot;M+&quot; : this.getMonth()+1,                 //月份   
+                           &quot;d+&quot; : this.getDate(),                    //日   
+                           &quot;h+&quot; : this.getHours(),                   //小时   
+                           &quot;m+&quot; : this.getMinutes(),                 //分   
+                           &quot;s+&quot; : this.getSeconds(),                 //秒   
+                           &quot;q+&quot; : Math.floor((this.getMonth()+3)/3), //季度   
+                           &quot;S&quot;  : this.getMilliseconds()             //毫秒   
+                       };   
+                       if(/(y+)/.test(fmt))   
+                           fmt=fmt.replace(RegExp.$1, (this.getFullYear()+&quot;&quot;).substr(4 - RegExp.$1.length));   
+                       for(var k in o)   
+                           if(new RegExp(&quot;(&quot;+ k +&quot;)&quot;).test(fmt))   
+                       fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : ((&quot;00&quot;+ o[k]).substr((&quot;&quot;+ o[k]).length)));   
+                       return fmt;   
+                   } 
+</code></pre><p>let dingxiangHtml = template(‘dingxiangTmp’,{‘ken’:dat.data})<br>                    $(‘#dingxiangTab’).html(dingxiangHtml)</p>
+<p>let testArr =dat.data.TeamRewardList<br>                let testArrAll = []<br>                        for(let i = 0;i&lt;testArr.length;i++){<br>                            if(testArr[i].AddTime){<br>                                testArrAll.push(testArr[i].AddTime)<br>                            }<br>                        }<br>                        for(let k=0;k&lt;testArrAll.length;k++){<br>                            testArrAll[k] = new Date(testArrAll[k]).Format(‘MM-dd hh:mm’)<br>                        }<br>                        for(let j = 0;j&lt;testArrAll.length;j++){<br>                            $(‘.timeArr’).html(testArrAll[j])<br>                        }</p>
+<p>实现跳转功能<br>    for(let i =0;i&lt;aBtnAll.length;i++){<br>                                        aBtnAll[i].addEventListener(‘tap’, function() {<br>                                            mui.openWindow({<br>                                                url: ‘machineDetail.html’,<br>//                                                id: ‘MyrecordCenter’<br>                                            });<br>                                        });<br>                                    }</p>
+<p>.center {</p>
+<p>  left: 50%;</p>
+<p>  top: 50%;</p>
+<p>  transform: translate(-50%, -50%);</p>
+<p>}</p>
+<p>jq Tab<br> $(function(){<br>       $(“.clickBtn div”).on(“click”,function(){<br>         var index = $(this).index();<br>         $(this).parents(“#box”).find(“.tabValueAll div”).eq(index).show().siblings().hide();<br>       })<br>    })</p>
+<p>返回按钮功能实现<br>        mui.init();<br>            mui(“body”).on(“tap”, “.back”, function() {<br>                backFn(window);<br>            });</p>
+<p>function backFn(w) {<br>                var ws = null;<br>                if(w.plus) {<br>                    console.log(1)<br>                    ws || (ws = plus.webview.currentWebview());<br>                    ws.close(‘auto’);<br>                    plus.webview.getWebviewById(‘BankCar’).reload();</p>
+<pre><code>    } else if(history.length &gt; 1) {
+        console.log(3)
+        history.back();
+    } else {
+        w.close();
+    }
+}
+</code></pre><p>验证码JS块<br>    var countdown = 60;</p>
+<pre><code>function VerificationCodef() {
+    var obj = $(&apos;.refresh&apos;);
+    if(countdown == 60) {
+        //                    
+        mui.ajax({
+            type: &quot;get&quot;,
+            url: apqurl + &quot;/api/VerificationCode/&quot;+phone,
+            data: {
+
+            },
+            async: true,
+            success: function(dat) {
+                if(dat.success) {
+</code></pre><p>//                                mui(“.collect”)[0].value = dat.data<br>                                mui.toast(dat.message);<br>                            } else {<br>                                mui.toast(dat.message);<br>                            }<br>                        }<br>                    });</p>
+<pre><code>        obj.attr(&quot;disabled&quot;, true);
+        if(true) {
+            countdown--;
+        } else {
+            obj.attr(&quot;disabled&quot;, false);
+            obj.value = &quot;获取验证码&quot;;
+            countdown = 60;
+            return;
+        }
+    }
+
+    if(countdown == 0) {
+        obj.attr(&quot;disabled&quot;, false);
+        obj.innerHTML = &quot;重新获取&quot;;
+        countdown = 60;
+        return;
+    } else {
+        obj.attr(&quot;disabled&quot;, true);
+        countdown--;
+        obj.text(&quot;重新发送&quot; + countdown + &quot;s&quot;);
+    }
+    setTimeout(function() {
+        VerificationCodef()
+    }, 1000)
+}
+
+$(&apos;.refresh&apos;).on(&apos;click&apos;, function() {
+    VerificationCodef();
+})
+</code></pre><p>mui跳转页面的js块<br>    $(“.adjunction”).click(function() {<br>                mui.openWindow({<br>                    url: ‘addBank.html?type=0’,<br>                    id: ‘addBank’<br>                });<br>            });</p>
+<p>获取用户信息<br>通过mui()的方式进行修改   不仅仅是innerText还有text    $(“.exhibition_i”).text(val+”%”);<br>    userInfo();</p>
+<pre><code>function userInfo() {
+    mui.ajax({
+        type: &quot;get&quot;,
+        url: apqurl + &quot;/api/Mining/PersonalData?AccessToken=&quot; + token,
+        async: true,
+        success: function(dat) {
+            console.log(dat);
+            if(dat.code == 200) {
+                mui(&quot;.Tradable&quot;)[0].innerText = dat.data.DC_CanTradeCurrency;
+                mui(&quot;.TFradable&quot;)[0].innerText = dat.data.CBDC_CanTradeCurrency;
+            } else {
+
+            }
+        }
+    });
+}
+</code></pre><p>mui框架的隐藏项<br>    mui(“.projectile”)[0].classList.add(“mui-hidden”);</p>
+<p>一般请求的方法<br>    function issue(password) {<br>                var Multiple = $(‘.currentPrice’).val();</p>
+<pre><code>    var purchase = $(&apos;.sale&apos;).val();
+    var purchaseNum = $(&apos;.saleNum&apos;).val();
+
+    ResetFunc();
+    mui.ajax({
+        type: &quot;post&quot;,
+        url: apqurl + &apos;/api/Transaction/WhetherTheTransactionMatched&apos;,
+        data: {
+            AccessToken: token,
+            &apos;quantity&apos;: purchase,
+            &apos;price&apos;: purchaseNum,
+            &apos;type&apos;: 1,
+            TransactionType: 3,
+            AccessToken: token,
+            password:password
+        },
+        async: true,
+        success: function(dat) {
+            if(dat.code == 200) {
+                mui.toast(dat.message);
+                JumpLi();
+            } else {
+                mui.toast(dat.message);
+            }
+        }
+    })
+
+};
+</code></pre><p>复制粘贴<br>                if(dat.success){<br>                    $(‘.walletAdder’).text(dat.data.WalletAddres)<br>                    $(‘#copty’).attr(‘data-clipboard-text’,dat.data.WalletAddres)</p>
+<pre><code>     let btn = document.getElementById(&apos;copty&apos;);
+var clipboard = new Clipboard(btn);
+
+clipboard.on(&apos;success&apos;, function (e) {
+  console.log(e);
+});
+
+clipboard.on(&apos;error&apos;, function (e) {
+  console.log(e);
+});    
+    }
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Vue封装组件 " class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
