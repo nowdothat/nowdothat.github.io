@@ -348,64 +348,6 @@
 
 
   
-    <article id="post-linux命令行记录" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/28/linux命令行记录/" class="article-date">
-      <time datetime="2020-03-27T22:48:44.843Z" itemprop="datePublished">2020-03-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/28/linux命令行记录/">linux命令行记录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="linux如何复制文件夹和移动文件夹"><a href="#linux如何复制文件夹和移动文件夹" class="headerlink" title="linux如何复制文件夹和移动文件夹"></a>linux如何复制文件夹和移动文件夹</h1><p>linux下文件的复制、移动与删除命令为：cp，mv，rm</p>
-<h2 id="文件复制命令cp"><a href="#文件复制命令cp" class="headerlink" title="文件复制命令cp"></a>文件复制命令cp</h2><h2 id="文件移动命令mv"><a href="#文件移动命令mv" class="headerlink" title="文件移动命令mv"></a>文件移动命令mv</h2><p>mv someFile/* acceptFile/<br>此命令会将 someFile 文件夹内所有的文件移动到 acceptFile中.结果为:someFile文件夹为空,但是依旧存在, acceptFile成为新的文件夹名</p>
-<p>mv someFile acceptFile<br>此命令会将 someFile 文件夹 移动到 acceptFile 文件夹中</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-win10完整卸载" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -960,9 +902,116 @@
 
 
   
+    <article id="post-深入Vue" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/06/13/深入Vue/" class="article-date">
+      <time datetime="2019-06-12T23:31:29.050Z" itemprop="datePublished">2019-06-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/13/深入Vue/">深入Vue</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="构建Vue实例"><a href="#构建Vue实例" class="headerlink" title="构建Vue实例"></a>构建Vue实例</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 手动构建元素</span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue/dist/vue.js'</span> <span class="comment">//注意，需要制定vue运行版本</span></span><br><span class="line"><span class="keyword">const</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(div)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: div,</span><br><span class="line">  template: <span class="string">'&lt;div&gt;some content&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">如果在<span class="keyword">new</span>实例时，没有指定el，可以进行,跟上面一样的效果</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;some content&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">app.$mount(<span class="string">'#root'</span>)</span><br><span class="line"><span class="comment">// 当执行的时候，模板文件会将el的节点进行替换</span></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 通过html-webpack-plugin插件进行生成插入</span><br><span class="line">  <span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>)</span><br><span class="line">  <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">    template: <span class="string">'./index.html'</span></span><br><span class="line">  &#125;),</span><br></pre></td></tr></table></figure>
+<h1 id="Vue实例属性"><a href="#Vue实例属性" class="headerlink" title="Vue实例属性"></a>Vue实例属性</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line"> 			 el: div,</span><br><span class="line">  			 template: <span class="string">'&lt;div&gt;some content&lt;/div&gt;'</span></span><br><span class="line">		   &#125;)</span><br><span class="line">该app常量就是Vue实例自动绑定的<span class="keyword">this</span>,意味着下面的app.$属性，即为<span class="keyword">this</span>.$属性</span><br></pre></td></tr></table></figure>
+<ul>
+<li>app.$data data()定义的值</li>
+<li>app.$props 组件传值</li>
+<li>app.$el ATS抽象树</li>
+<li>app.$options  合成过后的属性-即为整个实例</li>
+<li>app.$options.render =  (h)  =&gt; {return h(‘div’, {}, ‘new render content’ )}  当页面数据进行更新的时候，会触发这个函数</li>
+<li>app.$root  就是app本身</li>
+<li>app.$children  类似于react的props.children <item><code>&lt;div&gt;这个div就是children值&lt;/div&gt;</code> </item></li>
+<li>app.$parent    查找父组件 app.$ $parent.$options.name    一般配合extend使用</li>
+<li>app.$slots</li>
+<li>app.$scopedSlots</li>
+<li>app.$refs  ref指定的元素数组集合，可以进行操纵DOM</li>
+<li>app.$isServer  服务端渲染用</li>
+<li>app.$on(‘事件名’, (子组件params1, paramsTwo) =&gt; {})</li>
+<li>app.$emit(‘事件名’, 传给父组件参数1， 参数2)</li>
+<li>app.$set(app.obj, ‘a属性’, 修改的值)</li>
+<li>app.$delete(app.obj, 要删除的属性)</li>
+<li>app.$forceUpdate() 强制更新视图，与react类似</li>
+<li>app.$destroy() 销毁实例，一般不会去做</li>
+</ul>
+<h3 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h3><p>如果使用watch方法，没有控制好，有可能会造成内存溢出，所以，在某些情况下可能需要移除watch</p>
+<p>watch和computed都不要去修改监听的值，否则会造成无限循环</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unWatch = <span class="keyword">this</span>.$watch(<span class="string">'text'</span>, (newVal,oldVal) =&gt; &#123;&#125;)</span><br><span class="line">unWatch() 注销watch</span><br><span class="line"></span><br><span class="line">如果使用Vue模板文件，可以这样写</span><br><span class="line">watch: &#123;</span><br><span class="line">  text (newVal,oldVal) &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line">模板文件的watch，会被编译成handler方法，如果我们手动写handler方法，可以使用immediate：<span class="literal">true</span>使watch立即执行</span><br><span class="line">watch: &#123;</span><br><span class="line">  text: &#123;</span><br><span class="line">    handler (newVal, oldVal) &#123;</span><br><span class="line">      <span class="keyword">do</span> some thing</span><br><span class="line">    &#125;,</span><br><span class="line">    immediate: <span class="literal">true</span>,</span><br><span class="line">    deep: <span class="literal">true</span> <span class="comment">// 默认为false 是否watch 对象键值 -遍历对象，消耗性能，解决办法监听'text.a'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>Vue跟react的更新生命周期形式很类型, Vue：beforeUpdate | update — React: componentWillUpdate | compoentDidUpdate。不同的是，react在执行componentDidUpdate前，会先执行render()方法,Vue没有</p>
+<ul>
+<li>vue跟react都有强制更新视图的操作this.forceUpdate()</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Vue编译我们的template模板，最后为render方法输出。render方法在mounted前进行调用，所以beforeMount()生命周期<span class="keyword">this</span>-不指向Vue实例</span><br><span class="line">render (h) &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'render error'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">renderError (h, err) &#123;</span><br><span class="line">  <span class="keyword">return</span> h(<span class="string">'div'</span>, &#123;&#125;, err.stack)</span><br><span class="line">  <span class="comment">// 这个不会捕获子组件的报错，只能在生产环境下使用</span></span><br><span class="line">&#125;,</span><br><span class="line">errorCaptured (h, err) &#123;&#125;</span><br><span class="line"><span class="comment">//这个会向上冒泡，并能在正式环境中使用</span></span><br></pre></td></tr></table></figure>
+<h3 id="原生指令"><a href="#原生指令" class="headerlink" title="原生指令"></a>原生指令</h3><ul>
+<li>v-model.number  转换字符串为数字</li>
+<li>v-model.trim  去除空格</li>
+<li>v-model.lazy    change的时候才进行改变</li>
+<li>v-pre   不进行解析表达式，页面展示模板字符串</li>
+<li>v-once 只绑定一次</li>
+<li>v-cloak 使用场景少</li>
+</ul>
+<h3 id="props严格验证"><a href="#props严格验证" class="headerlink" title="props严格验证"></a>props严格验证</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">  active: &#123;</span><br><span class="line">    type: <span class="built_in">Boolean</span>,</span><br><span class="line">    validator (value) &#123;</span><br><span class="line">    <span class="comment">// value就是传进来的值</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">typeof</span> value === <span class="string">'boolean'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h3><p>vue的双向绑定和react基本一致，都是采用e.target.value的方式进行绑定</p>
+<p>子组件=</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; @input=&quot;handleInput&quot;&gt;</span><br><span class="line"></span><br><span class="line">function handleInput(e) &#123;</span><br><span class="line">	this.$emit(&apos;input&apos;, e.target.value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>父组件 = </p>
+<p>value=”value” @input=”value = arguments[0]”</p>
+<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">定义一个组件</span><br><span class="line"><span class="keyword">const</span> component = &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">  	&lt;div&gt;</span></span><br><span class="line"><span class="string">		&lt;slot&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">		&lt;slot name="body"&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">	&lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;</span><br><span class="line">调用组件</span><br><span class="line">&lt;comp-one&gt;</span><br><span class="line">	&lt;span&gt;show the slot&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;span slot="body"&gt;show the bodyName slot&lt;/</span>span&gt;</span><br><span class="line">&lt;<span class="regexp">/comp-one&gt;</span></span><br></pre></td></tr></table></figure>
+<h6 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">作用域插槽的概念</span><br><span class="line">	一般来讲，组件内部的变量是根据当前引用组件的变量来变化的</span><br><span class="line">    如果使用了slot-scope，就可以使用当前组件内部定义的变量+引用组件的变量</span><br><span class="line">定义组件</span><br><span class="line"><span class="keyword">const</span> component = &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">  	&lt;div&gt;</span></span><br><span class="line"><span class="string">		&lt;slot value="456"&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">	&lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;</span><br><span class="line">引用组件-通过props.定义值来调用，引用组件的值可以直接写</span><br><span class="line">&lt;comp-one&gt;</span><br><span class="line">  &lt;span slot-scope=<span class="string">"props"</span>&gt;&#123;&#123;props.value&#125;&#125;&#123;&#123;currentData&#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>comp-one&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="跨组件通信"><a href="#跨组件通信" class="headerlink" title="跨组件通信"></a>跨组件通信</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">爷爷级组件</span><br><span class="line">provide() &#123;</span><br><span class="line">  <span class="keyword">const</span> data = &#123;&#125;</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(data, <span class="string">'value'</span>, &#123;</span><br><span class="line">    get: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.value,</span><br><span class="line">    enumerable: <span class="literal">true</span> <span class="comment">//提供可读</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    yeye: <span class="keyword">this</span>,</span><br><span class="line">    value: <span class="keyword">this</span>.value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">孙级组件</span><br><span class="line">inject: [<span class="string">'yeye'</span>, <span class="string">'data'</span>]</span><br><span class="line">调用-- <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;data.value&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">这种方法适用于简单的组件级通信，解决只能父子组件通信的问题。如果交互的数据量比较多，可以采用vuex通信</span><br></pre></td></tr></table></figure>
+<h3 id="render方法"><a href="#render方法" class="headerlink" title="render方法"></a>render方法</h3><p>首先我们需要明白：构建Vue组件有三种方式 ：<code>template</code> / <code>renderFunction</code> / <code>js</code></p>
+<p>在mounted生命周期前调用render方法，默认传入this.$createElement方法，该方法可以创建一个vnode节点，用来跟DOM节点进行对比</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">模板文件为</span><br><span class="line">template: <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;comp-one ref="comp"&gt;</span></span><br><span class="line"><span class="string">  	&lt;span ref="span"&gt;&#123;&#123;value&#125;&#125;&lt;/span&gt;</span></span><br><span class="line"><span class="string">  &lt;/comp-one&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">---------------------转换成render方法---------------------</span><br><span class="line">render(createElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(</span><br><span class="line">  	<span class="string">'comp-one'</span>,</span><br><span class="line">  	&#123;</span><br><span class="line">      ref: <span class="string">'comp'</span></span><br><span class="line">  	&#125;,</span><br><span class="line">  	[</span><br><span class="line">      createElement(<span class="string">'span'</span>, &#123;</span><br><span class="line">        ref: <span class="string">'span'</span></span><br><span class="line">      &#125;, <span class="keyword">this</span>.value)</span><br><span class="line">  	]</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line">注意点： 加入子节点的的时候，需要使用数组createdElement(<span class="string">'节点名称'</span>,&#123;属性&#125;, 值)</span><br><span class="line">如果是slot,则是</span><br><span class="line">template: <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;div :style="style"&gt;</span></span><br><span class="line"><span class="string">  	&lt;slot&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">  &lt;/div&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">render(createdElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createdElement(<span class="string">'div'</span>, &#123;<span class="attr">style</span>: <span class="keyword">this</span>.style&#125;, <span class="keyword">this</span>.$slots.default)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="事件的渲染"><a href="#事件的渲染" class="headerlink" title="事件的渲染"></a>事件的渲染</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">------------------组件内部------------------</span><br><span class="line">props: [<span class="string">'props1'</span>],</span><br><span class="line">name: <span class="string">'comp'</span>,</span><br><span class="line">template: <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;div :style="style"&gt;</span></span><br><span class="line"><span class="string">  	&lt;slot&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">  &lt;/div&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">--------------------转换render--------------</span><br><span class="line">render(createdElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createdElement(<span class="string">'div'</span>, </span><br><span class="line">     &#123;</span><br><span class="line">    	style: <span class="keyword">this</span>.style,</span><br><span class="line">    	on: &#123;</span><br><span class="line">          click: <span class="function"><span class="params">()</span> =&gt;</span> &#123;<span class="keyword">this</span>.$emit(<span class="string">'click'</span>)&#125;<span class="comment">// 注意与nativeOn的区别</span></span><br><span class="line">    	&#125;</span><br><span class="line">  	 &#125;, [</span><br><span class="line">		<span class="keyword">this</span>.$slots.default,</span><br><span class="line">    	<span class="keyword">this</span>.props1</span><br><span class="line">	 ])</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">--------------------------引用组件-------------------------</span><br><span class="line">methods: &#123;</span><br><span class="line">  handleClick() &#123;&#125;</span><br><span class="line">&#125;,</span><br><span class="line">data() &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    value: <span class="number">123</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">render(createElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(</span><br><span class="line">  	<span class="string">'comp-one'</span>,</span><br><span class="line">  	&#123;</span><br><span class="line">      ref: <span class="string">'comp'</span>,</span><br><span class="line">      props: &#123;</span><br><span class="line">        props1: <span class="keyword">this</span>.value</span><br><span class="line">      &#125;,</span><br><span class="line">      on: &#123;</span><br><span class="line">        click: <span class="keyword">this</span>.handeleClick</span><br><span class="line">      &#125;</span><br><span class="line">  	&#125;,</span><br><span class="line">  	[</span><br><span class="line">      createElement(<span class="string">'span'</span>, &#123;</span><br><span class="line">        ref: <span class="string">'span'</span></span><br><span class="line">      &#125;, <span class="keyword">this</span>.value)</span><br><span class="line">  	]</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">如果采用nativeOn: &#123;</span><br><span class="line">  click: <span class="keyword">this</span>.handleClick<span class="comment">//是将事件直接绑定在根节点上，不需要采用on/emit的方式</span></span><br><span class="line">  												<span class="comment">//意味着组件上不需要定义on事件就可以直接触发了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="具名插槽的render方式"><a href="#具名插槽的render方式" class="headerlink" title="具名插槽的render方式"></a>具名插槽的render方式</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">普通插槽使用<span class="keyword">this</span>.$slots.default生成一个vnode节点</span><br><span class="line">具名插槽使用<span class="keyword">this</span>.$slots.名称生成vnode节点</span><br><span class="line">------定义组件------</span><br><span class="line">render (createElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>, &#123;&#125;, <span class="keyword">this</span>.$slots.header)</span><br><span class="line">&#125;</span><br><span class="line">------引用组件-------</span><br><span class="line">render (createElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>, &#123;&#125;, [</span><br><span class="line">    createElement(<span class="string">'span'</span>, &#123;<span class="attr">slot</span>: <span class="string">'header'</span>&#125;,<span class="string">'123'</span>)</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="添加原生DOM属性"><a href="#添加原生DOM属性" class="headerlink" title="添加原生DOM属性"></a>添加原生DOM属性</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">------引用组件-------</span><br><span class="line">render (createElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>, &#123;&#125;, [</span><br><span class="line">    createElement(<span class="string">'span'</span>, &#123;</span><br><span class="line">      slot: <span class="string">'header'</span>,</span><br><span class="line">      domProps: &#123;</span><br><span class="line">        innerHTML: <span class="string">'&lt;span&gt;原生DOM添加了元素节点&lt;/span&gt;'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      attrs: &#123;</span><br><span class="line">        id: <span class="string">'test-id'</span><span class="comment">//给原生DOM上添加了id属性</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,<span class="string">'123'</span>)</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
