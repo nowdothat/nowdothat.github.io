@@ -242,6 +242,170 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-linux磁盘管理指令" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/29/linux磁盘管理指令/" class="article-date">
+      <time datetime="2020-03-29T14:05:41.433Z" itemprop="datePublished">2020-03-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/29/linux磁盘管理指令/">linux磁盘管理指令</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>语法: ls [参数] [路径]<br>参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-a 显示所有文件及目录 (ls内定将文件名或目录名称开头为&quot;.&quot;的视为隐藏档，不会列出)</span><br><span class="line">-l 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</span><br><span class="line">-r 将文件以相反次序显示(原定依英文字母次序)</span><br><span class="line">-t 将文件依建立时间之先后次序列出</span><br><span class="line">-A 同 -a ，但不列出 &quot;.&quot; (目前目录) 及 &quot;..&quot; (父目录)</span><br><span class="line">-F 在列出的文件名称后加一符号；例如可执行档则加 &quot;*&quot;, 目录则加 &quot;/&quot;</span><br><span class="line">-R 若目录下有文件，则以下之文件亦皆依序列出</span><br></pre></td></tr></table></figure></p>
+<p>常用操作</p>
+<ul>
+<li>ls -A s* -&gt; 查找当前目录带有 s 字符的文件</li>
+<li>ls -AF   -&gt; 列出目前工作目录下所有文件及目录；目录于名称后加 “/“, 可执行档于名称后加 “*”</li>
+</ul>
+<h2 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h2><p>打印当前所在路径 (print working directory)</p>
+<h2 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h2><p>改变目录 (change directory)</p>
+<ul>
+<li>绝对路径</li>
+<li>相对路径</li>
+<li><code>~</code> 当前用户的家目录</li>
+</ul>
+<h2 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h2><p>主要注意点：</p>
+<ul>
+<li>-m&lt;目标属性&gt;或–mode&lt;目标属性&gt;建立目录的同时设置目录的权限； -&gt; mkdir -m 700 /usr/meng/test</li>
+<li>-p或–parents 若所要建立目录的上层目录目前尚未建立，则会一并建立上层目录； -&gt; mkdir -p ./test/someFile</li>
+<li>–version 显示版本信息。</li>
+</ul>
+<h2 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h2><ul>
+<li>用于把已存在文件的时间标签更新为系统当前的时间</li>
+<li>创建空文件</li>
+</ul>
+<p>提供的选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-a：或--time=atime或--time=access或--time=use  只更改存取时间；</span><br><span class="line">-c：或--no-create  不建立任何文件；</span><br><span class="line">-d：&lt;时间日期&gt; 使用指定的日期时间，而非现在的时间；</span><br><span class="line">-f：此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题；</span><br><span class="line">-m：或--time=mtime或--time=modify  只更该变动时间；</span><br><span class="line">-r：&lt;参考文件或目录&gt;  把指定文件或目录的日期时间，统统设成和参考文件或目录的日期时间相同；</span><br><span class="line">-t：&lt;日期时间&gt;  使用指定的日期时间，而非现在的时间；</span><br><span class="line">--help：在线帮助；</span><br><span class="line">--version：显示版本信息。</span><br></pre></td></tr></table></figure></p>
+<h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><p>语法：cp(选项)(参数)<br>提供的选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-a：此参数的效果和同时指定&quot;-dpR&quot;参数相同；</span><br><span class="line">-d：当复制符号连接时，把目标文件或目录也建立为符号连接，并指向与源文件或目录连接的原始文件或目录；</span><br><span class="line">-f：强行复制文件或目录，不论目标文件或目录是否已存在；</span><br><span class="line">-i：覆盖既有文件之前先询问用户；</span><br><span class="line">-l：对源文件建立硬连接，而非复制文件；</span><br><span class="line">-p：保留源文件或目录的属性；</span><br><span class="line">-R/r：递归处理，将指定目录下的所有文件与子目录一并处理；</span><br><span class="line">-s：对源文件建立符号连接，而非复制文件；</span><br><span class="line">-u：使用这项参数后只会在源文件的更改时间较目标文件更新时或是名称相互对应的目标文件并不存在时，才复制文件；</span><br><span class="line">-S：在备份文件时，用指定的后缀“SUFFIX”代替文件的默认后缀；</span><br><span class="line">-b：覆盖已存在的文件目标前将目标文件备份；</span><br><span class="line">-v：详细显示命令执行的操作。</span><br></pre></td></tr></table></figure></p>
+<h3 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h3><p>软链接简单来表示： 就是建立一个快捷方式，你打开的文件就是你软链接的源文件，而且内存占用小，不与软链接的源内存占用保持一致</p>
+<h3 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h3><p>相当于复制了一个文件，inode 相同,但是两者之一的任意发生改变，对方也会跟着改变，二者的内存大小保持一致，删除自己并不会影响对方。会改变的复制，很牛B</p>
+<p>常用指令：</p>
+<ul>
+<li>stat someFile 查看 someFile 的 inode 内容</li>
+<li>find / -inum 1114  根目录找 inode 为 1114 的文件</li>
+<li>find ./ -type l -ls 找出当前目录下所有的软链接</li>
+</ul>
+<h2 id="mv-指令"><a href="#mv-指令" class="headerlink" title="mv 指令"></a>mv 指令</h2><p>语法： mv(选项)(参数)</p>
+<p>选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--backup=&lt;备份模式&gt;：若需覆盖文件，则覆盖前先行备份；</span><br><span class="line">-b：当文件存在时，覆盖前，为其创建一个备份；</span><br><span class="line">-f：若目标文件或目录与现有的文件或目录重复，则直接覆盖现有的文件或目录；</span><br><span class="line">-i：交互式操作，覆盖前先行询问用户，如果源文件与目标文件或目标目录中的文件同名，则询问用户是否覆盖目标文件。用户输入”y”，表示将覆盖目标文件；输入”n”，表示取消对源文件的移动。这样可以避免误将文件覆盖。</span><br><span class="line">--strip-trailing-slashes：删除源文件中的斜杠“/”；</span><br><span class="line">-S&lt;后缀&gt;：为备份文件指定后缀，而不使用默认的后缀；</span><br><span class="line">--target-directory=&lt;目录&gt;：指定源文件要移动到目标目录；</span><br><span class="line">-u：当源文件比目标文件新或者目标文件不存在时，才执行移动操作。</span><br></pre></td></tr></table></figure></p>
+<p>常用:</p>
+<ul>
+<li>mv someName newName -&gt; 将 someName 文件改名为 newName 文件名</li>
+<li>mv /usr/some/* . -&gt; 将/usr/some 里面的所有内容移动到当前目录</li>
+</ul>
+<h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><p>语法： rm (选项)(参数)</p>
+<p>选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-d：直接把欲删除的目录的硬连接数据删除成0，删除该目录；</span><br><span class="line">-f：强制删除文件或目录；</span><br><span class="line">-i：删除已有文件或目录之前先询问用户；</span><br><span class="line">-r或-R：递归处理，将指定目录下的所有文件与子目录一并处理；</span><br><span class="line">--preserve-root：不对根目录进行递归操作；</span><br><span class="line">-v：显示指令的详细执行过程。</span><br></pre></td></tr></table></figure></p>
+<p>注意点：<br><code>rm -r *</code> -&gt;非常危险的操作（删除当前目录下除隐含文件外的所有文件和子目录）</p>
+<h2 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h2><p>一般命令的输出都会显示在终端中，有些时候需要将一些命令的执行结果想要保存到文件中进行后续的分析/统计，则这时候需要使用到的输出重定向技术<br>语法：命令执行 &gt;&gt; 结果文件 -&gt;追加效果<br>语法：命令执行 &gt; 结果文件  -&gt;覆盖效果</p>
+<p>常用操作：<br>ls -la &gt;&gt; ls.txt  -&gt; 会将 ls -la 的执行结果<code>追加</code>打印在 ls.txt 文件中</p>
+<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>语法：cat(选项)(参数)<br>cat命令连接文件并打印到标准输出设备上，cat经常用来显示文件的内容，类似于下的type命令。</p>
+<p>注意：当文件较大时，文本在屏幕上迅速闪过（滚屏），用户往往看不清所显示的内容。因此，一般用more等命令分屏显示。为了控制滚屏，可以按Ctrl+S键，停止滚屏；按Ctrl+Q键可以恢复滚屏。按Ctrl+C（中断）键可以终止该命令的执行，并且返回Shell提示符状态。</p>
+<p>选项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-n或-number：有1开始对所有输出的行数编号；</span><br><span class="line">-b或--number-nonblank：和-n相似，只不过对于空白行不编号；</span><br><span class="line">-s或--squeeze-blank：当遇到有连续两行以上的空白行，就代换为一行的空白行；</span><br><span class="line">-A：显示不可打印字符，行尾显示“$”；</span><br><span class="line">-e：等价于&quot;-vE&quot;选项；</span><br><span class="line">-t：等价于&quot;-vT&quot;选项</span><br></pre></td></tr></table></figure></p>
+<p>常用操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat m1 （在屏幕上显示文件ml的内容）</span><br><span class="line">cat m1 m2 （同时显示文件ml和m2的内容）</span><br><span class="line">cat m1 m2 &gt; file （将文件ml和m2合并后放入文件file中）-&gt;注意，file文件会新建并且为无后缀名文件</span><br></pre></td></tr></table></figure></p>
+<h3 id="如果单纯为了看文件内容-建议使用-more-someFile"><a href="#如果单纯为了看文件内容-建议使用-more-someFile" class="headerlink" title="如果单纯为了看文件内容,建议使用 more someFile"></a>如果单纯为了看文件内容,建议使用 more someFile</h3><p>记忆点：<br>cp 和 rm 指令都有 -r 参数，表示递归操作<br>mkdir 创建多级文件，需要携带 -p 参数</p>
+<p>参考链接：<code>https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html</code> 软硬链接</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-linux命令行记录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/28/linux命令行记录/" class="article-date">
+      <time datetime="2020-03-27T22:48:44.843Z" itemprop="datePublished">2020-03-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/28/linux命令行记录/">linux命令行记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="linux如何复制文件夹和移动文件夹"><a href="#linux如何复制文件夹和移动文件夹" class="headerlink" title="linux如何复制文件夹和移动文件夹"></a>linux如何复制文件夹和移动文件夹</h1><p>linux下文件的复制、移动与删除命令为：cp，mv，rm</p>
+<h2 id="文件复制命令cp"><a href="#文件复制命令cp" class="headerlink" title="文件复制命令cp"></a>文件复制命令cp</h2><h2 id="文件移动命令mv"><a href="#文件移动命令mv" class="headerlink" title="文件移动命令mv"></a>文件移动命令mv</h2><p>mv someFile/* acceptFile/<br>此命令会将 someFile 文件夹内所有的文件移动到 acceptFile中.结果为:someFile文件夹为空,但是依旧存在, acceptFile成为新的文件夹名</p>
+<p>mv someFile acceptFile<br>此命令会将 someFile 文件夹 移动到 acceptFile 文件夹中</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-win10完整卸载" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -796,297 +960,9 @@
 
 
   
-    <article id="post-深入Vue" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/06/13/深入Vue/" class="article-date">
-      <time datetime="2019-06-12T23:31:29.050Z" itemprop="datePublished">2019-06-13</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/13/深入Vue/">深入Vue</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="构建Vue实例"><a href="#构建Vue实例" class="headerlink" title="构建Vue实例"></a>构建Vue实例</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 手动构建元素</span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue/dist/vue.js'</span> <span class="comment">//注意，需要制定vue运行版本</span></span><br><span class="line"><span class="keyword">const</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(div)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: div,</span><br><span class="line">  template: <span class="string">'&lt;div&gt;some content&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">如果在<span class="keyword">new</span>实例时，没有指定el，可以进行,跟上面一样的效果</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;some content&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">app.$mount(<span class="string">'#root'</span>)</span><br><span class="line"><span class="comment">// 当执行的时候，模板文件会将el的节点进行替换</span></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 通过html-webpack-plugin插件进行生成插入</span><br><span class="line">  <span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>)</span><br><span class="line">  <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">    template: <span class="string">'./index.html'</span></span><br><span class="line">  &#125;),</span><br></pre></td></tr></table></figure>
-<h1 id="Vue实例属性"><a href="#Vue实例属性" class="headerlink" title="Vue实例属性"></a>Vue实例属性</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line"> 			 el: div,</span><br><span class="line">  			 template: <span class="string">'&lt;div&gt;some content&lt;/div&gt;'</span></span><br><span class="line">		   &#125;)</span><br><span class="line">该app常量就是Vue实例自动绑定的<span class="keyword">this</span>,意味着下面的app.$属性，即为<span class="keyword">this</span>.$属性</span><br></pre></td></tr></table></figure>
-<ul>
-<li>app.$data data()定义的值</li>
-<li>app.$props 组件传值</li>
-<li>app.$el ATS抽象树</li>
-<li>app.$options  合成过后的属性-即为整个实例</li>
-<li>app.$options.render =  (h)  =&gt; {return h(‘div’, {}, ‘new render content’ )}  当页面数据进行更新的时候，会触发这个函数</li>
-<li>app.$root  就是app本身</li>
-<li>app.$children  类似于react的props.children <item><code>&lt;div&gt;这个div就是children值&lt;/div&gt;</code> </item></li>
-<li>app.$parent    查找父组件 app.$ $parent.$options.name    一般配合extend使用</li>
-<li>app.$slots</li>
-<li>app.$scopedSlots</li>
-<li>app.$refs  ref指定的元素数组集合，可以进行操纵DOM</li>
-<li>app.$isServer  服务端渲染用</li>
-<li>app.$on(‘事件名’, (子组件params1, paramsTwo) =&gt; {})</li>
-<li>app.$emit(‘事件名’, 传给父组件参数1， 参数2)</li>
-<li>app.$set(app.obj, ‘a属性’, 修改的值)</li>
-<li>app.$delete(app.obj, 要删除的属性)</li>
-<li>app.$forceUpdate() 强制更新视图，与react类似</li>
-<li>app.$destroy() 销毁实例，一般不会去做</li>
-</ul>
-<h3 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h3><p>如果使用watch方法，没有控制好，有可能会造成内存溢出，所以，在某些情况下可能需要移除watch</p>
-<p>watch和computed都不要去修改监听的值，否则会造成无限循环</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unWatch = <span class="keyword">this</span>.$watch(<span class="string">'text'</span>, (newVal,oldVal) =&gt; &#123;&#125;)</span><br><span class="line">unWatch() 注销watch</span><br><span class="line"></span><br><span class="line">如果使用Vue模板文件，可以这样写</span><br><span class="line">watch: &#123;</span><br><span class="line">  text (newVal,oldVal) &#123;&#125;)</span><br><span class="line">&#125;</span><br><span class="line">模板文件的watch，会被编译成handler方法，如果我们手动写handler方法，可以使用immediate：<span class="literal">true</span>使watch立即执行</span><br><span class="line">watch: &#123;</span><br><span class="line">  text: &#123;</span><br><span class="line">    handler (newVal, oldVal) &#123;</span><br><span class="line">      <span class="keyword">do</span> some thing</span><br><span class="line">    &#125;,</span><br><span class="line">    immediate: <span class="literal">true</span>,</span><br><span class="line">    deep: <span class="literal">true</span> <span class="comment">// 默认为false 是否watch 对象键值 -遍历对象，消耗性能，解决办法监听'text.a'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>Vue跟react的更新生命周期形式很类型, Vue：beforeUpdate | update — React: componentWillUpdate | compoentDidUpdate。不同的是，react在执行componentDidUpdate前，会先执行render()方法,Vue没有</p>
-<ul>
-<li>vue跟react都有强制更新视图的操作this.forceUpdate()</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Vue编译我们的template模板，最后为render方法输出。render方法在mounted前进行调用，所以beforeMount()生命周期<span class="keyword">this</span>-不指向Vue实例</span><br><span class="line">render (h) &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'render error'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">renderError (h, err) &#123;</span><br><span class="line">  <span class="keyword">return</span> h(<span class="string">'div'</span>, &#123;&#125;, err.stack)</span><br><span class="line">  <span class="comment">// 这个不会捕获子组件的报错，只能在生产环境下使用</span></span><br><span class="line">&#125;,</span><br><span class="line">errorCaptured (h, err) &#123;&#125;</span><br><span class="line"><span class="comment">//这个会向上冒泡，并能在正式环境中使用</span></span><br></pre></td></tr></table></figure>
-<h3 id="原生指令"><a href="#原生指令" class="headerlink" title="原生指令"></a>原生指令</h3><ul>
-<li>v-model.number  转换字符串为数字</li>
-<li>v-model.trim  去除空格</li>
-<li>v-model.lazy    change的时候才进行改变</li>
-<li>v-pre   不进行解析表达式，页面展示模板字符串</li>
-<li>v-once 只绑定一次</li>
-<li>v-cloak 使用场景少</li>
-</ul>
-<h3 id="props严格验证"><a href="#props严格验证" class="headerlink" title="props严格验证"></a>props严格验证</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">  active: &#123;</span><br><span class="line">    type: <span class="built_in">Boolean</span>,</span><br><span class="line">    validator (value) &#123;</span><br><span class="line">    <span class="comment">// value就是传进来的值</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">typeof</span> value === <span class="string">'boolean'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h3><p>vue的双向绑定和react基本一致，都是采用e.target.value的方式进行绑定</p>
-<p>子组件=</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; @input=&quot;handleInput&quot;&gt;</span><br><span class="line"></span><br><span class="line">function handleInput(e) &#123;</span><br><span class="line">	this.$emit(&apos;input&apos;, e.target.value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>父组件 = </p>
-<p>value=”value” @input=”value = arguments[0]”</p>
-<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">定义一个组件</span><br><span class="line"><span class="keyword">const</span> component = &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">  	&lt;div&gt;</span></span><br><span class="line"><span class="string">		&lt;slot&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">		&lt;slot name="body"&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">	&lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;</span><br><span class="line">调用组件</span><br><span class="line">&lt;comp-one&gt;</span><br><span class="line">	&lt;span&gt;show the slot&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">    &lt;span slot="body"&gt;show the bodyName slot&lt;/</span>span&gt;</span><br><span class="line">&lt;<span class="regexp">/comp-one&gt;</span></span><br></pre></td></tr></table></figure>
-<h6 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">作用域插槽的概念</span><br><span class="line">	一般来讲，组件内部的变量是根据当前引用组件的变量来变化的</span><br><span class="line">    如果使用了slot-scope，就可以使用当前组件内部定义的变量+引用组件的变量</span><br><span class="line">定义组件</span><br><span class="line"><span class="keyword">const</span> component = &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">  	&lt;div&gt;</span></span><br><span class="line"><span class="string">		&lt;slot value="456"&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">	&lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;</span><br><span class="line">引用组件-通过props.定义值来调用，引用组件的值可以直接写</span><br><span class="line">&lt;comp-one&gt;</span><br><span class="line">  &lt;span slot-scope=<span class="string">"props"</span>&gt;&#123;&#123;props.value&#125;&#125;&#123;&#123;currentData&#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>comp-one&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="跨组件通信"><a href="#跨组件通信" class="headerlink" title="跨组件通信"></a>跨组件通信</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">爷爷级组件</span><br><span class="line">provide() &#123;</span><br><span class="line">  <span class="keyword">const</span> data = &#123;&#125;</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(data, <span class="string">'value'</span>, &#123;</span><br><span class="line">    get: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.value,</span><br><span class="line">    enumerable: <span class="literal">true</span> <span class="comment">//提供可读</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    yeye: <span class="keyword">this</span>,</span><br><span class="line">    value: <span class="keyword">this</span>.value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">孙级组件</span><br><span class="line">inject: [<span class="string">'yeye'</span>, <span class="string">'data'</span>]</span><br><span class="line">调用-- <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;data.value&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">这种方法适用于简单的组件级通信，解决只能父子组件通信的问题。如果交互的数据量比较多，可以采用vuex通信</span><br></pre></td></tr></table></figure>
-<h3 id="render方法"><a href="#render方法" class="headerlink" title="render方法"></a>render方法</h3><p>首先我们需要明白：构建Vue组件有三种方式 ：<code>template</code> / <code>renderFunction</code> / <code>js</code></p>
-<p>在mounted生命周期前调用render方法，默认传入this.$createElement方法，该方法可以创建一个vnode节点，用来跟DOM节点进行对比</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">模板文件为</span><br><span class="line">template: <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;comp-one ref="comp"&gt;</span></span><br><span class="line"><span class="string">  	&lt;span ref="span"&gt;&#123;&#123;value&#125;&#125;&lt;/span&gt;</span></span><br><span class="line"><span class="string">  &lt;/comp-one&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">---------------------转换成render方法---------------------</span><br><span class="line">render(createElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(</span><br><span class="line">  	<span class="string">'comp-one'</span>,</span><br><span class="line">  	&#123;</span><br><span class="line">      ref: <span class="string">'comp'</span></span><br><span class="line">  	&#125;,</span><br><span class="line">  	[</span><br><span class="line">      createElement(<span class="string">'span'</span>, &#123;</span><br><span class="line">        ref: <span class="string">'span'</span></span><br><span class="line">      &#125;, <span class="keyword">this</span>.value)</span><br><span class="line">  	]</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line">注意点： 加入子节点的的时候，需要使用数组createdElement(<span class="string">'节点名称'</span>,&#123;属性&#125;, 值)</span><br><span class="line">如果是slot,则是</span><br><span class="line">template: <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;div :style="style"&gt;</span></span><br><span class="line"><span class="string">  	&lt;slot&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">  &lt;/div&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">render(createdElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createdElement(<span class="string">'div'</span>, &#123;<span class="attr">style</span>: <span class="keyword">this</span>.style&#125;, <span class="keyword">this</span>.$slots.default)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="事件的渲染"><a href="#事件的渲染" class="headerlink" title="事件的渲染"></a>事件的渲染</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">------------------组件内部------------------</span><br><span class="line">props: [<span class="string">'props1'</span>],</span><br><span class="line">name: <span class="string">'comp'</span>,</span><br><span class="line">template: <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;div :style="style"&gt;</span></span><br><span class="line"><span class="string">  	&lt;slot&gt;&lt;/slot&gt;</span></span><br><span class="line"><span class="string">  &lt;/div&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">--------------------转换render--------------</span><br><span class="line">render(createdElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createdElement(<span class="string">'div'</span>, </span><br><span class="line">     &#123;</span><br><span class="line">    	style: <span class="keyword">this</span>.style,</span><br><span class="line">    	on: &#123;</span><br><span class="line">          click: <span class="function"><span class="params">()</span> =&gt;</span> &#123;<span class="keyword">this</span>.$emit(<span class="string">'click'</span>)&#125;<span class="comment">// 注意与nativeOn的区别</span></span><br><span class="line">    	&#125;</span><br><span class="line">  	 &#125;, [</span><br><span class="line">		<span class="keyword">this</span>.$slots.default,</span><br><span class="line">    	<span class="keyword">this</span>.props1</span><br><span class="line">	 ])</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">--------------------------引用组件-------------------------</span><br><span class="line">methods: &#123;</span><br><span class="line">  handleClick() &#123;&#125;</span><br><span class="line">&#125;,</span><br><span class="line">data() &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    value: <span class="number">123</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">render(createElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(</span><br><span class="line">  	<span class="string">'comp-one'</span>,</span><br><span class="line">  	&#123;</span><br><span class="line">      ref: <span class="string">'comp'</span>,</span><br><span class="line">      props: &#123;</span><br><span class="line">        props1: <span class="keyword">this</span>.value</span><br><span class="line">      &#125;,</span><br><span class="line">      on: &#123;</span><br><span class="line">        click: <span class="keyword">this</span>.handeleClick</span><br><span class="line">      &#125;</span><br><span class="line">  	&#125;,</span><br><span class="line">  	[</span><br><span class="line">      createElement(<span class="string">'span'</span>, &#123;</span><br><span class="line">        ref: <span class="string">'span'</span></span><br><span class="line">      &#125;, <span class="keyword">this</span>.value)</span><br><span class="line">  	]</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">如果采用nativeOn: &#123;</span><br><span class="line">  click: <span class="keyword">this</span>.handleClick<span class="comment">//是将事件直接绑定在根节点上，不需要采用on/emit的方式</span></span><br><span class="line">  												<span class="comment">//意味着组件上不需要定义on事件就可以直接触发了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="具名插槽的render方式"><a href="#具名插槽的render方式" class="headerlink" title="具名插槽的render方式"></a>具名插槽的render方式</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">普通插槽使用<span class="keyword">this</span>.$slots.default生成一个vnode节点</span><br><span class="line">具名插槽使用<span class="keyword">this</span>.$slots.名称生成vnode节点</span><br><span class="line">------定义组件------</span><br><span class="line">render (createElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>, &#123;&#125;, <span class="keyword">this</span>.$slots.header)</span><br><span class="line">&#125;</span><br><span class="line">------引用组件-------</span><br><span class="line">render (createElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>, &#123;&#125;, [</span><br><span class="line">    createElement(<span class="string">'span'</span>, &#123;<span class="attr">slot</span>: <span class="string">'header'</span>&#125;,<span class="string">'123'</span>)</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="添加原生DOM属性"><a href="#添加原生DOM属性" class="headerlink" title="添加原生DOM属性"></a>添加原生DOM属性</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">------引用组件-------</span><br><span class="line">render (createElement) &#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>, &#123;&#125;, [</span><br><span class="line">    createElement(<span class="string">'span'</span>, &#123;</span><br><span class="line">      slot: <span class="string">'header'</span>,</span><br><span class="line">      domProps: &#123;</span><br><span class="line">        innerHTML: <span class="string">'&lt;span&gt;原生DOM添加了元素节点&lt;/span&gt;'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      attrs: &#123;</span><br><span class="line">        id: <span class="string">'test-id'</span><span class="comment">//给原生DOM上添加了id属性</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,<span class="string">'123'</span>)</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-react入门指南" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/06/02/react入门指南/" class="article-date">
-      <time datetime="2019-06-02T14:39:13.463Z" itemprop="datePublished">2019-06-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/02/react入门指南/">React基础个人总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="React简介"><a href="#React简介" class="headerlink" title="React简介"></a>React简介</h1><p>React 应用程序的组成部分： 元素和组件</p>
-<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><h3 id="JSX语法介绍"><a href="#JSX语法介绍" class="headerlink" title="JSX语法介绍"></a>JSX语法介绍</h3><p>我们建议<a href="https://react.docschina.org/docs/introducing-jsx.html" target="_blank" rel="noopener">使用 JSX</a> 来编写你的 UI 组件。每个 JSX 元素都是调用 <a href="https://react.docschina.org/docs/react-api.html#createelement" target="_blank" rel="noopener"><code>React.createElement()</code></a> 的语法糖。一般来说，如果你使用了 JSX，就不再需要调用以下方法。</p>
-<ul>
-<li><a href="https://react.docschina.org/docs/react-api.html#createelement" target="_blank" rel="noopener"><code>createElement()</code></a></li>
-<li><a href="https://react.docschina.org/docs/react-api.html#createfactory" target="_blank" rel="noopener"><code>createFactory()</code></a></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">JSX 是JavaScript 的语法扩展，它具有 JavaScript 的全部功能。</span><br><span class="line"></span><br><span class="line">React 认为渲染逻辑本质上与其他 UI 逻辑内在耦合，比如，在 UI 中需要绑定处理事件、在某些时刻状态发生变化时需要通知到 UI，以及需要在 UI 中展示准备好的数据。</span><br><span class="line"></span><br><span class="line">React 并没有采用将标记与逻辑进行分离到不同文件这种人为地分离方式，而是通过将二者共同存放在称之为“组件”的松散耦合单元之中，来实现关注点分离。</span><br><span class="line"></span><br><span class="line">React 不强制要求使用 JSX，但是大多数人发现，在 JavaScript 代码中将 JSX 和 UI 放在一起时，会在视觉上有辅助作用。它还可以使 React 显示更多有用的错误和警告消息。</span><br><span class="line"></span><br><span class="line">在 JSX 语法中，你可以在大括号内放置任何有效的 JavaScript 表达式。例如，<span class="number">2</span> + <span class="number">2</span>，user.firstName 或 formatName(user) 都是有效的 JavaScript 表达式.下面是个简单的例子</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatName</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> user.firstName + <span class="string">' '</span> + user.lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  firstName: <span class="string">'Harper'</span>,</span><br><span class="line">  lastName: <span class="string">'Perez'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> element = (</span><br><span class="line">  &lt;h1&gt;</span><br><span class="line">    Hello, &#123;formatName(user)&#125;!</span><br><span class="line">  &lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">  element,</span></span><br><span class="line"><span class="regexp">  document.getElementById('root')</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">            我们将一个js表达式插进jsx语法中，并实现了'Harper Perez'</span></span><br><span class="line"><span class="regexp">            如果是在Vue项目中，我们可以使用computed计算属性进行这样的操作</span></span><br><span class="line"><span class="regexp"> </span></span><br><span class="line"><span class="regexp">  注意：我们在定义element变量的时候，使用的是()的形式。原因是：我们建议将内容包裹在括号中，虽然这样做不是强制要求的，但是这可以避免遇到自动插入分号陷阱。</span></span><br></pre></td></tr></table></figure>
-<h6 id="jsx也是一个表达式，意味着可以进行函数渲染"><a href="#jsx也是一个表达式，意味着可以进行函数渲染" class="headerlink" title="jsx也是一个表达式，意味着可以进行函数渲染"></a>jsx也是一个表达式，意味着可以进行函数渲染</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getGreeting</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (user) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;formatName(user)&#125;!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, Stranger.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="JSX的特定属性"><a href="#JSX的特定属性" class="headerlink" title="JSX的特定属性"></a>JSX的特定属性</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">tabIndex</span>=<span class="string">"0"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;user.avatarUrl&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">// ""和&#123;&#125;只能同时使用一个，对于同一属性不能同时使用这2种符号</span></span><br></pre></td></tr></table></figure>
-<p><strong>警告：</strong></p>
-<p>因为 JSX 语法上更接近 JavaScript 而不是 HTML，所以 React DOM 使用 <code>camelCase</code>（小驼峰命名）来定义属性的名称，而不使用 HTML 属性名称的命名约定。</p>
-<p>例如，JSX 里的 <code>class</code> 变成了 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/className" target="_blank" rel="noopener"><code>className</code></a>，而 <code>tabindex</code> 则变为 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex" target="_blank" rel="noopener"><code>tabIndex</code></a>。</p>
-<h6 id="JSX-表示对象"><a href="#JSX-表示对象" class="headerlink" title="JSX 表示对象"></a>JSX 表示对象</h6><p>Babel 会把 JSX 转译成一个名为 <code>React.createElement()</code> 函数调用。</p>
-<p>以下两种示例代码完全等效：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = (</span><br><span class="line">  &lt;h1 className=<span class="string">"greeting"</span>&gt;</span><br><span class="line">    Hello, world!</span><br><span class="line">  &lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">const element = React.createElement(</span></span><br><span class="line"><span class="regexp">  'h1',</span></span><br><span class="line"><span class="regexp">  &#123;className: 'greeting'&#125;,</span></span><br><span class="line"><span class="regexp">  'Hello, world!'</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">-------------------------------------简化编译---------------------------------</span></span><br><span class="line"><span class="regexp">  const element = &#123;</span></span><br><span class="line"><span class="regexp">  type: 'h1',</span></span><br><span class="line"><span class="regexp">  props: &#123;</span></span><br><span class="line"><span class="regexp">    className: 'greeting',</span></span><br><span class="line"><span class="regexp">    children: 'Hello, world!'</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br></pre></td></tr></table></figure>
-<h3 id="react元素不可变性"><a href="#react元素不可变性" class="headerlink" title="react元素不可变性"></a>react元素不可变性</h3><p>React 元素是<a href="https://en.wikipedia.org/wiki/Immutable_object" target="_blank" rel="noopener">不可变对象</a>。一旦被创建，你就无法更改它的子元素或者属性。一个元素就像电影的单帧：它代表了某个特定时刻的 UI。</p>
-<p>React DOM 会将元素和它的子元素与它们之前的状态进行比较，并只会进行必要的更新来使 DOM 达到预期的状态。</p>
-<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>组件也可以被定义为可被包装的函数</p>
-<p>定义组件最简单的方式就是编写 JavaScript 函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该函数是一个有效的 React 组件，因为它接收唯一带有数据的 “props”（代表属性）对象与并返回一个 React 元素。这类组件被称为“函数组件”，因为它本质上就是 JavaScript 函数。</p>
-<p>你同时还可以使用 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="noopener">ES6 的 class</a> 来定义组件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Welcome extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述两个组件在 React 里是等效的</p>
-<h6 id="自定义函数组件"><a href="#自定义函数组件" class="headerlink" title="自定义函数组件"></a>自定义函数组件</h6><p>React 元素也可以是用户自定义的组件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;Welcome name=&quot;Sara&quot; /&gt;;</span><br></pre></td></tr></table></figure>
-<p>当 React 元素为用户自定义组件时，它会将 JSX 所接收的属性（attributes）转换为单个对象传递给组件，这个对象被称之为 “props”。</p>
-<p>例如，这段代码会在页面上渲染 “Hello, Sara”：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">Welcome</span> <span class="attr">name</span>=<span class="string">"Sara"</span> /&gt;</span>;</span></span><br><span class="line"><span class="xml">ReactDOM.render(</span></span><br><span class="line"><span class="xml">  element,</span></span><br><span class="line"><span class="xml">  document.getElementById('root')</span></span><br><span class="line"><span class="xml">);</span></span><br><span class="line"><span class="xml">// 分析步骤：</span></span><br><span class="line"><span class="xml">	1. 我们调用ReactDom.render()函数，并传入jsx语法变量elemnnt作为参数</span></span><br><span class="line"><span class="xml">    2. React调用Welcome组件， 并将&#123;name: 'Sara'&#125;作为props传入</span></span><br><span class="line"><span class="xml">    3. Welcome组件将 jsx对象作为返回值</span></span><br><span class="line"><span class="xml">    4. React DOM将DOM进行对比更新</span></span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong> 组件名称必须以大写字母开头,React 会将以小写字母开头的组件视为原生 DOM 标签</p>
-<p>​        <strong>所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。</strong>–类似于Vue的单向数据流，子组件不能修改父组件的传值，只能通过触发父组件的事件进行修改</p>
-<p>​        所以我们只能修改组件内部的数据state，它 允许 React 组件随用户操作、网络响应或者其他变化而动态更改输出内容。 —–对比Vue的data和props</p>
-<h6 id="正确使用state"><a href="#正确使用state" class="headerlink" title="正确使用state"></a>正确使用state</h6><ul>
-<li><p>不要直接修改state—使用setState({})</p>
-<ul>
-<li>构造函数是唯一可以给 <code>this.state</code> 赋值的地方</li>
-</ul>
-</li>
-<li><p>state的更新可能是异步的</p>
-<ul>
-<li><p>出于性能考虑，React 可能会把多个 <code>setState()</code> 调用合并成一个调用</p>
-</li>
-<li><p>因为 <code>this.props</code> 和 <code>this.state</code> 可能会异步更新，所以你不要依赖他们的值来更新下一个状态。</p>
-<ul>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Wrong</span></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line">  counter: <span class="keyword">this</span>.state.counter + <span class="keyword">this</span>.props.increment,</span><br><span class="line">&#125;);</span><br><span class="line">要解决这个问题，可以让 setState() 接收一个函数而不是一个对象。这个函数用上一个 state 作为第一个参数，将此次更新被应用时的 props 做为第二个参数：</span><br><span class="line"><span class="comment">// Correct</span></span><br><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">state, props</span>) =&gt;</span> (&#123;</span><br><span class="line">  counter: state.counter + props.increment</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>state的更新会被合并</p>
-<ul>
-<li>当你调用 <code>setState()</code> 的时候，React 会把你提供的对象合并到当前的 state</li>
-<li>这就意味着：当你的state对象里面有多个值时，你多次调用setState（{someKeys:xx}）这里的对象合并是浅合并，setState方法保留了其他未被重置的属性，但是完全替换了someKyes</li>
-</ul>
-</li>
-</ul>
-<h6 id="将函数组件转换为class组件"><a href="#将函数组件转换为class组件" class="headerlink" title="将函数组件转换为class组件"></a>将函数组件转换为class组件</h6><p>———–需要注意的是，如果是通过compoent={}的形式，需要在constructor(props)进行传递</p>
-<ol>
-<li><p>创建一个同名的 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="noopener">ES6 class</a>，并且继承于 <code>React.Component</code>。</p>
-</li>
-<li><p>添加一个空的 <code>render()</code> 方法。</p>
-</li>
-<li><p>将函数体移动到 <code>render()</code> 方法之中。</p>
-</li>
-<li><p>在 <code>render()</code> 方法中使用 <code>this.props</code> 替换 <code>props</code>。</p>
-</li>
-<li><p>删除剩余的空函数声明</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// React.Component 是使用 ES6 classes 方式定义 React 组件的基类</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Some</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    	&lt;div&gt;<span class="keyword">do</span> some thing&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>———————通过以下方式将 <code>props</code> 传递到父类的构造函数中：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">  <span class="keyword">super</span>(props);</span><br><span class="line">  <span class="keyword">this</span>.state = &#123;<span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>()&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><ul>
-<li>React 事件的命名采用小驼峰式（camelCase），而不是纯小写。</li>
-<li>使用 JSX 语法时你需要传入一个函数作为事件处理函数，而不是一个字符串。—使用表达式</li>
-</ul>
-<p>一般情况下，传入没有调用的函数都会丢失this指向，解决办法是使用Function.prototype.bind()或者是使用箭头函数，亦或者是class fields进行解决</p>
-<h6 id="函数传入参数"><a href="#函数传入参数" class="headerlink" title="函数传入参数"></a>函数传入参数</h6><p>在循环中，通常我们会为事件处理函数传递额外的参数。例如，若 <code>id</code> 是你要删除那一行的 ID，以下两种方式都可以向事件处理函数传递参数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;(e) =&gt; <span class="keyword">this</span>.deleteRow(id, e)&#125;&gt;Delete Row&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;button onClick=&#123;this.deleteRow.bind(this, id)&#125;&gt;Delete Row&lt;/</span>button&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="循环渲染需要带key"><a href="#循环渲染需要带key" class="headerlink" title="循环渲染需要带key"></a>循环渲染需要带key</h3><p>React 支持 <code>key</code> 属性。当子元素拥有 key 时，React 使用 key 来匹配原有树上的子元素以及最新树上的子元素</p>
-<p>Vue的key属性也是做同样的事情，进行diffing算法运算</p>
-<h1 id="react-PureComponet"><a href="#react-PureComponet" class="headerlink" title="react.PureComponet"></a>react.PureComponet</h1><p><code>React.PureComponent</code> 中的 <code>shouldComponentUpdate()</code> 将跳过所有子组件树的 prop 更新。因此，请确保所有子组件也都是“纯”的组件。</p>
-<h1 id="需要注意的小细节"><a href="#需要注意的小细节" class="headerlink" title="需要注意的小细节"></a>需要注意的小细节</h1><ul>
-<li>autoFocus一定要配合tabIndexReact </li>
-<li>来使用</li>
-<li>constructor要配置super使用</li>
-<li>渲染的时候要使用标签的形式进行渲染</li>
-<li>在组件内部的dom元素中添加事件<ul>
-<li><h2 onclick="{clickFun}"></h2>
-
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="组件渲染时的this问题"><a href="#组件渲染时的this问题" class="headerlink" title="组件渲染时的this问题"></a>组件渲染时的this问题</h4><p>react 在render({this.state.xx})拿值是可以，但是在执行函数的时候却为undefined的原因？<br>—因为js是单线程事件型语言，当遇到函数或者定时器等异步操作时，会先向下执行，等事件触发，或者有空闲的时候再执行异步操作–那个时候，上下文已经丢失，所以this执行就已经丢失了<br>———–办法就是，</p>
-<ol>
-<li>在dom渲染的时候，手动绑定上下文{this.事件名.bind(this)}</li>
-<li>使用() =&gt; {利用箭头函数的特性绑定this}</li>
-</ol>
-<h4 id="组件的基本生命周期"><a href="#组件的基本生命周期" class="headerlink" title="组件的基本生命周期"></a>组件的基本生命周期</h4><p>以类定义的组件，都有一样的生命周期</p>
-<ul>
-<li>constructor() {}</li>
-<li>componentWillMount() {} //加载前，可以进行拿取数据</li>
-<li>render() {}</li>
-<li>componentDidMount() {} //页面加载完成</li>
-<li>if（进行更新state)————–<ul>
-<li>componentWillUpdate() {} // 可以进行数据的验证</li>
-<li>render()</li>
-<li>compoentDidUpdate()  //更新完成</li>
-</ul>
-</li>
-</ul>
-<p>有一个this.forceUpdate() –强制更新DOM    </p>
-<p>shouldCompoentUpdate() {return false} —不进行更新  — 控制componentWillUpdate的执行</p>
-<p>————————————————————特殊的——————————————————</p>
-<p>componentWillUnmount()—-:通过非React提供的方式注册的事件，通常需要在这个方法中注销事件，以及该组件中使用的计时器，也需要在这里清除！！！</p>
-<h2 id="setState的作用"><a href="#setState的作用" class="headerlink" title="setState的作用"></a>setState的作用</h2><ol>
-<li>可以用来更新数据</li>
-<li>会自动地调用render()</li>
-</ol>
-<h2 id="父子组件中遇到的问题"><a href="#父子组件中遇到的问题" class="headerlink" title="父子组件中遇到的问题"></a>父子组件中遇到的问题</h2><p>父组件调用了render方法，则子组件必定会调用render方法。子组件调用render方法，则父组件不会调用render方法</p>
-<p>父组件向子组件传值，是将父组件的数据或者方法作为子组件的属性值进行传递</p>
-<p>​    子组件通过this.props.属性进行获取—（如果是通过函数的方式，则通过形参的方式进行获取）</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
