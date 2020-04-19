@@ -22,7 +22,7 @@
 <meta name="keywords" content="vue react 前端个人总结">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Welcome back">
-<meta property="og:url" content="https://github.com/nowdothat/vue/page/3/index.html">
+<meta property="og:url" content="https://nowdothat.github.io/page/3/index.html">
 <meta property="og:site_name" content="Welcome back">
 <meta property="og:description" content="vue react 前端个人总结">
 <meta property="og:locale" content="default">
@@ -241,6 +241,70 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-webpack代码分割和懒加载" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/03/13/webpack代码分割和懒加载/" class="article-date">
+      <time datetime="2019-03-13T13:57:08.966Z" itemprop="datePublished">2019-03-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/13/webpack代码分割和懒加载/">webpack代码分割和懒加载</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="单页面处理代码分割"><a href="#单页面处理代码分割" class="headerlink" title="单页面处理代码分割"></a>单页面处理代码分割</h1><h2 id="引入第三方依赖"><a href="#引入第三方依赖" class="headerlink" title="引入第三方依赖"></a>引入第三方依赖</h2><p>在页面引入中进行修改</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import * as _ from 'lodash'</span></span><br><span class="line">修改为</span><br><span class="line"><span class="built_in">require</span>.ensure([<span class="string">'lodash'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>)  <span class="comment">// 注意，这里一定要require，上面的require不会真正的引入</span></span><br><span class="line">  _.join([<span class="string">'1'</span>,<span class="string">'2'</span>], <span class="string">'3'</span>)</span><br><span class="line">&#125;, <span class="string">'vendor'</span>) <span class="comment">//这里是指定的chunkName</span></span><br></pre></td></tr></table></figure>
+<h2 id="判断引入模块"><a href="#判断引入模块" class="headerlink" title="判断引入模块"></a>判断引入模块</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">在pageA里面修改代码</span><br><span class="line">page = <span class="string">'subpageA'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (page === <span class="string">'subpageA'</span>) &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'./subPageA'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> subpageA = <span class="built_in">require</span>(<span class="string">'./subPageA'</span>)</span><br><span class="line">  &#125;, <span class="string">'subPageA'</span>)</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'./subPageB'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> subpageA = <span class="built_in">require</span>(<span class="string">'./subPageB'</span>)</span><br><span class="line">  &#125;, <span class="string">'subPageB'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// import './subPageA'</span></span><br><span class="line"><span class="comment">// import './subPageB'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 分离页面代码和第三方依赖</span></span><br><span class="line"><span class="built_in">require</span>.ensure([<span class="string">'lodash'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'lodash'</span>)</span><br><span class="line">  _.join([<span class="string">'1'</span>,<span class="string">'2'</span>],<span class="string">'3'</span>)</span><br><span class="line">&#125;,<span class="string">'vendor'</span>)</span><br><span class="line"><span class="comment">// import * as _ from 'lodash'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="string">'PageA'</span></span><br></pre></td></tr></table></figure>
+<h2 id="抽离公共代码块modulesA"><a href="#抽离公共代码块modulesA" class="headerlink" title="抽离公共代码块modulesA"></a>抽离公共代码块modulesA</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">因为modulesA代码是同时被subpageA和subpageB页面引入的，在pageA页面中，我们有进行判断是引入subpageA还是subPageB页面，所以我们直接</span><br><span class="line">在pageA里面直接引入moduleA</span><br><span class="line"><span class="built_in">require</span>.include(<span class="string">'./moduleA'</span>)</span><br><span class="line"></span><br><span class="line">这样进行打包的时候，我们在subPageA和subPageB的包里面就没有modelA的代码，而是放在了common里面了</span><br><span class="line">这里需要在webpack.config.js里面进行配置</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">      name: <span class="string">'common'</span>,</span><br><span class="line">      minChunks: <span class="number">2</span>,</span><br><span class="line">      chunks: [<span class="string">'pageA'</span>, <span class="string">'pageB'</span>]</span><br><span class="line">    &#125;),</span><br><span class="line">      </span><br><span class="line"> 如果没有进行配置optimeze插件的话，moduleA里面的代码会被打包到pageA代码里面</span><br></pre></td></tr></table></figure>
+<p>动态import 和 require.ensure不一样的地方：</p>
+<p>import 引入后直接就执行了</p>
+<h2 id="动态import"><a href="#动态import" class="headerlink" title="动态import"></a>动态import</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (page === <span class="string">'subpageA'</span>) &#123;</span><br><span class="line">  <span class="comment">// require.ensure(['./subPageA'], function() &#123;</span></span><br><span class="line">  <span class="comment">//   var subpageA = require('./subPageA')</span></span><br><span class="line">  <span class="comment">// &#125;, 'subPageA')</span></span><br><span class="line">  <span class="keyword">import</span>(<span class="string">'./subPageA'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">subPageA</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(subPageA)</span><br><span class="line">  &#125;)</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">如果不指定chunkName, 会打包成<span class="number">1</span>/<span class="number">2</span>等类型的chunkName</span><br><span class="line">在动态<span class="keyword">import</span>中指定chunkName 需要用到魔法注释</span><br><span class="line"><span class="keyword">import</span>(<span class="comment">/* webpackChunkName: 'subPageA' */</span> <span class="string">'./subPageA'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>这个有什么用？，如果是多entry进行打包的话，是把公共模块的代码打包出来–不用指定哪个模块引用了公共模块了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">  new webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">    async: &apos;async-common&apos;,   指定打包的chunkname	</span><br><span class="line">    children: true,			注意这个属性不可以和chunk等一些属性共用（具体自行百度）</span><br><span class="line">    minChunks:2</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-babel编译es6的操作" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -919,105 +983,6 @@ clipboard.on(&apos;error&apos;, function (e) {
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">定义一个scss函数   使用@mixin定义函数  使用@include来引用函数</span><br><span class="line">@mixin font-dpr($font-size)&#123;</span><br><span class="line">    font-size: $font-size;</span><br><span class="line"></span><br><span class="line">    [data-dpr=&quot;2&quot;] &amp; &#123;</span><br><span class="line">        font-size: $font-size * 2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [data-dpr=&quot;3&quot;] &amp; &#123;</span><br><span class="line">        font-size: $font-size * 3;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">h3&#123;</span><br><span class="line">  @include font-dpr(16px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre><h1 id="知识贵在实践-加油！"><a href="#知识贵在实践-加油！" class="headerlink" title="知识贵在实践~加油！"></a>知识贵在实践~加油！</h1>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-后台管理项目尾声" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/15/后台管理项目尾声/" class="article-date">
-      <time datetime="2018-08-15T15:00:31.516Z" itemprop="datePublished">2018-08-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/15/后台管理项目尾声/">遇见预见</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="tab栏和步骤条的同步操作"><a href="#tab栏和步骤条的同步操作" class="headerlink" title="tab栏和步骤条的同步操作"></a>tab栏和步骤条的同步操作</h1><h5 id="容易出现的问题"><a href="#容易出现的问题" class="headerlink" title="容易出现的问题"></a>容易出现的问题</h5><ol>
-<li>步骤条需要number值</li>
-<li>tab栏是一个字符串</li>
-<li>最简单的解决方案-0  隐式转换</li>
-</ol>
-<h1 id="tab栏中嵌套表单"><a href="#tab栏中嵌套表单" class="headerlink" title="tab栏中嵌套表单"></a>tab栏中嵌套表单</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> &lt;template&gt;</span><br><span class="line">         &lt;el-form ref=<span class="string">"AddForm"</span> :model=<span class="string">"AddForm"</span> label-width=<span class="string">"80px"</span> style=<span class="string">'height:600px'</span>&gt;</span><br><span class="line">                &lt;el-tabs v-model=<span class="string">"activeName"</span> tab-position=<span class="string">'left'</span> style=<span class="string">'margin-top:30px'</span> @tab-click=<span class="string">"handleClick"</span>&gt;</span><br><span class="line">                    &lt;el-tab-pane label=<span class="string">"基本信息"</span> name=<span class="string">"0"</span>&gt;</span><br><span class="line">                        &lt;el-form-item label=<span class="string">"商品名称"</span> prop=<span class="string">"goods_name"</span>&gt;</span><br><span class="line">                            &lt;el-input v-model=<span class="string">"AddForm.goods_name"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span></span><br><span class="line"><span class="xml">                     <span class="tag">&lt;/<span class="name">el-tab-pane</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">el-form</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>利用表单的ref属性快速拿取数据并验证</p>
-<h1 id="异步对象设置请求头"><a href="#异步对象设置请求头" class="headerlink" title="异步对象设置请求头"></a>异步对象设置请求头</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-upload</span><br><span class="line"><span class="class"><span class="keyword">class</span></span>=<span class="string">"upload-demo"</span></span><br><span class="line">action=<span class="string">"http://localhost:8888/api/private/v1/upload"</span></span><br><span class="line">:headers=<span class="string">"getToken()"</span></span><br><span class="line">&lt;<span class="regexp">/el-upload&gt;</span></span><br><span class="line"><span class="regexp"> getToken()&#123;</span></span><br><span class="line"><span class="regexp">      var token = localStorage.getItem('mytoken')</span></span><br><span class="line"><span class="regexp">      return &#123; Authorization: token &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br></pre></td></tr></table></figure>
-<h1 id="删除上传图片操作"><a href="#删除上传图片操作" class="headerlink" title="删除上传图片操作"></a>删除上传图片操作</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">handleRemove(file,filelist)&#123;</span><br><span class="line">  <span class="comment">//在模块中默认传了2个形参</span></span><br><span class="line">    <span class="comment">// console.log(file,filelist)</span></span><br><span class="line">    <span class="keyword">if</span> (!file.response) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">      <span class="comment">//这里的判断是上传文件大小如果不符合,也会运行这个函数,所以我们就要判断响应的信息有没有成功,失败就返回</span></span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">var</span> filepath = file.response.data.tmp_path</span><br><span class="line">    <span class="comment">//   findIndex:可以查找指定数据的所在索引位置：它有一个回调函数，回调函数有一个参数，就是遍历数组时每次遍历到的成员，每次使用一个成员的数据进行函数的业务逻辑的计算，如果满足条件，则返回当前索引</span></span><br><span class="line">    <span class="keyword">var</span> index = <span class="keyword">this</span>.AddForm.pics.findIndex(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> item.pic === filepath</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//判断选定的值进行数组遍历去除</span></span><br><span class="line">    <span class="keyword">this</span>.AddForm.pics.splice(index, <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Vue地图"><a href="#Vue地图" class="headerlink" title="Vue地图"></a>Vue地图</h1><p><a href="https://github.com/ElemeFE/vue-amap/">github高德</a></p>
-<ol>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -S vue-amap</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入vue-amap</span></span><br><span class="line"><span class="keyword">import</span> VueAMap <span class="keyword">from</span> <span class="string">'vue-amap'</span>;</span><br><span class="line">Vue.use(VueAMap);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化vue-amap</span></span><br><span class="line">VueAMap.initAMapApiLoader(&#123;</span><br><span class="line">  <span class="comment">// 高德的key</span></span><br><span class="line">  key: <span class="string">'YOUR_KEY'</span>,</span><br><span class="line">  <span class="comment">// 插件集合</span></span><br><span class="line">  plugin: [<span class="string">'AMap.Autocomplete'</span>, <span class="string">'AMap.PlaceSearch'</span>, <span class="string">'AMap.Scale'</span>, <span class="string">'AMap.OverView'</span>, <span class="string">'AMap.ToolBar'</span>, <span class="string">'AMap.MapType'</span>, <span class="string">'AMap.PolyEditor'</span>, <span class="string">'AMap.CircleEditor'</span>],</span><br><span class="line">  <span class="comment">// 高德 sdk 版本，默认为 1.4.4</span></span><br><span class="line">  v: <span class="string">'1.4.4'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;amap-wrapper&quot;&gt;</span><br><span class="line">&lt;el-amap class=&quot;amap-box&quot; :vid=&quot;&apos;amap-vue&apos;&quot;&gt;&lt;/el-amap&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 注意是否要加样式, 有时宽高为0</span><br><span class="line"></span><br><span class="line">   ```css</span><br><span class="line">   &lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">   .amap-wrapper &#123;</span><br><span class="line">     width: 500px;</span><br><span class="line">     height: 500px;</span><br><span class="line">   &#125;</span><br><span class="line">   &lt;/style&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h1 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h1><p> <code>vue-quill-editor</code></p>
-<blockquote>
-<p>npm install vue-quill-editor –save</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">入口文件进行注入</span><br><span class="line">import VueQuillEditor from &apos;vue-quill-editor&apos;</span><br><span class="line"></span><br><span class="line">// require styles</span><br><span class="line">import &apos;quill/dist/quill.core.css&apos;</span><br><span class="line">import &apos;quill/dist/quill.snow.css&apos;</span><br><span class="line">import &apos;quill/dist/quill.bubble.css&apos;</span><br><span class="line"></span><br><span class="line">Vue.use(VueQuillEditor)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">实际操作过程</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;add-goods&quot;&gt;</span><br><span class="line">    &lt;el-tabs tab-position=&quot;left&quot; class=&quot;mt-20&quot;&gt;</span><br><span class="line">      &lt;el-tab-pane label=&quot;商品内容&quot; name=&quot;fifth&quot;&gt;</span><br><span class="line">        &lt;quill-editor</span><br><span class="line">          v-model=&quot;content&quot;</span><br><span class="line">          ref=&quot;myQuillEditor&quot;</span><br><span class="line">          :options=&quot;editorOption&quot;</span><br><span class="line">          @blur=&quot;onEditorBlur($event)&quot;</span><br><span class="line">          @focus=&quot;onEditorFocus($event)&quot;</span><br><span class="line">          @ready=&quot;onEditorReady($event)&quot;&gt;</span><br><span class="line">        &lt;/quill-editor&gt;</span><br><span class="line">      &lt;/el-tab-pane&gt;</span><br><span class="line">    &lt;/el-tabs&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      content: null,</span><br><span class="line">      editorOption: &#123;</span><br><span class="line">      &#125;//这是选择文本,精简版的写法</span><br><span class="line">      editorOption: &#123;</span><br><span class="line">        modules: &#123;</span><br><span class="line">          toolbar: [</span><br><span class="line">            [&apos;bold&apos;, &apos;italic&apos;, &apos;underline&apos;, &apos;strike&apos;], // toggled buttons</span><br><span class="line">            [&apos;blockquote&apos;, &apos;code-block&apos;]</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    onEditorBlur (quill) &#123;</span><br><span class="line">      console.log(&apos;editor blur!&apos;, quill)</span><br><span class="line">    &#125;,</span><br><span class="line">    onEditorFocus (quill) &#123;</span><br><span class="line">      console.log(&apos;editor focus!&apos;, quill)</span><br><span class="line">    &#125;,</span><br><span class="line">    onEditorReady (quill) &#123;</span><br><span class="line">      console.log(&apos;editor ready!&apos;, quill)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    editor () &#123;</span><br><span class="line">      return this.$refs.myQuillEditor.quill</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=&quot;scss&quot;&gt;</span><br><span class="line">.add-goods &#123;</span><br><span class="line">  .el-tabs &#123;</span><br><span class="line">    height: 400px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">.quill-editor &#123;</span><br><span class="line">  height: 400px;</span><br><span class="line">  .ql-container &#123;</span><br><span class="line">    height: 300px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="vue-echarts"><a href="#vue-echarts" class="headerlink" title="vue-echarts"></a>vue-echarts</h1><blockquote>
-<p>npm install vue-echarts</p>
-</blockquote>
-<blockquote>
-<p> import ECharts from ‘vue-echarts’<br>  Vue.component(‘chart’, ECharts)</p>
-</blockquote>
-<p><code>案例自行上网站</code>     <a href="http://echarts.baidu.com/examples/" target="_blank" rel="noopener">中文echarts</a></p>
-<h1 id="最后讲性能优化问题"><a href="#最后讲性能优化问题" class="headerlink" title="最后讲性能优化问题"></a>最后讲性能优化问题</h1><h5 id="包的去重和位置需要注意"><a href="#包的去重和位置需要注意" class="headerlink" title="包的去重和位置需要注意"></a>包的去重和位置需要注意</h5><h5 id="使用cdn加速服务"><a href="#使用cdn加速服务" class="headerlink" title="使用cdn加速服务"></a>使用cdn加速服务</h5><p>在我们的主页引入cdn服务</p>
-<p><code>&lt;script src=&quot;https://cdn.bootcss.com/vue/2.5.16/vue.min.js&quot;&gt;&lt;/script&gt;</code></p>
-<p><code>&lt;script src=&quot;https://cdn.bootcss.com/vuex/3.0.0/vuex.min.js&quot;&gt;&lt;/script&gt;</code></p>
-<p><code>&lt;script src=&quot;https://cdn.bootcss.com/vue-router/3.0.0/vue-router.min.js&quot;&gt;&lt;/script&gt;</code></p>
-<p><code>&lt;script src=&quot;https://cdn.bootcss.com/axios/0.18.0/axios.min.js&quot;&gt;&lt;/script&gt;</code></p>
-<p><code>&lt;script src=&quot;https://cdn.bootcss.com/echarts/4.1.0.rc1/echarts.common.min.js&quot;&gt;&lt;/script&gt;</code></p>
-<h6 id="在config设置"><a href="#在config设置" class="headerlink" title="在config设置"></a>在config设置</h6><p>externals:{</p>
-<p>模块对应,例如</p>
-<p>vue: ‘Vue’,</p>
-<p>}</p>
-<h5 id="使用compression模块压缩"><a href="#使用compression模块压缩" class="headerlink" title="使用compression模块压缩"></a>使用compression模块压缩</h5>
       
     </div>
     
