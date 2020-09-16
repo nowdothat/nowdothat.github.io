@@ -242,6 +242,83 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-flexible" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/07/flexible/" class="article-date">
+      <time datetime="2018-09-06T17:16:13.538Z" itemprop="datePublished">2018-09-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/07/flexible/">flexible填坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="flexible是什么"><a href="#flexible是什么" class="headerlink" title="flexible是什么"></a>flexible是什么</h1><p>淘宝手淘团队的移动适配方案</p>
+<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><ol>
+<li><p>相对路径</p>
+<ol>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"build/flexible_css.debug.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"build/flexible.debug.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>cdn路径： <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script></p>
+</li>
+</ol>
+<h3 id="写入meta"><a href="#写入meta" class="headerlink" title="写入meta"></a>写入meta</h3>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!dpr &amp;&amp; !scale) &#123;</span><br><span class="line">    <span class="keyword">var</span> isAndroid = win.navigator.appVersion.match(<span class="regexp">/android/gi</span>);</span><br><span class="line">    <span class="keyword">var</span> isIPhone = win.navigator.appVersion.match(<span class="regexp">/iphone/gi</span>);</span><br><span class="line">    <span class="keyword">var</span> devicePixelRatio = win.devicePixelRatio;</span><br><span class="line">    <span class="keyword">if</span> (isIPhone) &#123;</span><br><span class="line">        <span class="comment">// iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案</span></span><br><span class="line">        <span class="keyword">if</span> (devicePixelRatio &gt;= <span class="number">3</span> &amp;&amp; (!dpr || dpr &gt;= <span class="number">3</span>)) &#123;                </span><br><span class="line">            dpr = <span class="number">3</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (devicePixelRatio &gt;= <span class="number">2</span> &amp;&amp; (!dpr || dpr &gt;= <span class="number">2</span>))&#123;</span><br><span class="line">            dpr = <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            dpr = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 其他设备下，仍旧使用1倍的方案</span></span><br><span class="line">        dpr = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    scale = <span class="number">1</span> / dpr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">上面的是灵活写法，也可以固定为普通屏</span><br></pre></td></tr></table></figure>
+<h3 id="使用CSSREM配置px转换rem值"><a href="#使用CSSREM配置px转换rem值" class="headerlink" title="使用CSSREM配置px转换rem值"></a>使用CSSREM配置px转换rem值</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1. 在vscode中安装完成之后修改默认配置</span><br><span class="line">    &quot;cssrem.rootFontSize&quot;: 75 //设置默认字体大小</span><br><span class="line">    &quot;cssrem.autoRemovePrefixZero&quot;:false    //去除前缀为0</span><br><span class="line">    </span><br><span class="line">2. 在sublime中使用</span><br><span class="line">      下载本项目，比如：git clone https://github.com/flashlizi/cssrem</span><br><span class="line">      进入packages目录：Sublime Text -&gt; Preferences -&gt; Browse Packages...</span><br><span class="line">      复制下载的cssrem目录到刚才的packges目录里。</span><br><span class="line">      重启Sublime Text。</span><br><span class="line">      配置参数</span><br><span class="line">      参数配置文件：Sublime Text -&gt; Preferences -&gt; Package Settings -&gt; cssrem</span><br><span class="line"></span><br><span class="line">      px_to_rem - px转rem的单位比例，默认为40。</span><br><span class="line">      max_rem_fraction_length - px转rem的小数部分的最大长度。默认为6。</span><br><span class="line">      available_file_types - 启用此插件的文件类型。默认为：[&quot;.css&quot;, &quot;.less&quot;, &quot;.sass&quot;]。</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="最后是字体的书写"><a href="#最后是字体的书写" class="headerlink" title="最后是字体的书写"></a>最后是字体的书写</h3><pre><code>上面的都是样式布局的使用，但是我们要考虑的字体的显示
+
+来自官方的语言：我们在iPhone3G和iPhone4的Retina屏下面，希望看到的文本字号是相同的。也就是说，我们**不希望文本在Retina屏幕下变小**，另外，我们**希望在大屏手机上看到更多文本**，以及，现在绝大多数的字体文件都自带一些点阵尺寸，通常是`16px`和`24px`，所以我们**不希望出现13px和15px这样的奇葩尺寸**。
+
+如此一来，就决定了在制作H5的页面中，`rem`并不适合用到段落文本上。所以在Flexible整个适配方案中，考虑文本还是使用`px`作为单位。只不过使用`[data-dpr]`属性来区分不同`dpr`下的文本字号大小。
+
+#### 所以我们应该这样做
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">定义一个scss函数   使用@mixin定义函数  使用@include来引用函数</span><br><span class="line">@mixin font-dpr($font-size)&#123;</span><br><span class="line">    font-size: $font-size;</span><br><span class="line"></span><br><span class="line">    [data-dpr=&quot;2&quot;] &amp; &#123;</span><br><span class="line">        font-size: $font-size * 2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [data-dpr=&quot;3&quot;] &amp; &#123;</span><br><span class="line">        font-size: $font-size * 3;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">h3&#123;</span><br><span class="line">  @include font-dpr(16px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><h1 id="知识贵在实践-加油！"><a href="#知识贵在实践-加油！" class="headerlink" title="知识贵在实践~加油！"></a>知识贵在实践~加油！</h1>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-后台管理项目尾声" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

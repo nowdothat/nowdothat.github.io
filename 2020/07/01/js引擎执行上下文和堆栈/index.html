@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="树转表123456789101112131415161718192021222324252627282930313233343536373839function treeData2tableData(td = []) &amp;#123;  return td.reduce(    (acc, &amp;#123; id, pid, children, label &amp;#125;) =&amp;gt;       [...">
+<meta name="description" content="执行上下文的类型额外注意点1234567891011121314151617181920212223242526&amp;lt;script&amp;gt;    // 注意 函数一等公民,这里得 fun 直接抛出错误,不往下执行了    console.log(fun)    console.log(person)&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;    console.log(pers">
 <meta name="keywords" content="vue react 前端个人总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树表互转">
-<meta property="og:url" content="https://nowdothat.github.io/2019/12/29/树表互转/index.html">
+<meta property="og:title" content="js引擎执行上下文和堆栈">
+<meta property="og:url" content="https://nowdothat.github.io/2020/07/01/js引擎执行上下文和堆栈/index.html">
 <meta property="og:site_name" content="Welcome back">
-<meta property="og:description" content="树转表123456789101112131415161718192021222324252627282930313233343536373839function treeData2tableData(td = []) &amp;#123;  return td.reduce(    (acc, &amp;#123; id, pid, children, label &amp;#125;) =&amp;gt;       [...">
+<meta property="og:description" content="执行上下文的类型额外注意点1234567891011121314151617181920212223242526&amp;lt;script&amp;gt;    // 注意 函数一等公民,这里得 fun 直接抛出错误,不往下执行了    console.log(fun)    console.log(person)&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;    console.log(pers">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-29T06:31:57.852Z">
+<meta property="og:updated_time" content="2020-07-01T15:22:57.634Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树表互转">
-<meta name="twitter:description" content="树转表123456789101112131415161718192021222324252627282930313233343536373839function treeData2tableData(td = []) &amp;#123;  return td.reduce(    (acc, &amp;#123; id, pid, children, label &amp;#125;) =&amp;gt;       [...">
+<meta name="twitter:title" content="js引擎执行上下文和堆栈">
+<meta name="twitter:description" content="执行上下文的类型额外注意点1234567891011121314151617181920212223242526&amp;lt;script&amp;gt;    // 注意 函数一等公民,这里得 fun 直接抛出错误,不往下执行了    console.log(fun)    console.log(person)&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;    console.log(pers">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>树表互转 | Welcome back</title>
+<title>js引擎执行上下文和堆栈 | Welcome back</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -236,11 +236,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-树表互转" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-js引擎执行上下文和堆栈" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/12/29/树表互转/" class="article-date">
-      <time datetime="2019-12-29T06:30:35.348Z" itemprop="datePublished">2019-12-29</time>
+      <a href="/2020/07/01/js引擎执行上下文和堆栈/" class="article-date">
+      <time datetime="2020-07-01T15:20:29.564Z" itemprop="datePublished">2020-07-01</time>
 </a>
 
 
@@ -255,7 +255,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      树表互转
+      js引擎执行上下文和堆栈
     </h1>
   
 
@@ -272,67 +272,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="树转表"><a href="#树转表" class="headerlink" title="树转表"></a>树转表</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">treeData2tableData</span>(<span class="params">td = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> td.reduce(</span><br><span class="line">    (acc, &#123; id, pid, children, label &#125;) =&gt; </span><br><span class="line">      [...acc, ...treeData2tableData(children), &#123; id, pid, label &#125;],</span><br><span class="line">      []</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> treeData = [</span><br><span class="line">  &#123;</span><br><span class="line">      id: <span class="string">'1'</span>, <span class="attr">pid</span>: <span class="literal">null</span>, <span class="attr">label</span>: <span class="string">'1'</span>,</span><br><span class="line">      children: [</span><br><span class="line">          &#123;</span><br><span class="line">              id: <span class="string">'1-1'</span>, <span class="attr">pid</span>: <span class="string">'1'</span>, <span class="attr">label</span>: <span class="string">'1-1'</span>,</span><br><span class="line">              children: [</span><br><span class="line">                  &#123;</span><br><span class="line">                      id: <span class="string">'1-1-1'</span>, <span class="attr">pid</span>: <span class="string">'1-1'</span>, <span class="attr">label</span>: <span class="string">'1-1-1'</span>,</span><br><span class="line">                  &#125;</span><br><span class="line">              ]</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">              id: <span class="string">'1-2'</span>, <span class="attr">pid</span>: <span class="string">'1'</span>, <span class="attr">label</span>: <span class="string">'1-2'</span></span><br><span class="line">          &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">      id: <span class="string">'2'</span>, <span class="attr">pid</span>: <span class="literal">null</span>, <span class="attr">label</span>: <span class="string">'2'</span>,</span><br><span class="line">      children: [</span><br><span class="line">          &#123;</span><br><span class="line">              id: <span class="string">'2-1'</span>, <span class="attr">pid</span>: <span class="string">'2'</span>, <span class="attr">label</span>: <span class="string">'2-1'</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">              id: <span class="string">'2-2'</span>, <span class="attr">pid</span>: <span class="string">'2'</span>, <span class="attr">label</span>: <span class="string">'2-2'</span></span><br><span class="line">          &#125;</span><br><span class="line">      ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"><span class="keyword">let</span> cc = treeData2tableData(treeData)</span><br><span class="line"><span class="built_in">console</span>.log(cc)</span><br></pre></td></tr></table></figure>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ol>
-<li><p>首选设置函数参数的默认值,这是为了解决 children 为空的情况</p>
-</li>
-<li><p>结构必要的 key 值, 进行循环 children</p>
-</li>
-<li><p>递归分析 : </p>
-<ol>
-<li>children 进行函数执行，初始值还是为 [], 所以解构为 <ol>
-<li>id: ‘1-1’, pid: ‘1’, label: ‘1-1’, children: []</li>
-</ol>
-</li>
-<li>继续执行 …treeData2tableData(children) 函数</li>
-<li>解构为 id: ‘1-1-1’, pid: ‘1-1’, label: ‘1-1-1’ …</li>
-<li>继续执行 …treeData2tableData(children) ， 因为为 undefined, 所以用 [] 进行执行函数</li>
-<li>回到堆地址，继续执行 解构 [{id, pid, label}]</li>
-<li>输出 [{id: ‘1-1-1’, pid: ‘1-1’, label: ‘1-1-1’}]</li>
-</ol>
-</li>
-<li><p>继续执行 reduce 函数, 因为上一次返回的是 [{id: ‘1-1-1’, pid: ‘1-1’, label: ‘1-1-1’}],将其压入堆，找到上一次起始点</p>
-<ol>
-<li><p>找到上一次起始点为: {id: ‘1-1’, pid: ‘1’, label: ‘1-1’}, 根据 reduce 的特性, acc 的值为 :<br>  [{id: ‘1-1-1’, pid: ‘1-1’, label: ‘1-1-1’},{id: ‘1-1’, pid: ‘1’, label: ‘1-1’}]</p>
-</li>
-<li><p>所以下一个要执行的对象就为 {id: ‘1-2’, pid: ‘1’, label: ‘1-2’}了, 执行.. 解构 …， 数组为空…</p>
-</li>
-<li><p>return 解构后的内容:<br>  [{id: “1-1-1”, pid: “1-1”, label: “1-1-1”},{id: “1-1”, pid: “1”, label: “1-1”},{id: “1-2”, pid: “1”, label: “1-2”}]</p>
-</li>
-<li><p>继续 执行 acc …..</p>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h3><ul>
-<li>首先需要 了解 reduce 的特性， 将参数里的内容依次执行一遍函数，如果传入初始值，那么 索引将从 0 开始，否则从 1 开始</li>
-<li>注意处理 为空 的情况， 当参数为空时，进行堆地址回归, 返回 reduce 计算</li>
-</ul>
-<h1 id="表转树"><a href="#表转树" class="headerlink" title="表转树"></a>表转树</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tableData2treeData</span>(<span class="params">td = []</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> cache = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">  <span class="keyword">const</span> rest = [...td]</span><br><span class="line">  <span class="keyword">const</span> ret = []</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> originItem = rest.shift()</span><br><span class="line">    <span class="keyword">const</span> &#123; id, pid, ...restProps &#125; = originItem</span><br><span class="line">    <span class="keyword">const</span> item = &#123;id, pid, ...restProps&#125;</span><br><span class="line">    <span class="keyword">const</span> target = cache.get(pid)</span><br><span class="line">    <span class="keyword">if</span>(pid === <span class="literal">null</span>) &#123;</span><br><span class="line">      ret.push(item)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target)&#123;</span><br><span class="line">      (target.children || (target.children = [])).push(item)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      rest.push(item)</span><br><span class="line">    &#125;</span><br><span class="line">    cache.set(id, item);</span><br><span class="line">  &#125; <span class="keyword">while</span> (rest.length);</span><br><span class="line">  <span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tableData = [</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="string">'1'</span>, <span class="attr">pid</span>: <span class="literal">null</span>, <span class="attr">label</span>: <span class="string">'1'</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="string">'1-1'</span>, <span class="attr">pid</span>: <span class="string">'1'</span>, <span class="attr">label</span>: <span class="string">'1-1'</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="string">'1-1-1'</span>, <span class="attr">pid</span>: <span class="string">'1-1'</span>, <span class="attr">label</span>: <span class="string">'1-1-1'</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="string">'1-2'</span>, <span class="attr">pid</span>: <span class="string">'1'</span>, <span class="attr">label</span>: <span class="string">'1-2'</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="string">'2'</span>, <span class="attr">pid</span>: <span class="literal">null</span>, <span class="attr">label</span>: <span class="string">'2'</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="string">'2-1'</span>, <span class="attr">pid</span>: <span class="string">'2'</span>, <span class="attr">label</span>: <span class="string">'2-1'</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="string">'2-2'</span>, <span class="attr">pid</span>: <span class="string">'2'</span>, <span class="attr">label</span>: <span class="string">'2-2'</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> test = tableData2treeData(tableData)</span><br><span class="line"><span class="built_in">console</span>.log(test)</span><br></pre></td></tr></table></figure>
-<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><ol>
-<li><p>首先观察数据结构:</p>
-<p>  1.1 顶级元素的 id为 1 , 2, pid 为 null</p>
-<p>  1.2 子级的 pid 为 父级的 id</p>
-<p>  1.3 孙级的 pid 为 子级的 id </p>
-<p>  1.4 整个数组为 顶级元素一整个对象，里面 children 无限嵌套  </p>
-</li>
-<li><p>函数分析</p>
-<p>  2.1 这里使用 Map 对象  Map对象与 Object 类似,可自由选择 : Map 在涉及频繁增删键值对的场景下会有些性能优势</p>
-<p>  2.2 如果 pid 为顶级元素 null, 则直接 push 进行 ret 里</p>
-<p>  2.3 如果 子级的 pid === 父级 id, 判断是否存在 children，否则定义 [] 进行 push</p>
-<p>  2.4 循环拿取 判断 push 进不同的 item 里面</p>
-<p>  2.5 返回 ret</p>
-</li>
-</ol>
-<h3 id="难点-1"><a href="#难点-1" class="headerlink" title="难点"></a>难点</h3><ul>
-<li>学习使用 Map 对象</li>
-</ul>
-<p>​        </p>
-<p>​          </p>
-<p>​          </p>
-<p>​          </p>
-<p>​          </p>
-
+        <h1 id="执行上下文的类型"><a href="#执行上下文的类型" class="headerlink" title="执行上下文的类型"></a>执行上下文的类型</h1><h1 id="额外注意点"><a href="#额外注意点" class="headerlink" title="额外注意点"></a>额外注意点</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    // 注意 函数一等公民,这里得 fun 直接抛出错误,不往下执行了</span><br><span class="line">    console.log(fun)</span><br><span class="line"></span><br><span class="line">    console.log(person)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    console.log(person)</span><br><span class="line"></span><br><span class="line">    console.log(fun)</span><br><span class="line"></span><br><span class="line">    var person = &quot;Eric&quot;;</span><br><span class="line"></span><br><span class="line">    console.log(person)</span><br><span class="line"></span><br><span class="line">    function fun() &#123;</span><br><span class="line">        console.log(person)</span><br><span class="line">        var person = &quot;Tom&quot;;</span><br><span class="line">        console.log(person)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fun()</span><br><span class="line"></span><br><span class="line">    console.log(person)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -340,13 +280,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/12/29/树表互转/">树表互转</a></p>
+        <p><span>本文标题:</span><a href="/2020/07/01/js引擎执行上下文和堆栈/">js引擎执行上下文和堆栈</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
-        <p><span>发布时间:</span>2019-12-29, 14:30:35</p>
-        <p><span>最后更新:</span>2019-12-29, 14:31:57</p>
+        <p><span>发布时间:</span>2020-07-01, 23:20:29</p>
+        <p><span>最后更新:</span>2020-07-01, 23:22:57</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/12/29/树表互转/" title="树表互转">https://nowdothat.github.io/2019/12/29/树表互转/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://nowdothat.github.io/2019/12/29/树表互转/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/07/01/js引擎执行上下文和堆栈/" title="js引擎执行上下文和堆栈">https://nowdothat.github.io/2020/07/01/js引擎执行上下文和堆栈/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://nowdothat.github.io/2020/07/01/js引擎执行上下文和堆栈/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -358,16 +298,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/03/03/vueVirtualDom/">
-                    Vue Virtual Dom
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/11/25/git实用技巧/">
-                    git 实用技巧
+                <a href="/2020/04/19/nginx-base/">
+                    nginx-base
                 </a>
             </div>
         
@@ -379,7 +313,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#树转表"><span class="toc-number">1.</span> <span class="toc-text">树转表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">1.1.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#难点"><span class="toc-number">1.1.1.</span> <span class="toc-text">难点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#表转树"><span class="toc-number">2.</span> <span class="toc-text">表转树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分析-1"><span class="toc-number">2.1.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#难点-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">难点</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#执行上下文的类型"><span class="toc-number">1.</span> <span class="toc-text">执行上下文的类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#额外注意点"><span class="toc-number">2.</span> <span class="toc-text">额外注意点</span></a></li></ol>
         
     </div>
     <style>
@@ -415,7 +349,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"树表互转　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"js引擎执行上下文和堆栈　| Welcome back　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -431,7 +365,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2019/12/29/树表互转/" data-title="树表互转" data-url="https://nowdothat.github.io/2019/12/29/树表互转/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2020/07/01/js引擎执行上下文和堆栈/" data-title="js引擎执行上下文和堆栈" data-url="https://nowdothat.github.io/2020/07/01/js引擎执行上下文和堆栈/"></div>
     <script>
         var duoshuoQuery = {short_name:""};
         var loadComment = function(){
@@ -454,15 +388,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/03/03/vueVirtualDom/" title="上一篇: Vue Virtual Dom">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/11/25/git实用技巧/" title="下一篇: git 实用技巧">
+            <a href="/2020/04/19/nginx-base/" title="下一篇: nginx-base">
                 <i class="fa fa-angle-right"></i>
             </a>
         
