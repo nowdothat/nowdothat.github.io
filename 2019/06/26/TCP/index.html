@@ -28,9 +28,22 @@
 <meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/snipaste_MTUSize.png">
 <meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/snipaste_TCPDataPage.png">
 <meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/snipaste_startConnect.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600271255259.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600271300193.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600271441785.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600271468100.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600271749837.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600271665014.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600272018881.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600272340194.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600272419339.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600272907328.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600273605916.png">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600273696962.png">
 <meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/snipaste_stopConnect.png">
 <meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/snipaste_summanry.png">
-<meta property="og:updated_time" content="2021-11-25T18:54:56.136Z">
+<meta property="og:image" content="https://nowdothat.github.io/2019/06/26/TCP/1600309272878.png">
+<meta property="og:updated_time" content="2021-11-25T21:50:25.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP&#x2F;IP协议">
 <meta name="twitter:description" content="什么是TCP/IP协议 TCP/IP协议（传输控制协议/互联网协议）不是简单的一个协议，而是一组特别的协议，包括：TCP，IP，UDP，ARP等，这些被称为子协议。在这些协议中，最重要、最著名的就是TCP和IP。因此，大部分网络管理员称整个协议族为“TCP/IP”。  TCP/IP的迅速流行要归功于它的低成本、可在不同的平台间进行通信的能力和它开放的特性。“开放”的意思是软件开发人员可以自由地使用">
@@ -111,7 +124,7 @@
         </hgroup>
 
         
-        <p class="header-subtitle">Ken的个人总结</p>
+        <p class="header-subtitle">675062812@qq.com</p>
         
 
         
@@ -223,7 +236,7 @@
               <h1 class="header-author"><a href="/" title="回到主页">Ken</a></h1>
             </hgroup>
             
-            <p class="header-subtitle">Ken的个人总结</p>
+            <p class="header-subtitle">675062812@qq.com</p>
             
             <nav class="header-menu">
                 <ul>
@@ -286,7 +299,7 @@
 <li><p>TCP/IP的迅速流行要归功于它的低成本、可在不同的平台间进行通信的能力和它开放的特性。“开放”的意思是软件开发人员可以自由地使用和修改TCP/IP的核心协议。TCP/IP是Internet实际采用的标准。UNIX和Linux一直都使用TCP/IP，Windows网络操作系统也以TCP/IP作为默认的协议。</p>
 </li>
 </ul>
-<h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><ul>
+<h1 id="网络分层"><a href="#网络分层" class="headerlink" title="网络分层"></a>网络分层</h1><ul>
 <li>链路层</li>
 <li>网络层</li>
 <li>传输层</li>
@@ -299,13 +312,12 @@
 <li>第三层：传输层：提供TCP(传输控制协议)，UDP（用户数据报协议）两个协议，主要功能是数据格式化、数据确认和丢失重传等。</li>
 <li>第四层：应用层：TCP/IP协议的<strong>应用层</strong>相当于OSI模型的<strong>会话层、表示层和应用层</strong>，FTP(文件传输协议)，DNS（域名系统），HTTP协议，Telnet（网络远程访问协议）</li>
 </ol>
-<h1 id="主讲第三层的TCP传输控制协议"><a href="#主讲第三层的TCP传输控制协议" class="headerlink" title="主讲第三层的TCP传输控制协议"></a>主讲第三层的TCP传输控制协议</h1><p><code>简述</code></p>
+<h1 id="本文主讲第三层的TCP传输控制协议"><a href="#本文主讲第三层的TCP传输控制协议" class="headerlink" title="本文主讲第三层的TCP传输控制协议"></a>本文主讲第三层的TCP传输控制协议</h1><p><code>简述</code></p>
 <p>TCP将包排序并进行错误检查，同时实现<a href="https://baike.baidu.com/item/%E8%99%9A%E7%94%B5%E8%B7%AF/1609903" target="_blank" rel="noopener">虚电路</a>间的连接。TCP数据包中包括序号和确认，所以未按照顺序收到的包可以被排序，而损坏的包可以被重传。</p>
 <p>TCP是面向连接的，无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。在TCP/IP协议中，TCP协议提供可靠的连接服务，连接是通过三次握手进行初始化的。三次握手的目的是同步连接双方的序列号和确认号并交换 TCP窗口大小信息。</p>
 <p><code>tcp包结构</code></p>
 <p><img src="/2019/06/26/TCP/snipaste_tcpdata.png" alt="snipaste_tcpdata"></p>
-<p>阮一峰老师的博客：以太网数据包（packet）的大小是固定的，最初是1518字节，后来增加到1522字节。其中， 1500 字节是负载（payload），22字节是头信息（head）</p>
-<p>我的理解：在链路层，由以太网的物理特性决定了数据帧的长度为(46＋18)－(1500＋18)，其中的18是数据帧的头和尾，也就是说数据帧的内容最大为1500(不包括帧头和帧尾)，即MTU(Maximum Transmission Unit)为1500</p>
+<p>以太网数据包（packet）的大小是固定的，最初是1518字节，后来增加到1522字节。其中， 1500 字节是负载（payload），22字节是头信息（head），即MTU(Maximum Transmission Unit)为1500</p>
 <p><img src="/2019/06/26/TCP/snipaste_MTUSize.png" alt="snipaste_MTUSize"></p>
 <p>所以TCP包的大小：MTU字节大小1500-IP头部信息20-TCP头长度20-TCP timestrap option12 = 1448Byte</p>
 <p><img src="/2019/06/26/TCP/snipaste_TCPDataPage.png" alt="snipaste_TCPDataPage"></p>
@@ -328,7 +340,7 @@
 <ul>
 <li>主机A接收主机b 假设编号为0-535的字节（意味着mss值为535byte）,主机A会在发往主机B的报文段的确认号字段ack上填上536</li>
 <li><p>每一个包都可以得到seq和ack, 接收方就可以根据编号进行排序（按照什么顺序进行还原原始文件）或者丢弃。发送方根据ack判断接收方是否收到了指定包，判断是否需要重传</p>
-<p> ​——————这样就保证了数据通信的完整性和可靠性，防止丢包</p>
+<p> ——————这样就保证了数据通信的完整性和可靠性，防止丢包</p>
 </li>
 </ul>
 <h1 id="tcp头字段"><a href="#tcp头字段" class="headerlink" title="tcp头字段"></a>tcp头字段</h1><table>
@@ -366,20 +378,49 @@
 </tbody>
 </table>
 <h1 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h1><ol>
-<li>客户端通过向服务器端发送一个SYN来创建一个主动打开，作为三次握手的一部分。客户端把这段连接的序号设定为随机数<strong>A</strong>。</li>
+<li>客户端通过向服务器端发送一个SYN来创建一个主动打开，作为三次握手的一部分。客户端把这段连接的序号设定为32位的随机数<strong>A</strong>。</li>
 <li>服务器端应当为一个合法的SYN回送一个SYN/ACK。ACK的确认码应为<strong>A+1</strong>，SYN/ACK包本身又有一个随机产生的序号<strong>B</strong>。</li>
-<li>最后，客户端再发送一个<a href="https://zh.wikipedia.org/wiki/%E7%A2%BA%E8%AA%8D%E8%A8%8A%E6%81%AF" target="_blank" rel="noopener">ACK</a>。此时包的序号被设定为<strong>A+1</strong>，而ACK的确认码则为<strong>B+1</strong>。当服务端收到这个ACK的时候，就完成了三次握手，并进入了连接创建状态。</li>
+<li>最后，客户端再发送一个<a href="https://zh.wikipedia.org/wiki/%E7%A2%BA%E8%AA%8D%E8%A8%8A%E6%81%AF" target="_blank" rel="noopener">ACK</a>。此时包的Seq被设定为<strong>A+1</strong>，而ACK的确认码则为<strong>B+1</strong>(第二次握手,服务端返回的Next seq)。当服务端收到这个ACK的时候，就完成了三次握手，并进入了连接创建状态。</li>
 <li>这里的+1是根据发送的length来决定的</li>
 </ol>
 <p><img src="/2019/06/26/TCP/snipaste_startConnect.png" alt="snipaste_startConnect"></p>
+<p>这里需要注意, SYN=0 在抓包工具上来看,就是没设置的意思</p>
+<h2 id="第一次握手"><a href="#第一次握手" class="headerlink" title="第一次握手"></a>第一次握手</h2><p>发送方发送syn = 1, 和</p>
+<p> TCP Options</p>
+<ul>
+<li>Maximum segment size: 65475    – MSS : 最大片段大小</li>
+<li>Window scale: 8 (multiply by 256)  – WS: “ TCP窗口比例”选项是一个选项，用于增加“传输控制协议”中允许的接收窗口大小，使其超过其以前的最大值65535字节</li>
+<li>window size value: 65535  –Win </li>
+<li>SACK permitted <ul>
+<li>That’s the “Sack-Permitted” option from <a href="https://tools.ietf.org/html/rfc2018" target="_blank" rel="noopener">RFC 2018</a>, “TCP Selective Acknowledgment Options”. It says that the two machines can use “selective acknowledgment”, meaning that, instead of just saying “I got all bytes up to this sequence number”, they can say “I got all the bytes in this range and all the bytes in this other range”, with the implication being that bytes in ranges not listed were <em>not</em> received, so that they can say that they got bytes before and after some ranges, but not the bytes in the middle of the range. </li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/06/26/TCP/1600271255259.png" alt="1600271255259"></p>
+<p><img src="/2019/06/26/TCP/1600271300193.png" alt="1600271300193"></p>
+<h2 id="第二次握手"><a href="#第二次握手" class="headerlink" title="第二次握手"></a>第二次握手</h2><p><img src="/2019/06/26/TCP/1600271441785.png" alt="1600271441785"></p>
+<h2 id="第三次握手"><a href="#第三次握手" class="headerlink" title="第三次握手"></a>第三次握手</h2><p><img src="/2019/06/26/TCP/1600271468100.png" alt="1600271468100"></p>
+<p>这里有点疑惑的是: 并没有设置 syn flags</p>
+<h2 id="通过三次握手之后-建立-HTTP连接通道"><a href="#通过三次握手之后-建立-HTTP连接通道" class="headerlink" title="通过三次握手之后,建立 HTTP连接通道"></a>通过三次握手之后,建立 HTTP连接通道</h2><p><img src="/2019/06/26/TCP/1600271749837.png" alt="1600271749837"></p>
+<p><img src="/2019/06/26/TCP/1600271665014.png" alt="1600271665014"></p>
 <h1 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h1><p>服务端发送的seq和ack必须和第三次客户端回传的seq和ack保持一致</p>
 <p>客户端确认收到：seq = 服务端的ack  ack = 服务端的seq+该数据包中所带数据的大小（同时也表示下一次期望收到的序号）</p>
 <p>服务器回应：seq = 客户端回传的ack  ack = 客户端回传的seq+客户端回传的length</p>
-<h1 id="关闭连接"><a href="#关闭连接" class="headerlink" title="关闭连接"></a>关闭连接</h1><p>在这个过程中连接的每一侧都独立地被终止。当一个端点要停止它这一侧的连接，就向对侧发送FIN，对侧回复ACK表示确认。因此，拆掉一侧的连接过程需要一对FIN和ACK，分别由两侧端点发出。所以本质是二次，因为是双工原因，所以有4次挥手</p>
+<h2 id="服务器开始在通道里传送数据"><a href="#服务器开始在通道里传送数据" class="headerlink" title="服务器开始在通道里传送数据"></a>服务器开始在通道里传送数据</h2><p><img src="/2019/06/26/TCP/1600272018881.png" alt="1600272018881"></p>
+<h2 id="客户端接收-http-数据"><a href="#客户端接收-http-数据" class="headerlink" title="客户端接收 http 数据"></a>客户端接收 http 数据</h2><p><img src="/2019/06/26/TCP/1600272340194.png" alt="1600272340194"></p>
+<p><img src="/2019/06/26/TCP/1600272419339.png" alt="1600272419339"></p>
+<p>接收http 200之后,需要传递给服务器</p>
+<p><img src="/2019/06/26/TCP/1600272907328.png" alt="1600272907328"></p>
+<h2 id="失败的情况"><a href="#失败的情况" class="headerlink" title="失败的情况"></a>失败的情况</h2><p>如果客户端并没有接收到想要的信息,会再发一次tcp 请求</p>
+<p>如果服务端已经完成 tcp连接,进入下一步</p>
+<h1 id="关闭连接"><a href="#关闭连接" class="headerlink" title="关闭连接"></a>关闭连接</h1><h2 id="服务端关闭请求"><a href="#服务端关闭请求" class="headerlink" title="服务端关闭请求"></a>服务端关闭请求</h2><p><img src="/2019/06/26/TCP/1600273605916.png" alt="1600273605916"></p>
+<h2 id="客户端回复tcp"><a href="#客户端回复tcp" class="headerlink" title="客户端回复tcp"></a>客户端回复tcp</h2><p><img src="/2019/06/26/TCP/1600273696962.png" alt="1600273696962"></p>
+<p>在这个过程中连接的每一侧都独立地被终止。当一个端点要停止它这一侧的连接，就向对侧发送FIN，对侧回复ACK表示确认</p>
 <p><code>首先发出FIN的一侧，如果给对侧的FIN响应了ACK，那么就会超时等待2*MSL时间，然后关闭连接</code></p>
 <p>注意： 首先发出FIN的一侧，如果给对侧的FIN响应了ACK，那么就会超时等待2*MSL时间，然后关闭连接</p>
 <p><img src="/2019/06/26/TCP/snipaste_stopConnect.png" alt="snipaste_stopConnect"></p>
 <h1 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h1><p><img src="/2019/06/26/TCP/snipaste_summanry.png" alt="snipaste_summanry"></p>
+<p><img src="/2019/06/26/TCP/1600309272878.png" alt="1600309272878"></p>
 
       
     </div>
@@ -391,7 +432,7 @@
         <p><span>本文标题:</span><a href="/2019/06/26/TCP/">TCP/IP协议</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Ken</a></p>
         <p><span>发布时间:</span>2019-06-26, 22:52:14</p>
-        <p><span>最后更新:</span>2021-11-26, 02:54:56</p>
+        <p><span>最后更新:</span>2021-11-26, 05:50:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/06/26/TCP/" title="TCP/IP协议">https://nowdothat.github.io/2019/06/26/TCP/</a>
             <span class="copy-path" data-clipboard-text="原文: https://nowdothat.github.io/2019/06/26/TCP/　　作者: Ken" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -427,7 +468,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是TCP-IP协议"><span class="toc-number">1.</span> <span class="toc-text">什么是TCP/IP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分层"><span class="toc-number">1.1.</span> <span class="toc-text">分层</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#主讲第三层的TCP传输控制协议"><span class="toc-number">2.</span> <span class="toc-text">主讲第三层的TCP传输控制协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp的序号seq"><span class="toc-number">2.0.1.</span> <span class="toc-text">tcp的序号seq</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据包的分割"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">数据包的分割</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp的确认号ack"><span class="toc-number">2.0.2.</span> <span class="toc-text">tcp的确认号ack</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tcp头字段"><span class="toc-number">3.</span> <span class="toc-text">tcp头字段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三次握手"><span class="toc-number">4.</span> <span class="toc-text">三次握手</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据传输"><span class="toc-number">5.</span> <span class="toc-text">数据传输</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关闭连接"><span class="toc-number">6.</span> <span class="toc-text">关闭连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总述"><span class="toc-number">7.</span> <span class="toc-text">总述</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是TCP-IP协议"><span class="toc-number">1.</span> <span class="toc-text">什么是TCP/IP协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络分层"><span class="toc-number">2.</span> <span class="toc-text">网络分层</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本文主讲第三层的TCP传输控制协议"><span class="toc-number">3.</span> <span class="toc-text">本文主讲第三层的TCP传输控制协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp的序号seq"><span class="toc-number">3.0.1.</span> <span class="toc-text">tcp的序号seq</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据包的分割"><span class="toc-number">3.0.1.1.</span> <span class="toc-text">数据包的分割</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp的确认号ack"><span class="toc-number">3.0.2.</span> <span class="toc-text">tcp的确认号ack</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tcp头字段"><span class="toc-number">4.</span> <span class="toc-text">tcp头字段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三次握手"><span class="toc-number">5.</span> <span class="toc-text">三次握手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一次握手"><span class="toc-number">5.1.</span> <span class="toc-text">第一次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二次握手"><span class="toc-number">5.2.</span> <span class="toc-text">第二次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三次握手"><span class="toc-number">5.3.</span> <span class="toc-text">第三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过三次握手之后-建立-HTTP连接通道"><span class="toc-number">5.4.</span> <span class="toc-text">通过三次握手之后,建立 HTTP连接通道</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据传输"><span class="toc-number">6.</span> <span class="toc-text">数据传输</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器开始在通道里传送数据"><span class="toc-number">6.1.</span> <span class="toc-text">服务器开始在通道里传送数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端接收-http-数据"><span class="toc-number">6.2.</span> <span class="toc-text">客户端接收 http 数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#失败的情况"><span class="toc-number">6.3.</span> <span class="toc-text">失败的情况</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关闭连接"><span class="toc-number">7.</span> <span class="toc-text">关闭连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端关闭请求"><span class="toc-number">7.1.</span> <span class="toc-text">服务端关闭请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端回复tcp"><span class="toc-number">7.2.</span> <span class="toc-text">客户端回复tcp</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总述"><span class="toc-number">8.</span> <span class="toc-text">总述</span></a></li></ol>
         
     </div>
     <style>

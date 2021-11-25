@@ -107,7 +107,7 @@
         </hgroup>
 
         
-        <p class="header-subtitle">Ken的个人总结</p>
+        <p class="header-subtitle">675062812@qq.com</p>
         
 
         
@@ -219,7 +219,7 @@
               <h1 class="header-author"><a href="/" title="回到主页">Ken</a></h1>
             </hgroup>
             
-            <p class="header-subtitle">Ken的个人总结</p>
+            <p class="header-subtitle">675062812@qq.com</p>
             
             <nav class="header-menu">
                 <ul>
@@ -896,10 +896,8 @@ clipboard.on(&apos;error&apos;, function (e) {
         <h2 id="扩展思维方式"><a href="#扩展思维方式" class="headerlink" title="扩展思维方式"></a>扩展思维方式</h2><p>小程序中使用textarea组件的使用，使用fixed=”true” 仍会出现滚动效果时，添加auto-height=”true”   在调试工具中会出现滚动，但在真机上就解决这个问题了</p>
 <p>从这个实例，我发现不能以个人思维去看待文档，文档也会出错，要去实践才能得真知</p>
 <h2 id="小程序无法使用本地图片作为背景图"><a href="#小程序无法使用本地图片作为背景图" class="headerlink" title="小程序无法使用本地图片作为背景图"></a>小程序无法使用本地图片作为背景图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">报错信息为：VM6971:2 pages/cashier/cashier.wxss 中的本地资源图片无法通过 WXSS 获取，可以使用网络图片，或者 base64，或者使用&lt;image/&gt;标签。请参考文档：    </span><br><span class="line"></span><br><span class="line">我的解决方案是使用image读取本地图片，然后利用层级覆盖实现背景效果 ， 因为我们所看到的平面，本质上是一个3D立体</span><br></pre></td></tr></table></figure>
-<p>##小程序的checkbox样式问题<br>既然无法修改，就直接抛弃。自己写一个样式，点击更换，用data进行保存判断实现点击效果</p>
-<p>##git命令的实现<br>要想使用git命令，必须去git官网下载安装包，然后填写用户名进行操作<br>website:<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></p>
-<p>另一种方法 下载github desktop进行页面级操作</p>
-<h3 id="数据无法更新到wxml的情况"><a href="#数据无法更新到wxml的情况" class="headerlink" title="数据无法更新到wxml的情况"></a>数据无法更新到wxml的情况</h3><p>使用  this.setData({</p>
+<h2 id="小程序的checkbox样式问题"><a href="#小程序的checkbox样式问题" class="headerlink" title="小程序的checkbox样式问题"></a>小程序的checkbox样式问题</h2><p>既然无法修改，就直接抛弃。自己写一个样式，点击更换，用data进行保存判断实现点击效果</p>
+<h2 id="数据无法更新到wxml的情况"><a href="#数据无法更新到wxml的情况" class="headerlink" title="数据无法更新到wxml的情况"></a>数据无法更新到wxml的情况</h2><p>使用  this.setData({</p>
 <p>​      selectPic:wx.getStorageSync(“loginSel”)</p>
 <p>​    })</p>
 <p>异步数据无法快速同步到页面上，使用this.setData({})进行解决</p>
